@@ -1,0 +1,138 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectVersion>5.1</ProjectVersion>
+    <ToolchainName>com.Atmel.AVRAssembler</ToolchainName>
+    <ProjectGuid>{aeec4392-f47b-4c2d-828c-14b328ff44cc}</ProjectGuid>
+    <avrdeviceseries>none</avrdeviceseries>
+    <avrdevice>ATmega64</avrdevice>
+    <OutputFileName>$(MSBuildProjectName)</OutputFileName>
+    <OutputFileExtension>.obj</OutputFileExtension>
+    <OutputDirectory>$(MSBuildProjectDirectory)\$(Configuration)</OutputDirectory>
+    <Language>ASSEMBLY</Language>
+    <AssemblyName>Balance Game</AssemblyName>
+    <Name>Balance Game</Name>
+    <RootNamespace>Balance Game</RootNamespace>
+    <EntryFile>$(MSBuildProjectDirectory)\main.asm</EntryFile>
+    <ToolchainFlavour>Native</ToolchainFlavour>
+    <AsfVersion>2.11.1</AsfVersion>
+    <avrtool>com.atmel.avrdbg.tool.simulator</avrtool>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
+    <ToolchainSettings>
+      <AvrAssembler>
+        <avrasm.assembler.general.IncludeFile>($IncludeFile)</avrasm.assembler.general.IncludeFile>
+      </AvrAssembler>
+    </ToolchainSettings>
+    <OutputType>Executable</OutputType>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
+    <ToolchainSettings>
+      <AvrAssembler>
+        <avrasm.assembler.general.IncludeFile>($IncludeFile)</avrasm.assembler.general.IncludeFile>
+      </AvrAssembler>
+    </ToolchainSettings>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="chiptimer.asm">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="chiptimerdefs.inc">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="display.asm">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="displaydefs.inc">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="div.asm">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="game.asm">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="gamedisplay.asm">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="gamesettingdefs.inc">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="gametimer.asm">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="gametimerdefs.inc">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generaldefs.inc">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="imu.asm">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="imudefs.inc">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="io.asm">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="iodefs.inc">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="main.asm">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="menu.asm">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="music.asm">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="random.asm">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="randomdefs.inc">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="segtable.asm">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="sound.asm">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="sounddefs.inc">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="spi.asm">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="switch.asm">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="switchdefs.inc">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="test.asm">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="timer.asm">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="timer.inc">
+      <SubType>Code</SubType>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="ee10b-spec5-polled.txt">
+      <SubType>Code</SubType>
+    </None>
+    <None Include="table_gen.ipynb">
+      <SubType>Code</SubType>
+    </None>
+    <None Include="TODO.txt">
+      <SubType>Code</SubType>
+    </None>
+  </ItemGroup>
+  <Import Project="$(AVRSTUDIO_EXE_PATH)\\Vs\\Assembler.targets" />
+</Project>

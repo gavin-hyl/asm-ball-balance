@@ -1,0 +1,545 @@
+Gavin Hua
+2024/06/08
+EE/CS 10b - Outline 5
+
+; Main
+;
+; Description:      This function contains the main loop that handles resetting
+;                   the game state, takes input from the switches and IMU,
+;                   outputs the game state to the LEDs, and outputs sound to the
+;                   speaker.
+; Operation:        The function is an infinite loop that checks all the input
+;                   flags on every iteration, and performs actions accordingly.
+; 
+; Arguments:        None.
+; Return Value:     None.
+; 
+; Global Variables: None.
+; Shared Variables: in_game, StartPressed, ModePressed, RotPressed, RotCW,
+;                   RotCCW, UpdateStatusTimer, GameTimerExpired, ball_pos,
+; Local Variables:  None.
+;
+; Input:            IMU, switches, and rotary encoder. Refer to system 
+;                   requirements and description.
+; Output:           Game LEDs, 7-segment display, and speaker. Refer to system
+;                   system requirements and description.
+;
+; Error Handling:   Refer to functional specification.
+;
+; Algorithms:       Event-based main loop.
+; Data Structures:  Event queue (FIFO list).
+;
+; Pseudocode:
+
+InitDisplay()
+InitSPI()
+InitIMU()
+InitSound()
+InitVirtualTimers()
+
+WHILE TRUE:
+    IF in_game:
+        IF StartPressed:
+            LoseGame()
+        IF ModePressed:
+            ModePressed = FALSE
+        IF RotPressed:
+            RotPressed = FALSE
+        IF RotCW:
+            RotCW = FALSE
+        IF RotCCW:
+            RotCW = FALSE
+        IF !DelayNotDone(GAME_TIMER_IDX):
+            GameTimerHandler()
+        IF !DelayNotDone(UPDATE_STATUS_TIMER_IDX):
+            UpdateStatusTimerHandler()
+    ELSE:
+        IF StartPressed:
+            StartButtonMenuHandler()
+        IF ModePressed:
+            ModeButtonMenuHandler()
+        IF RotPressed:
+            RotButtonMenuHandler()
+        IF RotCW:
+            RotCWMenuHandler()
+        IF RotCCW:
+            RotCCWMenuHandler()
+        
+
+
+; StartButtonMenuHandler
+;
+; Description:      This function handles the start button press when the game
+；                  is not in progress. It resets and starts the game.
+; Operation:        The function resets the game state, plays the game start
+;                   music, and sets the game state to in progress.
+; 
+; Arguments:        None.
+; Return Value:     None.
+; 
+; Global Variables: None.
+; Shared Variables: ball_pos - written to 0
+;                   running_time - written to either settings time value or 0
+;                   mode - read only
+; Local Variables:  None.
+;
+; Input:            None.
+; Output:           None.
+;
+; Error Handling:   None.
+;
+; Algorithms:       None.
+; Data Structures:  None.
+;
+; Pseudocode:
+
+PlaySequenceRepeat(GAME_MUSIC)
+ball_pos = START_POS            // 35
+IF (mode == TIMED):
+    running_time = time_val
+ELSE:
+    running_time = 0
+
+
+
+; ModeButtonMenuHandler
+;
+; Description:      This function handles the mode button press when the game
+；                  is not in progress. It toggles between timed and infinite
+;                   game modes.
+; Operation:        The function toggles the game mode between timed and
+;                   infinite, and displays the current mode on the 7-segment
+;                   display.
+; 
+; Arguments:        None.
+; Return Value:     None.
+; 
+; Global Variables: None.
+; Shared Variables: mode - toggled between TIMED and INFINITE
+; Local Variables:  None.
+;
+; Input:            None.
+; Output:           None.
+;
+; Error Handling:   None.
+;
+; Algorithms:       None.
+; Data Structures:  None.
+;
+; Pseudocode:
+
+IF (mode == TIMED):
+    mode = INFINITE
+    display("EvEr")
+ELSE:
+    mode = TIMED
+    display("t   ")
+
+
+; RotButtonMenuHandler
+;
+; Description:      This function handles the rotary button press when the game
+；                  is not in progress. It toggles between time and position
+;                   limit settings.
+; Operation:        The function toggles the setting between time and position,
+;                   and displays the current mode on the 7-segment display.
+; 
+; Arguments:        None.
+; Return Value:     None.
+; 
+; Global Variables: None.
+; Shared Variables: setting - toggled between TIME and POSITION
+; Local Variables:  None.
+;
+; Input:            None.
+; Output:           None.
+;
+; Error Handling:   None.
+;
+; Algorithms:       None.
+; Data Structures:  None.
+;
+; Pseudocode:
+
+IF (setting == TIME):
+    setting = POSITION
+    display("pos ")
+ELSE:
+    setting = TIME
+    display("t=  ")
+
+
+; RotCWMenuHandler
+;
+; Description:      This function handles the rotary clockwise turn when the
+;                   game is not in progress. It increments the time or position
+;                   limit setting.
+; Operation:        The function increments the time or position limit setting,
+;                   and displays the current setting value the 7-segment display.
+; 
+; Arguments:        None.
+; Return Value:     None.
+; 
+; Global Variables: None.
+; Shared Variables: time_val - incremented if setting is TIME
+;                   pos_range - incremented if setting is POSITION
+;                   pos_max - recalculated if setting is POSITION
+;                   pos_min - recalculated if setting is POSITION
+; Local Variables:  None.
+;
+; Input:            None.
+; Output:           None.
+;
+; Error Handling:   None.
+;
+; Algorithms:       None.
+; Data Structures:  None.
+;
+; Pseudocode:
+IF (setting == TIME):
+    time_val--
+    IF (time_val < TIME_MIN):
+        time_val = TIME_MIN
+    DisplayHex(time_val)
+ELSE:
+    pos_range--
+    pos_max = START_POS + pos_range
+    pos_min = START_POS - pos_range
+    IF (pos_range < RANGE_MIN):   // 5
+        pos_range = RANGE_MIN
+    ClearDisplay()
+    DisplayHex("range")
+    DisplayGameLED(pos_max)
+    DisplayGameLED(pos_min)
+
+
+
+; RotCCWMenuHandler
+;
+; Description:      This function handles the rotary CCW turn when the
+;                   game is not in progress. It decrements the time or position
+;                   limit setting.
+; Operation:        The function decrements the time or position limit setting,
+;                   and displays the current setting value the 7-segment display.
+; 
+; Arguments:        None.
+; Return Value:     None.
+; 
+; Global Variables: None.
+; Shared Variables: time_val - decremented if setting is TIME
+;                   pos_range - decremented if setting is POSITION
+;                   pos_max - recalculated if setting is POSITION
+;                   pos_min - recalculated if setting is POSITION
+; Local Variables:  None.
+;
+; Input:            None.
+; Output:           None.
+;
+; Error Handling:   None.
+;
+; Algorithms:       None.
+; Data Structures:  None.
+;
+; Pseudocode:
+
+IF (setting == TIME):
+    time_val++
+    IF (time_val > TIME_MAX):
+        time_val = TIME_MAX
+    DisplayHex(time_val)
+ELSE:
+    pos_range++
+    pos_max = START_POS + pos_range
+    pos_min = START_POS - pos_range
+    IF (pos_range > RANGE_MAX): // 35
+        pos_range = RANGE_MAX
+    ClearDisplay()
+    DisplayHex("range")
+    DisplayGameLED(pos_max)
+    DisplayGameLED(pos_min)
+
+
+
+; UpdateStatusTimerHandler
+;
+; Description:      This function handles the update status timer expiration
+;                   event. It updates the game state and outputs the game state
+;                   to the LEDs and 7-segment display.
+; Operation:        The function updates the game state, outputs the game state
+;                   to the LEDs and 7-segment display, and checks for game win
+;                   or lose conditions.
+;
+; Arguments:        None.
+; Return Value:     None.
+; 
+; Global Variables: None.
+; Shared Variables: ball_pos - updated based on acceleration value
+;                   running_time - decremented if mode is TIMED
+;                   mode - read only
+;                   pos_max - read only
+;                   pos_min - read only
+; Local Variables:  a - acceleration value from IMU
+;                   v - velocity value from acceleration
+;
+; Input:            None.
+; Output:           None.
+;
+; Error Handling:   None.
+;
+; Algorithms:       None.
+; Data Structures:  None.
+;
+; Pseudocode:
+
+a = GetAccelY()
+v = ACCEL_TO_VELOCITY[ay]
+ball_pos += v
+DisplayGameLED(MIDDLE_LED_IDX + ball_pos)
+DisplayHex(running_time)
+IF (ball_pos > pos_max or ball_pos < pos_min):
+    LoseGame()
+IF (remaining_t <= 0):  // timed game
+    WinGame()
+
+
+; GameTimerHandler
+;
+; Description:      This function handles the game timer expiration event. It
+;                   updates the running time.
+; Operation:        The function updates the running time. If the game is in
+;                   timed mode, it decrements the running time. If the game is
+;                   in infinite mode, it increments the running time.
+;
+; Arguments:        None.
+; Return Value:     None.
+; 
+; Global Variables: None.
+; Shared Variables: mode - read only
+;                   running_time - decremented if mode is TIMED, incremented if
+;                   mode is INFINITE
+; Local Variables:  None.
+;
+; Input:            None.
+; Output:           None.
+;
+; Error Handling:   None.
+;
+; Algorithms:       None.
+; Data Structures:  None.
+;
+; Pseudocode:
+
+IF (mode == TIMED):
+    running_time--
+ELSE:
+    running_time++
+
+
+; SpeakerTimerHandler
+;
+; Description:      This function handles the speaker timer expiration event. It
+;                   plays the next PWM value in the sequence.
+; Operation:        The function plays the next PWM value in the sequence. If
+;                   the sequence has ended, it stops playing the sequence if
+;                   repeat is false, or repeats the sequence if repeat is true.
+;
+; Arguments:        None.
+; Return Value:     None.
+; 
+; Global Variables: None.
+; Shared Variables: playing_sequence - updated based on sequence state
+;                   repeat - read only
+;                   note_p - incremented
+; Local Variables:  None.
+;
+; Input:            None.
+; Output:           Speaker plays the PWM note.
+;
+; Error Handling:   None.
+;
+; Algorithms:       None.
+; Data Structures:  None.
+;
+; Pseudocode:
+
+PlayNotePWM(*note_p)            // PWM sound output, fast PWM, 16 kHz sampling rate => 512 compare value
+note_p++
+IF (note_p == end(SEQUENCE)):
+    IF (repeat):
+        note_p = start(SEQUENCE)
+    ELSE:
+        playing_sequence = FALSE
+
+
+; LoseGame
+;
+; Description:      This function handles the game lose event. It stops the game
+;                   and outputs the lose music and message.
+; Operation:        The function stops the game, plays the lose music,
+;                   displays the lose message, and blinks the game LEDs.
+;
+; Arguments:        None.
+; Return Value:     None.
+;
+; Global Variables: None.
+; Shared Variables: in_game - updated to FALSE
+;                   display_on_t - written to 100
+;                   display_off_t - written to 100
+;                   
+; Local Variables:  None.
+;
+; Input:            None.
+; Output:           GameLEDs blink, lose music plays, lose message displayed.
+;
+; Error Handling:   None.
+;
+; Algorithms:       None.
+; Data Structures:  None.
+;
+; Pseudocode:
+
+in_game = FALSE
+PlaySequenceSingle(LOSE_MUSIC)
+Display("=P  ")
+WHILE playing_sequence:
+    display_on_t = 100
+    display_off_t = 100
+    DisplayGameLED(MIDDLE_LED_IDX + ball_pos)
+
+ClearDisplay()
+display_on_t = 255
+display_off_t = 0
+IF (mode == TIMED):
+    DisplayHex("t   ")
+ELSE:
+    DisplayHex("EvEr")
+
+
+; WinGame
+;
+; Description:      This function handles the game win event. It stops the game
+;                   and outputs the win music and message.
+; Operation:        The function stops the game, plays the win music,
+;                   displays the win message.
+;
+; Arguments:        None.
+; Return Value:     None.
+;
+; Global Variables: None.
+; Shared Variables: in_game - updated to FALSE
+;                   
+;                   
+; Local Variables:  None.
+;
+; Input:            None.
+; Output:           Win music plays, win message displayed, and then game mode
+;                   displayed.
+;
+; Error Handling:   None.
+;
+; Algorithms:       None.
+; Data Structures:  None.
+;
+; Pseudocode:
+
+in_game = FALSE
+PlaySequenceSingle(WIN_MUSIC)
+Display("you did it")
+WHILE playing_sequence:
+    pass
+ClearDisplay()
+IF (mode == TIMED):
+    DisplayHex("t   ")
+ELSE:
+    DisplayHex("EvEr")
+
+
+; PlaySequenceSingle
+;
+; Description:      This function initializes speaker variables to play a single
+;                   sequence once defined by a pointer to a PWM sequence.
+; Operation:        The function sets the note pointer to the start of the
+;                   sequence, sets the playing sequence flag to true, and sets
+;                   the repeat flag to false.
+;
+; Arguments:        sequence - pointer to the PWM sequence to play.
+; Return Value:     None.
+;
+; Global Variables: None.
+; Shared Variables: note_p - written to sequence
+;                   playing_sequence - written to TRUE
+;                   repeat - written to FALSE
+; Local Variables:  None.
+;
+; Input:            None.
+; Output:           None.
+;
+; Error Handling:   None.
+;
+; Algorithms:       None.
+; Data Structures:  None.
+;
+; Pseudocode:
+
+note_p = sequence
+playing_sequence = TRUE
+repeat = FALSE
+
+
+; PlaySequenceRepeat
+;
+; Description:      This function initializes speaker variables to play a single
+;                   sequence repeatedly defined by a pointer to a PWM sequence.
+; Operation:        The function sets the note pointer to the start of the
+;                   sequence, sets the playing sequence flag to true, and sets
+;                   the repeat flag to true.
+;
+; Arguments:        sequence - pointer to the PWM sequence to play.
+; Return Value:     None.
+;
+; Global Variables: None.
+; Shared Variables: note_p - written to sequence
+;                   playing_sequence - written to TRUE
+;                   repeat - written to TRUE
+; Local Variables:  None.
+;
+; Input:            None.
+; Output:           None.
+;
+; Error Handling:   None.
+;
+; Algorithms:       None.
+; Data Structures:  None.
+;
+; Pseudocode:
+
+note_p = sequence
+playing_sequence = TRUE
+repeat = TRUE
+
+
+; InitVirtualTimers
+;
+; Description:      This function initializes the software timers for the game.
+; Operation:        The function initializes the game timer and update status
+;                   timer with the corresponding periods.
+;
+; Arguments:        None.
+; Return Value:     None.
+;
+; Global Variables: None.
+; Shared Variables: None.
+; Local Variables:  None.
+;
+; Input:            None.
+; Output:           None.
+;
+; Error Handling:   None.
+;
+; Algorithms:       None.
+; Data Structures:  None.
+;
+; Pseudocode:
+
+StartDelay(GAME_TIMER_IDX, SECOND_MS)                   // 0, 1000
+StartDelay(UPDATE_STATUS_TIMER_IDX, UPDATE_PERIOD_MS)   // 1, 100
