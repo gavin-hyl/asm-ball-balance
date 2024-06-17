@@ -1,5 +1,5 @@
 
-AVRASM ver. 2.1.41  U:\gavinhua\ee10b-hw5\test.asm Sun Jun 16 22:56:04 2024
+AVRASM ver. 2.1.41  U:\gavinhua\ee10b-hw5\test.asm Sun Jun 16 22:57:55 2024
 
 
 EQU  SIGNATURE_000 0000001e
@@ -997,8 +997,8 @@ CSEG InitGame     000001ee
 CSEG InitGameTimers 000002a3
 CSEG InitSettings 00000373
 CSEG Main         00000059
-DSEG size_set     000001ad
-CSEG DisplayBall  0000028f
+DSEG bound_set    000001aa
+CSEG DisplayBound 00000288
 DSEG delay_timer  00000180
 CSEG InitTimerLoop 00000062
 CSEG EndInitTimers 00000066
@@ -1109,12 +1109,12 @@ CSEG WinMusic     000004a4
 CSEG WaitSequenceLoop 0000026a
 CSEG WinGameEnd   0000026e
 CSEG ComputeUpperBound 00000270
-DSEG bound_set    000001aa
 CSEG ComputeLowerBound 00000275
 CSEG DisplayGameState 0000027a
-CSEG DisplayBound 00000288
 CSEG DisplayTime  00000283
 CSEG DisplayGameStateEnd 00000282
+CSEG DisplayBall  0000028f
+DSEG size_set     000001ad
 CSEG DisplayBallLoopInit 00000299
 CSEG DisplayBallCapUpperBound 00000298
 CSEG DisplayBallLoop 0000029d

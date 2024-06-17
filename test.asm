@@ -105,9 +105,9 @@ Start:                                 ; start the CPU after a reset
 ;-------------------------------------------------------------------------------
 
 Main:
-    ldi r16, 3
-    sts size_set, r16
-    rcall DisplayBall
+    ldi r16, 10
+    sts bound_set, r16
+    rcall DisplayBound
     rjmp Main
 
 ;-------------------------------------------------------------------------------

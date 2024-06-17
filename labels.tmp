@@ -63,8 +63,8 @@
   <InitGameTimers><FILE>U:\gavinhua\ee10b-hw5\gametimer.asm</FILE><LINE>1</LINE></InitGameTimers>
   <InitSettings><FILE>U:\gavinhua\ee10b-hw5\menu.asm</FILE><LINE>50</LINE></InitSettings>
   <Main><FILE>U:\gavinhua\ee10b-hw5\test.asm</FILE><LINE>107</LINE></Main>
-  <size_set><FILE>U:\gavinhua\ee10b-hw5\menu.asm</FILE><LINE>9</LINE></size_set>
-  <DisplayBall><FILE>U:\gavinhua\ee10b-hw5\gamedisplay.asm</FILE><LINE>34</LINE></DisplayBall>
+  <bound_set><FILE>U:\gavinhua\ee10b-hw5\menu.asm</FILE><LINE>6</LINE></bound_set>
+  <DisplayBound><FILE>U:\gavinhua\ee10b-hw5\gamedisplay.asm</FILE><LINE>24</LINE></DisplayBound>
   <delay_timer><FILE>U:\gavinhua\ee10b-hw5\timer.asm</FILE><LINE>298</LINE></delay_timer>
   <InitTimerLoop><FILE>U:\gavinhua\ee10b-hw5\timer.asm</FILE><LINE>77</LINE></InitTimerLoop>
   <EndInitTimers><FILE>U:\gavinhua\ee10b-hw5\timer.asm</FILE><LINE>85</LINE></EndInitTimers>
@@ -171,12 +171,12 @@
   <WaitSequenceLoop><FILE>U:\gavinhua\ee10b-hw5\game.asm</FILE><LINE>120</LINE></WaitSequenceLoop>
   <WinGameEnd><FILE>U:\gavinhua\ee10b-hw5\game.asm</FILE><LINE>126</LINE></WinGameEnd>
   <ComputeUpperBound><FILE>U:\gavinhua\ee10b-hw5\game.asm</FILE><LINE>131</LINE></ComputeUpperBound>
-  <bound_set><FILE>U:\gavinhua\ee10b-hw5\menu.asm</FILE><LINE>6</LINE></bound_set>
   <ComputeLowerBound><FILE>U:\gavinhua\ee10b-hw5\game.asm</FILE><LINE>138</LINE></ComputeLowerBound>
   <DisplayGameState><FILE>U:\gavinhua\ee10b-hw5\gamedisplay.asm</FILE><LINE>3</LINE></DisplayGameState>
-  <DisplayBound><FILE>U:\gavinhua\ee10b-hw5\gamedisplay.asm</FILE><LINE>24</LINE></DisplayBound>
   <DisplayTime><FILE>U:\gavinhua\ee10b-hw5\gamedisplay.asm</FILE><LINE>17</LINE></DisplayTime>
   <DisplayGameStateEnd><FILE>U:\gavinhua\ee10b-hw5\gamedisplay.asm</FILE><LINE>12</LINE></DisplayGameStateEnd>
+  <DisplayBall><FILE>U:\gavinhua\ee10b-hw5\gamedisplay.asm</FILE><LINE>34</LINE></DisplayBall>
+  <size_set><FILE>U:\gavinhua\ee10b-hw5\menu.asm</FILE><LINE>9</LINE></size_set>
   <DisplayBallLoopInit><FILE>U:\gavinhua\ee10b-hw5\gamedisplay.asm</FILE><LINE>48</LINE></DisplayBallLoopInit>
   <DisplayBallCapUpperBound><FILE>U:\gavinhua\ee10b-hw5\gamedisplay.asm</FILE><LINE>44</LINE></DisplayBallCapUpperBound>
   <DisplayBallLoop><FILE>U:\gavinhua\ee10b-hw5\gamedisplay.asm</FILE><LINE>54</LINE></DisplayBallLoop>
