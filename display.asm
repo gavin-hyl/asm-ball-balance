@@ -393,6 +393,13 @@ DisplayMessageEnd:
 ; Last Modified:        5/18/2024
 
 DisplayGameLED:
+    push    r16
+    push    r17
+    push    r18
+    push    r19
+    push    r20
+    push    YL
+    push    YH
     dec     r16
     cpi     r16, LED_IDX_MAX+1
     brsh    DisplayGameLEDEnd
@@ -436,4 +443,11 @@ DisplayGameLEDClear:
     ; rjmp  DisplayGameLEDEnd
 
 DisplayGameLEDEnd:
+    pop     YH
+    pop     YL
+    pop     r20
+    pop     r19
+    pop     r18
+    pop     r17
+    pop     r16
     ret

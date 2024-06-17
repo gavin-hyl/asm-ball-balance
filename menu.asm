@@ -50,6 +50,7 @@ MenuLoopEnd:
 InitSettings:
     ldi     r16, GRAVITY
     sts     setting, r16
+    rcall   DisplayMessage
     ldi     r16, GRAV_INIT
     sts     gravity, r16
     ldi     r16, F_INVIS_INIT

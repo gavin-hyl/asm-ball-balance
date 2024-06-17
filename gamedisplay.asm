@@ -30,7 +30,7 @@ DisplayBound:
     rcall   DisplayGameLED
     ret
 ;-------------------------------------
-
+; no argument and no return value
 DisplayBall:
     lds     r16, ball_pos
     lds     r18, size_set
@@ -49,12 +49,14 @@ DisplayBallLoopInit:
     sub     r16, r18    ; lower bound
     dec     r16         ; subtract 1 because we increment first in the loop
     ldi     r17, TRUE
+    mov     r15, r16
 
 DisplayBallLoop:
-    inc     r16
+    inc     r15
+    mov     r16, r15
     rcall   DisplayGameLED
-    cpse    r16, r19
-    rjmp    DisplayBallLoop
+    cp      r15, r19
+    brne    DisplayBallLoop
     ; rjmp DisplayBallEnd
 
 DisplayBallEnd:

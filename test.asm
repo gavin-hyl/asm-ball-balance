@@ -105,14 +105,9 @@ Start:                                 ; start the CPU after a reset
 ;-------------------------------------------------------------------------------
 
 Main:
-    rcall RotCCW
-    brne MainEnd
-    inc r5
-
-MainEnd:
-    clr r17
-    mov r16, r5
-    rcall DisplayHex
+    ldi r16, 3
+    sts size_set, r16
+    rcall DisplayBall
     rjmp Main
 
 ;-------------------------------------------------------------------------------
