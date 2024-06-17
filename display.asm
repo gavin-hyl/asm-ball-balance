@@ -27,12 +27,12 @@ MessageTable:
     .equ MESSAGE_ENTRY_SIZE = 2 * (PC - MessageTable)
     .equ MSG_LENGTH = MESSAGE_ENTRY_SIZE - PADDING_SIZE
     .db INFINITE,       0x00,   "EuEr"
-    .db GRAVITY,        0x00,   "GrAu"
+    .db GRAVITY,        0x00,   "grAu"
     .db F_INVIS,        0x00,   "Inui"
-    .db BOUND,          0x00,   "EDGE"
+    .db BOUND,          0x00,   "EdgE"
     .db RANDOM_V,       0x00,   "rAnd"
-    .db TIME_LIM,       0x00,   " Gt="
-    .db SIZE,           0x00,   "BALL"
+    .db TIME_LIM,       0x00,   "g_t="
+    .db SIZE,           0x00,   "bALL"
     .db LOSE,           0x00,   "LOSE"
     .db WIN,            0x00,   " =) "
     .equ MESSAGE_ENTRIES = (PC - MessageTable) / (MESSAGE_ENTRY_SIZE / 2)

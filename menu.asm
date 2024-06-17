@@ -1,4 +1,4 @@
-.dseg
+ .dseg
 
 setting:			.byte 1
 gravity_set:        .byte 1
@@ -91,8 +91,8 @@ ChangeModeEnd:
 
 ;------------------------------------------------------------
 ChangeSetting:
-    ldi     ZL, low(ChangeSettingTable)
-    ldi     ZH, high(ChangeSettingTable)
+    clr r0
+    wordTabOffsetZ ChangeSettingTable, r0
     ldi     r17, N_SETTINGS
     lds     r16, setting
 
@@ -128,8 +128,8 @@ ChangeSettingTable:
 
 ;------------------------------------------------------------
 DecSetting:
-    ldi     ZL, low(DecSettingTable)
-    ldi     ZH, high(DecSettingTable)
+    clr r0
+    wordTabOffsetZ DecSettingTable, r0
     ldi     r17, DEC_SETTING_ENTRIES
     lds     r16, setting
 
@@ -173,6 +173,7 @@ DecGravity:
 	cpse    r16, r17
     dec     r16
     sts     gravity, r16
+    clr     r17
     rcall   DisplayHex
     ret
 
@@ -182,6 +183,7 @@ DecFInvis:
 	cpse    r16, r17
     dec     r16
     sts     f_invis_set, r16
+    clr     r17
     rcall   DisplayHex
     ret
 
@@ -191,6 +193,7 @@ DecBound:
 	cpse    r16, r17
     dec     r16
     sts     bound, r16
+    clr     r17
     rcall   DisplayBound
     ret
 
@@ -200,6 +203,7 @@ DecRandomV:
 	cpse    r16, r17
     dec     r16
     sts     random_v, r16
+    clr     r17
     rcall   DisplayHex
     ret
 
@@ -209,6 +213,7 @@ DecGameTime:
 	cpse    r16, r17
     dec     r16
     sts     time_set, r16
+    clr     r17
     rcall   DisplayHex
     ret
 
@@ -219,13 +224,14 @@ DecSize:
 	cpse    r16, r17
     dec     r16
     sts     SIZE, r16
+    clr     r17
     rcall   DisplayBall
     ret
 
 ;------------------------------------------------------------
 IncSetting:
-    ldi     ZL, low(IncSettingTable)
-    ldi     ZH, high(IncSettingTable)
+    clr r0
+    wordTabOffsetZ IncSettingTable, r0
     ldi     r17, INC_SETTING_ENTRIES
     lds     r16, setting
 
@@ -267,6 +273,7 @@ IncGravity:
     cpse    r16, r17
     inc     r16
     sts     gravity, r16
+    clr     r17
     rcall   DisplayHex
     ret
 
@@ -276,6 +283,7 @@ IncFInvis:
     cpse    r16, r17
     inc     r16
     sts     f_invis_set, r16
+    clr     r17
     rcall   DisplayHex
     ret
 
@@ -286,6 +294,7 @@ IncBound:
     cpse    r16, r17
     inc     r16
     sts     bound, r16
+    clr     r17
     rcall   DisplayBound
     ret
 
@@ -296,6 +305,7 @@ IncRandomV:
     cpse    r16, r17
     inc     r16
     sts     random_v, r16
+    clr     r17
     rcall   DisplayHex
     ret
 
@@ -305,6 +315,7 @@ IncGameTime:
     cpse    r16, r17
     inc     r16
     sts     time_set, r16
+    clr     r17
     rcall   DisplayHex
     ret
 
@@ -314,5 +325,7 @@ IncSize:
 	ldi     r17, SIZE_UB
     cpse    r16, r17
     inc     r16
+    clr     r17
     sts     SIZE, r16
+    rcall   DisplayBall
     ret

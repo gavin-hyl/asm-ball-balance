@@ -33,7 +33,7 @@ DisplayBound:
 
 DisplayBall:
     lds     r16, ball_pos
-    lds     r18, SIZE
+    lds     r18, size_set
     dec     r18         ; the radius of the ball (0 -> 1 LED, 1 -> 3 LEDs, etc.)
     mov     r19, r18
     add     r19, r16    ; upper bound

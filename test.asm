@@ -96,6 +96,7 @@ Start:                                 ; start the CPU after a reset
     rcall   InitIMU
     rcall   InitGame
     rcall   InitGameTimers
+    rcall   InitSettings
     rcall   Main
     clr r5
     rjmp    Start                   ; shouldn't return, but if it does, restart

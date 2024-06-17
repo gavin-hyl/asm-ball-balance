@@ -129,14 +129,14 @@ WinGameEnd:
 
 
 ComputeUpperBound:
-	lds     r16, MIDDLE_LED
+	ldi     r16, MIDDLE_LED
     lds     r17, bound_set
     add     r16, r17
     ret
 
 
 ComputeLowerBound:
-    lds     r16, MIDDLE_LED
+    ldi     r16, MIDDLE_LED
     lds     r17, bound_set
     sub     r16, r17
     ret
