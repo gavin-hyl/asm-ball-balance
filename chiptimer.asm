@@ -172,6 +172,7 @@ Timer0CompareMatchHandler:
 	push	r29
 	push	r30
 	push	r31
+	push    r0
     in      r0, SREG
     push    r0
 	rcall	DisplayMux
@@ -179,6 +180,7 @@ Timer0CompareMatchHandler:
 	; rcall   TimerHandler
     pop     r0
     out     SREG, r0
+	pop     r0
 	pop		r31
 	pop		r30
 	pop		r29

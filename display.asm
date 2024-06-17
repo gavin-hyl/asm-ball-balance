@@ -86,8 +86,6 @@ display_off_t:          .byte       1
 ; Last Modified:        5/18/2024
 .cseg
 InitDisplay:
-    in      r0, SREG
-    cli
     clr     r1
     sts     curr_dig, r1
     sts     blink_dim_cnt, r1
@@ -97,7 +95,6 @@ InitDisplay:
     sts     display_on_t, r16
     ldi     r16, DISP_OFF_T_INIT
     sts     display_off_t, r16
-    out     SREG, r0
     rcall   ClearDisplay
     ret
 
@@ -129,8 +126,6 @@ InitDisplay:
 ; Last Modified:        5/18/2024
 
 ClearDisplay:
-    in      r0, SREG
-    cli
     ldi     r16, DISP_BUFF_LEN
     byteTabOffsetY  curr_c_patterns, r16
     ldi     r17, LED_OFF
@@ -142,7 +137,6 @@ ClearDisplayLoop:
     ; breq  ClearDisplayEnd
 
 ClearDisplayEnd:
-    out     SREG, r0
     ret
 
 

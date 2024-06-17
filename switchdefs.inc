@@ -11,7 +11,7 @@
 
 .EQU    BUTTON_DATA         = PINE          ;button data register
 
-.EQU    DEBOUNCE_T          = 255            ; debounce time in interrupt ticks
+.EQU    DEBOUNCE_T          = 30            ; debounce time in interrupt ticks
 .EQU    AUTOREP_T           = 255           ; autorepeat time in interrupt ticks
 
 .EQU	START_BTN_MASK		= 0b10000000    ; mask for the start button

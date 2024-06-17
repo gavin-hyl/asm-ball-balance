@@ -62,9 +62,9 @@
   <InitGame><FILE>U:\gavinhua\ee10b-hw5\game.asm</FILE><LINE>14</LINE></InitGame>
   <InitGameTimers><FILE>U:\gavinhua\ee10b-hw5\gametimer.asm</FILE><LINE>1</LINE></InitGameTimers>
   <Main><FILE>U:\gavinhua\ee10b-hw5\test.asm</FILE><LINE>106</LINE></Main>
-  <StartPress><FILE>U:\gavinhua\ee10b-hw5\switch.asm</FILE><LINE>222</LINE></StartPress>
+  <RotCCW><FILE>U:\gavinhua\ee10b-hw5\switch.asm</FILE><LINE>261</LINE></RotCCW>
   <MainEnd><FILE>U:\gavinhua\ee10b-hw5\test.asm</FILE><LINE>111</LINE></MainEnd>
-  <DisplayHex><FILE>U:\gavinhua\ee10b-hw5\display.asm</FILE><LINE>281</LINE></DisplayHex>
+  <DisplayHex><FILE>U:\gavinhua\ee10b-hw5\display.asm</FILE><LINE>275</LINE></DisplayHex>
   <delay_timer><FILE>U:\gavinhua\ee10b-hw5\timer.asm</FILE><LINE>298</LINE></delay_timer>
   <InitTimerLoop><FILE>U:\gavinhua\ee10b-hw5\timer.asm</FILE><LINE>77</LINE></InitTimerLoop>
   <EndInitTimers><FILE>U:\gavinhua\ee10b-hw5\timer.asm</FILE><LINE>85</LINE></EndInitTimers>
@@ -87,7 +87,7 @@
   <DoneTmrHandler><FILE>U:\gavinhua\ee10b-hw5\timer.asm</FILE><LINE>286</LINE></DoneTmrHandler>
   <Timer0Init><FILE>U:\gavinhua\ee10b-hw5\chiptimer.asm</FILE><LINE>79</LINE></Timer0Init>
   <Timer1Init><FILE>U:\gavinhua\ee10b-hw5\chiptimer.asm</FILE><LINE>121</LINE></Timer1Init>
-  <DisplayMux><FILE>U:\gavinhua\ee10b-hw5\display.asm</FILE><LINE>186</LINE></DisplayMux>
+  <DisplayMux><FILE>U:\gavinhua\ee10b-hw5\display.asm</FILE><LINE>180</LINE></DisplayMux>
   <DebounceButtons><FILE>U:\gavinhua\ee10b-hw5\switch.asm</FILE><LINE>356</LINE></DebounceButtons>
   <MessageTable><FILE>U:\gavinhua\ee10b-hw5\display.asm</FILE><LINE>23</LINE></MessageTable>
   <curr_c_patterns><FILE>U:\gavinhua\ee10b-hw5\display.asm</FILE><LINE>45</LINE></curr_c_patterns>
@@ -97,38 +97,38 @@
   <blink_dim_cnt><FILE>U:\gavinhua\ee10b-hw5\display.asm</FILE><LINE>49</LINE></blink_dim_cnt>
   <display_on_t><FILE>U:\gavinhua\ee10b-hw5\display.asm</FILE><LINE>50</LINE></display_on_t>
   <display_off_t><FILE>U:\gavinhua\ee10b-hw5\display.asm</FILE><LINE>51</LINE></display_off_t>
-  <ClearDisplay><FILE>U:\gavinhua\ee10b-hw5\display.asm</FILE><LINE>131</LINE></ClearDisplay>
-  <ClearDisplayLoop><FILE>U:\gavinhua\ee10b-hw5\display.asm</FILE><LINE>138</LINE></ClearDisplayLoop>
-  <ClearDisplayEnd><FILE>U:\gavinhua\ee10b-hw5\display.asm</FILE><LINE>144</LINE></ClearDisplayEnd>
-  <IncDimCnt><FILE>U:\gavinhua\ee10b-hw5\display.asm</FILE><LINE>228</LINE></IncDimCnt>
-  <DisplayDigit><FILE>U:\gavinhua\ee10b-hw5\display.asm</FILE><LINE>198</LINE></DisplayDigit>
+  <ClearDisplay><FILE>U:\gavinhua\ee10b-hw5\display.asm</FILE><LINE>128</LINE></ClearDisplay>
+  <ClearDisplayLoop><FILE>U:\gavinhua\ee10b-hw5\display.asm</FILE><LINE>133</LINE></ClearDisplayLoop>
+  <ClearDisplayEnd><FILE>U:\gavinhua\ee10b-hw5\display.asm</FILE><LINE>139</LINE></ClearDisplayEnd>
+  <IncDimCnt><FILE>U:\gavinhua\ee10b-hw5\display.asm</FILE><LINE>222</LINE></IncDimCnt>
+  <DisplayDigit><FILE>U:\gavinhua\ee10b-hw5\display.asm</FILE><LINE>192</LINE></DisplayDigit>
   <PortAPatterns><FILE>U:\gavinhua\ee10b-hw5\segtable.asm</FILE><LINE>171</LINE></PortAPatterns>
   <PortDPatterns><FILE>U:\gavinhua\ee10b-hw5\segtable.asm</FILE><LINE>192</LINE></PortDPatterns>
-  <IncCurrDig><FILE>U:\gavinhua\ee10b-hw5\display.asm</FILE><LINE>214</LINE></IncCurrDig>
-  <StoreCurrDig><FILE>U:\gavinhua\ee10b-hw5\display.asm</FILE><LINE>224</LINE></StoreCurrDig>
-  <WrapBuffer><FILE>U:\gavinhua\ee10b-hw5\display.asm</FILE><LINE>220</LINE></WrapBuffer>
-  <StoreDimCnt><FILE>U:\gavinhua\ee10b-hw5\display.asm</FILE><LINE>240</LINE></StoreDimCnt>
-  <WrapDimCnt><FILE>U:\gavinhua\ee10b-hw5\display.asm</FILE><LINE>236</LINE></WrapDimCnt>
-  <DisplayMuxEnd><FILE>U:\gavinhua\ee10b-hw5\display.asm</FILE><LINE>244</LINE></DisplayMuxEnd>
-  <LoadHexDigit><FILE>U:\gavinhua\ee10b-hw5\display.asm</FILE><LINE>305</LINE></LoadHexDigit>
+  <IncCurrDig><FILE>U:\gavinhua\ee10b-hw5\display.asm</FILE><LINE>208</LINE></IncCurrDig>
+  <StoreCurrDig><FILE>U:\gavinhua\ee10b-hw5\display.asm</FILE><LINE>218</LINE></StoreCurrDig>
+  <WrapBuffer><FILE>U:\gavinhua\ee10b-hw5\display.asm</FILE><LINE>214</LINE></WrapBuffer>
+  <StoreDimCnt><FILE>U:\gavinhua\ee10b-hw5\display.asm</FILE><LINE>234</LINE></StoreDimCnt>
+  <WrapDimCnt><FILE>U:\gavinhua\ee10b-hw5\display.asm</FILE><LINE>230</LINE></WrapDimCnt>
+  <DisplayMuxEnd><FILE>U:\gavinhua\ee10b-hw5\display.asm</FILE><LINE>238</LINE></DisplayMuxEnd>
+  <LoadHexDigit><FILE>U:\gavinhua\ee10b-hw5\display.asm</FILE><LINE>299</LINE></LoadHexDigit>
   <DigitSegTable><FILE>U:\gavinhua\ee10b-hw5\segtable.asm</FILE><LINE>143</LINE></DigitSegTable>
-  <DisplayMessage><FILE>U:\gavinhua\ee10b-hw5\display.asm</FILE><LINE>315</LINE></DisplayMessage>
-  <DisplayMessageLookupLoop><FILE>U:\gavinhua\ee10b-hw5\display.asm</FILE><LINE>320</LINE></DisplayMessageLookupLoop>
-  <DisplayMessageLookupMatch><FILE>U:\gavinhua\ee10b-hw5\display.asm</FILE><LINE>332</LINE></DisplayMessageLookupMatch>
-  <DisplayMessageLookupNoMatch><FILE>U:\gavinhua\ee10b-hw5\display.asm</FILE><LINE>326</LINE></DisplayMessageLookupNoMatch>
-  <DisplayMessageLoadMsgBufferLoop><FILE>U:\gavinhua\ee10b-hw5\display.asm</FILE><LINE>339</LINE></DisplayMessageLoadMsgBufferLoop>
-  <DisplayMessageLoadDisplayBufferInit><FILE>U:\gavinhua\ee10b-hw5\display.asm</FILE><LINE>346</LINE></DisplayMessageLoadDisplayBufferInit>
-  <DisplayMessageLoadDisplayBufferLoop><FILE>U:\gavinhua\ee10b-hw5\display.asm</FILE><LINE>353</LINE></DisplayMessageLoadDisplayBufferLoop>
+  <DisplayMessage><FILE>U:\gavinhua\ee10b-hw5\display.asm</FILE><LINE>309</LINE></DisplayMessage>
+  <DisplayMessageLookupLoop><FILE>U:\gavinhua\ee10b-hw5\display.asm</FILE><LINE>314</LINE></DisplayMessageLookupLoop>
+  <DisplayMessageLookupMatch><FILE>U:\gavinhua\ee10b-hw5\display.asm</FILE><LINE>326</LINE></DisplayMessageLookupMatch>
+  <DisplayMessageLookupNoMatch><FILE>U:\gavinhua\ee10b-hw5\display.asm</FILE><LINE>320</LINE></DisplayMessageLookupNoMatch>
+  <DisplayMessageLoadMsgBufferLoop><FILE>U:\gavinhua\ee10b-hw5\display.asm</FILE><LINE>333</LINE></DisplayMessageLoadMsgBufferLoop>
+  <DisplayMessageLoadDisplayBufferInit><FILE>U:\gavinhua\ee10b-hw5\display.asm</FILE><LINE>340</LINE></DisplayMessageLoadDisplayBufferInit>
+  <DisplayMessageLoadDisplayBufferLoop><FILE>U:\gavinhua\ee10b-hw5\display.asm</FILE><LINE>347</LINE></DisplayMessageLoadDisplayBufferLoop>
   <ASCIISegTable><FILE>U:\gavinhua\ee10b-hw5\segtable.asm</FILE><LINE>47</LINE></ASCIISegTable>
-  <DisplayMessageEnd><FILE>U:\gavinhua\ee10b-hw5\display.asm</FILE><LINE>362</LINE></DisplayMessageEnd>
-  <DisplayGameLED><FILE>U:\gavinhua\ee10b-hw5\display.asm</FILE><LINE>401</LINE></DisplayGameLED>
-  <DisplayGameLEDEnd><FILE>U:\gavinhua\ee10b-hw5\display.asm</FILE><LINE>444</LINE></DisplayGameLEDEnd>
-  <CreateLEDMaskInit><FILE>U:\gavinhua\ee10b-hw5\display.asm</FILE><LINE>410</LINE></CreateLEDMaskInit>
-  <CreateLEDMaskLoop><FILE>U:\gavinhua\ee10b-hw5\display.asm</FILE><LINE>413</LINE></CreateLEDMaskLoop>
-  <CreatePatternIndex><FILE>U:\gavinhua\ee10b-hw5\display.asm</FILE><LINE>420</LINE></CreatePatternIndex>
-  <CheckSetStatus><FILE>U:\gavinhua\ee10b-hw5\display.asm</FILE><LINE>426</LINE></CheckSetStatus>
-  <DisplayGameLEDClear><FILE>U:\gavinhua\ee10b-hw5\display.asm</FILE><LINE>438</LINE></DisplayGameLEDClear>
-  <DisplayGameLEDSet><FILE>U:\gavinhua\ee10b-hw5\display.asm</FILE><LINE>433</LINE></DisplayGameLEDSet>
+  <DisplayMessageEnd><FILE>U:\gavinhua\ee10b-hw5\display.asm</FILE><LINE>356</LINE></DisplayMessageEnd>
+  <DisplayGameLED><FILE>U:\gavinhua\ee10b-hw5\display.asm</FILE><LINE>395</LINE></DisplayGameLED>
+  <DisplayGameLEDEnd><FILE>U:\gavinhua\ee10b-hw5\display.asm</FILE><LINE>438</LINE></DisplayGameLEDEnd>
+  <CreateLEDMaskInit><FILE>U:\gavinhua\ee10b-hw5\display.asm</FILE><LINE>404</LINE></CreateLEDMaskInit>
+  <CreateLEDMaskLoop><FILE>U:\gavinhua\ee10b-hw5\display.asm</FILE><LINE>407</LINE></CreateLEDMaskLoop>
+  <CreatePatternIndex><FILE>U:\gavinhua\ee10b-hw5\display.asm</FILE><LINE>414</LINE></CreatePatternIndex>
+  <CheckSetStatus><FILE>U:\gavinhua\ee10b-hw5\display.asm</FILE><LINE>420</LINE></CheckSetStatus>
+  <DisplayGameLEDClear><FILE>U:\gavinhua\ee10b-hw5\display.asm</FILE><LINE>432</LINE></DisplayGameLEDClear>
+  <DisplayGameLEDSet><FILE>U:\gavinhua\ee10b-hw5\display.asm</FILE><LINE>427</LINE></DisplayGameLEDSet>
   <Div16><FILE>U:\gavinhua\ee10b-hw5\div.asm</FILE><LINE>54</LINE></Div16>
   <Div16loop><FILE>U:\gavinhua\ee10b-hw5\div.asm</FILE><LINE>59</LINE></Div16loop>
   <Div16SkipSub><FILE>U:\gavinhua\ee10b-hw5\div.asm</FILE><LINE>69</LINE></Div16SkipSub>
@@ -145,6 +145,7 @@
   <in_game><FILE>U:\gavinhua\ee10b-hw5\game.asm</FILE><LINE>7</LINE></in_game>
   <mode><FILE>U:\gavinhua\ee10b-hw5\menu.asm</FILE><LINE>10</LINE></mode>
   <GameLoop><FILE>U:\gavinhua\ee10b-hw5\game.asm</FILE><LINE>32</LINE></GameLoop>
+  <StartPress><FILE>U:\gavinhua\ee10b-hw5\switch.asm</FILE><LINE>222</LINE></StartPress>
   <LoseGame><FILE>U:\gavinhua\ee10b-hw5\game.asm</FILE><LINE>82</LINE></LoseGame>
   <GameCheckGameTimer><FILE>U:\gavinhua\ee10b-hw5\game.asm</FILE><LINE>41</LINE></GameCheckGameTimer>
   <StatusTimerHandler><FILE>U:\gavinhua\ee10b-hw5\gametimer.asm</FILE><LINE>32</LINE></StatusTimerHandler>
@@ -225,7 +226,6 @@
   <RotPress><FILE>U:\gavinhua\ee10b-hw5\switch.asm</FILE><LINE>146</LINE></RotPress>
   <MenuCheckRotCCW><FILE>U:\gavinhua\ee10b-hw5\menu.asm</FILE><LINE>29</LINE></MenuCheckRotCCW>
   <ChangeSetting><FILE>U:\gavinhua\ee10b-hw5\menu.asm</FILE><LINE>93</LINE></ChangeSetting>
-  <RotCCW><FILE>U:\gavinhua\ee10b-hw5\switch.asm</FILE><LINE>261</LINE></RotCCW>
   <MenuCheckRotCW><FILE>U:\gavinhua\ee10b-hw5\menu.asm</FILE><LINE>34</LINE></MenuCheckRotCW>
   <IncSetting><FILE>U:\gavinhua\ee10b-hw5\menu.asm</FILE><LINE>226</LINE></IncSetting>
   <RotCW><FILE>U:\gavinhua\ee10b-hw5\switch.asm</FILE><LINE>299</LINE></RotCW>

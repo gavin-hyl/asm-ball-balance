@@ -104,13 +104,13 @@ Start:                                 ; start the CPU after a reset
 ;-------------------------------------------------------------------------------
 
 Main:
-    rcall StartPress
+    rcall RotCCW
     brne MainEnd
     inc r5
 
 MainEnd:
     clr r17
-    clr r16
+    mov r16, r5
     rcall DisplayHex
     rjmp Main
 
