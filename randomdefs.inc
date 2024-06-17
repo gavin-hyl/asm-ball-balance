@@ -1,0 +1,1 @@
+.equ LFSR_SEED = 0x01FF
