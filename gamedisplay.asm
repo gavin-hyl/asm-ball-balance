@@ -32,30 +32,29 @@ DisplayBound:
 ;-------------------------------------
 ; no argument and no return value
 DisplayBall:
-    lds     r16, ball_pos
-    lds     r18, size_set
-    dec     r18         ; the radius of the ball (0 -> 1 LED, 1 -> 3 LEDs, etc.)
-    mov     r19, r18
-    add     r19, r16    ; upper bound
-    cpi     r19, GAME_LED_IDX_MAX
+    lds     r15, ball_pos
+    lds     r13, size_set
+    dec     r13         ; the radius of the ball (0 -> 1 LED, 1 -> 3 LEDs, etc.)
+    mov     r14, r13    ; r13 will be used again later so we create a copy
+    add     r14, r15    ; upper bound
+    cpi     r14, GAME_LED_IDX_MAX   ; check if greater than the maximum index
     brlo    DisplayBallLoopInit
     ; brsh DisplayBallCapUpperBound
 
 DisplayBallCapUpperBound:
-    ldi     r19, GAME_LED_IDX_MAX
+    ldi     r14, GAME_LED_IDX_MAX   ; if so, cap it
     ; rjmp DisplayBallLoopInit
 
 DisplayBallLoopInit:
-    sub     r16, r18    ; lower bound
-    dec     r16         ; subtract 1 because we increment first in the loop
+    sub     r15, r13    ; lower bound
+    dec     r15         ; subtract 1 because we increment first in the loop
     ldi     r17, TRUE
-    mov     r15, r16
 
 DisplayBallLoop:
     inc     r15
-    mov     r16, r15
+    mov     r16, r15    ; we avoid using r16 becuase DisplayGameLED destroys it
     rcall   DisplayGameLED
-    cp      r15, r19
+    cp      r15, r14
     brne    DisplayBallLoop
     ; rjmp DisplayBallEnd
 

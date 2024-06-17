@@ -86,8 +86,8 @@ display_off_t:          .byte       1
 ; Last Modified:        5/18/2024
 .cseg
 InitDisplay:
-    clr     r1
-    sts     curr_dig, r1
+    clr     r0
+    sts     curr_dig, r0
     sts     blink_dim_cnt, r1
     ldi     r16, LED_OFF
     sts     curr_dig_pattern, r16
