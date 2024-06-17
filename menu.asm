@@ -29,18 +29,18 @@ MenuCheckRotPress:
 MenuCheckRotCCW:
     rcall   RotCCW
 	brne    MenuCheckRotCW
-    rcall   IncSetting
+    rcall   DecSetting
 
 MenuCheckRotCW:
     rcall   RotCW
 	brne    MenuCheckSoundTimer
-    rcall   DecSetting
+    rcall   IncSetting
 
 MenuCheckSoundTimer:
     ldi     r16, SOUND_TIMER_IDX
     rcall   DelayNotDone
     brne    MenuLoopEnd
-    rcall   SoundTimerHandler
+    rcall   StartSoundTimer
 
 MenuLoopEnd:
     ret
@@ -52,7 +52,7 @@ InitSettings:
     sts     setting, r16
     rcall   DisplayMessage
     ldi     r16, GRAV_INIT
-    sts     gravity, r16
+    sts     gravity_set, r16
     ldi     r16, F_INVIS_INIT
     sts     f_invis_set, r16
     ldi     r16, BOUND_INIT
@@ -77,16 +77,15 @@ ChangeMode:
 
 SetModeTimed:
     ldi     r16, TIMED
-    rcall   DisplayMessage
     rjmp    ChangeModeEnd
 
 SetModeInfinite:
     ldi     r16, INFINITE
-    rcall   DisplayMessage
     ; rjmp ChangeModeEnd
 
 ChangeModeEnd:
     sts     mode, r16
+    rcall   DisplayMessage
     ret
 
 
@@ -122,7 +121,7 @@ ChangeSettingTable:
     .db     BOUND,			SIZE
     .db     SIZE,			RANDOM_V
     .db     RANDOM_V,       TIME_LIM
-    .db     TIME_LIM,  GRAVITY
+    .db     TIME_LIM,       GRAVITY
     .equ    N_SETTINGS = (PC - ChangeSettingTable) /  (CHANGE_SETTING_ENTRY_SIZE / 2)
     .db     0x00,           GRAVITY
     
@@ -169,16 +168,18 @@ DecSettingTable:
 ; greater than the lower bound. If it is equal to the lower bound, we store the
 ; lower bound value back to the setting and return
 DecGravity:
-    lds     r16, gravity
+    rcall   ClearDisplay
+    lds     r16, gravity_set
 	ldi     r17, GRAV_LB
 	cpse    r16, r17
     dec     r16
-    sts     gravity, r16
+    sts     gravity_set, r16
     clr     r17
     rcall   DisplayHex
     ret
 
 DecFInvis:
+    rcall   ClearDisplay
     lds     r16, f_invis_set
 	ldi     r17, F_INVIS_LB
 	cpse    r16, r17
@@ -189,26 +190,29 @@ DecFInvis:
     ret
 
 DecBound:
-    lds     r16, bound
+    rcall   ClearDisplay
+    lds     r16, bound_set
 	ldi     r17, BOUND_LB
 	cpse    r16, r17
     dec     r16
-    sts     bound, r16
+    sts     bound_set, r16
     clr     r17
     rcall   DisplayBound
     ret
 
 DecRandomV:
-    lds     r16, random_v
+    rcall   ClearDisplay
+    lds     r16, random_v_set
 	ldi     r17, RANDOM_V_LB
 	cpse    r16, r17
     dec     r16
-    sts     random_v, r16
+    sts     random_v_set, r16
     clr     r17
     rcall   DisplayHex
     ret
 
 DecGameTime:
+    rcall   ClearDisplay
     lds     r16, time_set
 	ldi     r17, TIME_LIM_LB
 	cpse    r16, r17
@@ -220,11 +224,12 @@ DecGameTime:
 
 
 DecSize:
+    rcall   ClearDisplay
     lds     r16, size_set
 	ldi     r17, SIZE_LB
 	cpse    r16, r17
     dec     r16
-    sts     SIZE, r16
+    sts     size_set, r16
     clr     r17
     rcall   DisplayBall
     ret
@@ -269,16 +274,18 @@ IncSettingTable:
 ; lesser than the upper bound. If it is equal to the upper bound, we store the
 ; upper bound value back to the setting and return
 IncGravity:
-    lds     r16, gravity
+    rcall   ClearDisplay
+    lds     r16, gravity_set
 	ldi     r17, GRAV_UB
     cpse    r16, r17
     inc     r16
-    sts     gravity, r16
+    sts     gravity_set, r16
     clr     r17
     rcall   DisplayHex
     ret
 
 IncFInvis:
+    rcall   ClearDisplay
     lds     r16, f_invis_set
 	ldi     r17, F_INVIS_UB
     cpse    r16, r17
@@ -290,27 +297,29 @@ IncFInvis:
 
 
 IncBound:
-    lds     r16, bound
+    rcall   ClearDisplay
+    lds     r16, bound_set
 	ldi     r17, BOUND_UB
     cpse    r16, r17
     inc     r16
-    sts     bound, r16
-    clr     r17
+    sts     bound_set, r16
     rcall   DisplayBound
     ret
 
 
 IncRandomV:
-    lds     r16, random_v
+    rcall   ClearDisplay
+    lds     r16, random_v_set
 	ldi     r17, RANDOM_V_UB
     cpse    r16, r17
     inc     r16
-    sts     random_v, r16
+    sts     random_v_set, r16
     clr     r17
     rcall   DisplayHex
     ret
 
 IncGameTime:
+    rcall   ClearDisplay
     lds     r16, time_set
 	ldi     r17, TIME_LIM_UB
     cpse    r16, r17
@@ -322,11 +331,12 @@ IncGameTime:
 
 
 IncSize:
-    lds     r16, SIZE
+    rcall   ClearDisplay
+    lds     r16, size_set
 	ldi     r17, SIZE_UB
     cpse    r16, r17
     inc     r16
     clr     r17
-    sts     SIZE, r16
+    sts     size_set, r16
     rcall   DisplayBall
     ret

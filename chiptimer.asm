@@ -177,7 +177,7 @@ Timer0CompareMatchHandler:
     push    r0
 	rcall	DisplayMux
 	rcall   DebounceButtons
-	; rcall   TimerHandler
+	rcall   TimerHandler
     pop     r0
     out     SREG, r0
 	pop     r0

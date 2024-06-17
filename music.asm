@@ -1,7 +1,8 @@
 .dseg
-repeat:         .byte 1
-note_tick_cnt:  .byte 1
-curr_note:      .byte 1
+
+repeat:             .byte 1
+note_tick_cnt:      .byte 1
+curr_note:          .byte 1
 curr_sequence:	    .byte 2
 playing_sequence:   .byte 1
 
@@ -31,13 +32,16 @@ NewNote:
 CheckRepeat:
     lds     r16, repeat
     cpi     r16, TRUE
-    brne    RepeatSequence
+    breq    RepeatSequence
     ldi     r16, FALSE
     sts     playing_sequence, r16
+    clr     r16
+    clr     r17
+    rcall   PlayNote
     rjmp    SoundTimerHandlerEnd
 
 RepeatSequence:
-    ldi     r16, 0
+    clr     r16
     sts     curr_note, r16
     rcall   GetNote
     ; rjmp PlayNewNote
@@ -48,19 +52,24 @@ PlayNewNote:
 SoundTimerHandlerEnd:
     rcall   StartSoundTimer
     ret
+
+
 ;-------------------------------------
 
 GetNote:
     lds     r16, curr_note
     lsl     r16
-    clr     r18
+    clr     r0
     lds     ZL, curr_sequence
     lds     ZH, curr_sequence+1
     add     ZL, r16
-    adc     ZH, r18
+    adc     ZH, r0
     lpm     r16, Z+
-    lpm     r18, Z
-    sts     note_tick_cnt, r18
+    lsl     r16
+    clr     r17
+    adc     r17, r17
+    lpm     r0, Z
+    sts     note_tick_cnt, r0
     ret
 
 ;-------------------------------------
@@ -68,27 +77,27 @@ GetNote:
 
 ; shift by 2 to make everything fit in one byte
 WinMusic:
-    .db     261 >> 2, 10    ; C
-    .db     330 >> 2, 10    ; E
-    .db     330 >> 2, 10    ; G
-    .db     261 >> 2, 10    ; E
-    .db     392 >> 2, 10    ; C
+    .db     261 / 2, 10    ; C
+    .db     330 / 2, 10    ; E
+    .db     330 / 2, 10    ; G
+    .db     261 / 2, 10    ; E
+    .db     392 / 2, 10    ; C
     .db     0x00, 0         ; end
 
 LoseMusic:
-    .db     330 >> 2, 10    ; E
-    .db     261 >> 2, 10    ; C
-    .db     245 >> 2, 10    ; B
-    .db     0x00, 0         ; end
+    .db     330 / 2, 10    ; E
+    .db     261 / 2, 10    ; C
+    .db     245 / 2, 10    ; B
+    .db     0x00,    0     ; end
 
 GameMusic:
-    .db     261 >> 2, 5     ; C
-    .db     277 >> 2, 5     ; C#
-    .db     293 >> 2, 5     ; D
-    .db     311 >> 2, 5     ; D#
-    .db     330 >> 2, 5     ; E
-    .db     311 >> 2, 5     ; D#
-    .db     293 >> 2, 5     ; D
-    .db     277 >> 2, 5     ; C#
-    .db     261 >> 2, 5     ; C
+    .db     261 / 2, 5     ; C
+    .db     277 / 2, 5     ; C#
+    .db     293 / 2, 5     ; D
+    .db     311 / 2, 5     ; D#
+    .db     330 / 2, 5     ; E
+    .db     311 / 2, 5     ; D#
+    .db     293 / 2, 5     ; D
+    .db     277 / 2, 5     ; C#
+    .db     261 / 2, 5     ; C
     .db     0x00, 0         ; end

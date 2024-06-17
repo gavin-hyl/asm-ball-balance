@@ -1,3 +1,2 @@
 - play sequence test
-- menu full test
 - accel conversion table.

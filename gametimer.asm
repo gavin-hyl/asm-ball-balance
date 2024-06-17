@@ -31,25 +31,29 @@ UpdateGameTimeEnd:
 
 StatusTimerHandler:
 
-    rcall   GetAccelX
-    swap    r17
-    andi    r17, LOW_HEX_DIG
-    wordTabOffsetZ IMU_TO_BALL_ACCEL, r17   ; half-byte accuracy is enough
-    lpm     r16, Z                          ; r16 = acceleration in ball units
-    lds     r17, gravity
+    rcall   GetAccelY
+    neg     r17
+    mov     r16, r17
+    asr     r16
+    asr     r16
+    asr     r16
+    asr     r16
+
+    lds     r17, gravity_set
     muls    r16, r17
-    mov     r17, r0                         ; r17 = k_grav * acceleration
-    lds     r16, velocity                   ; r16 = velocity (int value)
+    mov     r16, r0                         ; r17 = k_grav * acceleration
+
+    lds     r17, velocity                   ; r16 = velocity (int value)
     add     r16, r17                        ; r16 = new velocity
+    sts     velocity, r16
     ; rjmp UpdateBallPos
 
 UpdateBallPos:
     lds     r17, ball_pos_frac
     add     r16, r17
-    clr     r17
-    ldi     r20, BALL_POS_FRAC_MAX
-    rcall   Div16by8
-    sts     ball_pos_frac, r2
+    ldi     r17, BALL_POS_FRAC_MAX
+    rcall   div8s   ; r15 = r16 % r17, r16 = r16 / r17
+    sts     ball_pos_frac, r15
     lds     r17, ball_pos
     add     r17, r16
     sts     ball_pos, r17
@@ -64,9 +68,12 @@ CheckWinLose:
     lds     r17, ball_pos
     cp      r17, r16
     brlo    CallLoseGame
+    lds     r16, mode
+    cpi     r16, TIMED
+    brne    StatusTimerHandlerEnd
     lds     r16, game_time
-    cpi     r16, 0
-    brlo    CallWinGame
+    tst     r16
+    breq    CallWinGame
     rjmp    StatusTimerHandlerEnd    ; neither win nor lose, continue game
 
 CallLoseGame:
@@ -109,7 +116,7 @@ UpdateRandomV:
     rcall   Random
     lds     r16, lfsr
     clr     r17
-    lds     r20, random_v
+    lds     r20, random_v_set
     rcall   Div16by8
     lds     r16, velocity
     lds     r17, lfsr+1
@@ -163,6 +170,3 @@ StartSoundTimer:
     ldi     r16, SOUND_TIMER_IDX
     rcall   StartDelay
     ret
-
-IMU_TO_BALL_ACCEL:
-    .db 0, 0

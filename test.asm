@@ -41,6 +41,7 @@
 
 ; vector jump table
 .org    $0000
+
     jmp     Start                   ;reset vector
     jmp     PC                      ;external interrupt 0
     jmp     PC                      ;external interrupt 1
@@ -98,16 +99,16 @@ Start:                                 ; start the CPU after a reset
     rcall   InitGameTimers
     rcall   InitSettings
     rcall   Main
-    clr r5
     rjmp    Start                   ; shouldn't return, but if it does, restart
 
 
 ;-------------------------------------------------------------------------------
 
 Main:
-    ldi r16, 10
-    sts bound_set, r16
-    rcall DisplayBound
+    rcall GetAccelY
+    mov r16, r17
+    clr r17
+    rcall DisplayHex
     rjmp Main
 
 ;-------------------------------------------------------------------------------

@@ -284,7 +284,7 @@ DoneTimer:				;done decrementing this timer
 
 
 DoneTmrHandler:				; done with handler, return
-	reti					; and return
+	ret 					; and return
 
 
 

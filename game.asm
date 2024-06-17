@@ -1,4 +1,5 @@
 .dseg
+
 ball_pos:       .byte 1
 ball_pos_frac:  .byte 1
 velocity:       .byte 1
@@ -14,16 +15,21 @@ in_game:        .byte 1
 InitGame:
     ldi     r16, FALSE
     sts     in_game, r16
+
     ldi     r16, START_POS
     sts     ball_pos, r16
+
     ldi     r16, INFINITE
     sts     mode, r16
-    ldi     r16, 0
+
+    clr     r16
     sts     game_time, r16
     sts     ball_pos_frac, r16
     sts     velocity, r16
+
     ldi     r16, DISP_ON_T_INIT
     sts     display_on_t, r16
+
     ldi     r16, DISP_OFF_T_INIT
     sts     display_off_t, r16
     ret
@@ -48,7 +54,7 @@ GameCheckRandomEventTimer:
     ldi     r16, RANDOM_EVENT_TIMER_IDX
     rcall   DelayNotDone
 	brne    GameCheckSoundTimer
-    rcall   RandomEventTimerHandler
+    ; rcall   RandomEventTimerHandler
 
 GameCheckSoundTimer:
     ldi     r16, SOUND_TIMER_IDX
@@ -62,19 +68,30 @@ GameLoopEnd:
 
 ;-------------------------------------
 StartGame:
+    rcall   ClearDisplay
     ldi     r16, TRUE
     sts     in_game, r16
-    sts     repeat, r16
-    PlaySequence GameMusic   ; play game music on repeat
+
+    ldi     r16, FALSE
+    sts     is_invisible, r16
+    
     ldi     r16, START_POS      ; set ball position to start position
     sts     ball_pos, r16
+
     clr     r0
     sts     game_time, r0       ; reset game time, possibly set to setting time later
+    sts     ball_pos_frac, r0
+    sts     velocity, r0
+    sts     game_time, r0
+
     lds     r17, time_set
     lds     r16, mode           ; check if mode is infinite
     ldi     r18, INFINITE
-    cpse    r16, r18           ; if mode is not infinite
+    cpse    r16, r18            ; if mode is not infinite
     sts     game_time, r17      ; set game time to timed mode time
+
+    sts     repeat, r16
+    PlaySequence GameMusic   ; play game music on repeat
     ret
 
 ;-------------------------------------
@@ -86,23 +103,26 @@ LoseGame:
     PlaySequence LoseMusic
     ldi     r16, LOSE
     rcall   DisplayMessage
-    ; rcall DISPLAY?
-
-PlaySequenceLoop:
     ldi     r16, BLINK_TIME
     sts     display_on_t, r16
     sts     display_off_t, r16
+
+LoseGamePlaySequenceLoop:
+    ldi     r16, SOUND_TIMER_IDX
+    rcall   DelayNotDone
+    brne    LoseGamePlaySequenceLoop
+    rcall   SoundTimerHandler
     lds     r16, playing_sequence
     cpi     r16, TRUE
-    breq PlaySequenceLoop
+    breq    LoseGamePlaySequenceLoop
     ; brne LoseGameEnd
 
 LoseGameEnd:
     rcall   ClearDisplay
     ldi     r16, MAX_BRIGHTNESS
     sts     display_on_t, r16
-    clr     r0
-    sts     display_off_t, r0
+    clr     r16
+    sts     display_off_t, r16
     ldi     r16, FALSE
     sts     in_game, r16
     ret
@@ -117,10 +137,14 @@ WinGame:
     ldi     r16, WIN
     rcall   DisplayMessage
 
-WaitSequenceLoop:
+WinGameWaitSequenceLoop:
+    ldi     r16, SOUND_TIMER_IDX
+    rcall   DelayNotDone
+    brne    WinGameWaitSequenceLoop
+    rcall   SoundTimerHandler
     lds     r16, playing_sequence
     cpi     r16, TRUE
-    breq    WaitSequenceLoop
+    breq    WinGameWaitSequenceLoop
     ; brne WinGameEnd
 
 WinGameEnd:
@@ -129,7 +153,7 @@ WinGameEnd:
 
 
 ComputeUpperBound:
-	ldi     r16, MIDDLE_LED
+	ldi     r16, MIDDLE_LED+1
     lds     r17, bound_set
     add     r16, r17
     ret

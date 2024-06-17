@@ -20,7 +20,7 @@
 .equ F_INVIS_INIT   = 0
 
 .EQU BOUND          = 2
-.EQU BOUND_UB       = 35
+.EQU BOUND_UB       = 34
 .EQU BOUND_LB       = 10
 .equ BOUND_INIT     = BOUND_UB
 
