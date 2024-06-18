@@ -4,7 +4,6 @@ ball_pos:       .byte 1
 ball_pos_frac:  .byte 1
 velocity:       .byte 1
 game_time:      .byte 1
-is_invisible:   .byte 1
 in_game:        .byte 1
 
 
@@ -15,7 +14,6 @@ in_game:        .byte 1
 InitGame:
     ldi     r16, FALSE
     sts     in_game, r16
-    sts     is_invisible, r16
 
     ldi     r16, START_POS
     sts     ball_pos, r16
@@ -42,9 +40,6 @@ StartGame:
     rcall   ClearDisplay
     ldi     r16, TRUE
     sts     in_game, r16
-
-    ldi     r16, FALSE
-    sts     is_invisible, r16
     
     ldi     r16, START_POS      ; set ball position to start position
     sts     ball_pos, r16
@@ -108,9 +103,7 @@ LoseGame:
     PlaySequence LoseMusic
     ldi     r16, LOSE
     rcall   DisplayMessage
-    ldi     r16, BLINK_TIME
-    sts     display_on_t, r16
-    sts     display_off_t, r16
+    rcall   BlinkDisplay
     ; rjmp    LoseGameEnd
 
 LoseGamePlaySequenceLoop:
@@ -124,12 +117,9 @@ LoseGamePlaySequenceLoop:
     ; brne LoseGameEnd
 
 LoseGameEnd:
-    ldi     r16, MAX_BRIGHTNESS
-    sts     display_on_t, r16
-    clr     r16
-    sts     display_off_t, r16
-    ldi     r16, LOSE
-    rcall   DisplayMessage
+    rcall   SolidDisplay
+    ; ldi     r16, LOSE
+    ; rcall   DisplayMessage
     rcall   InitSound
     rcall   InitGame
     ret

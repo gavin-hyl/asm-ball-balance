@@ -99,6 +99,21 @@ InitDisplay:
     ret
 
 
+BlinkDisplay:
+    ldi     r16, BLINK_TIME
+    sts     display_on_t, r16
+    sts     display_off_t, r16
+    ret
+
+
+SolidDisplay:
+    ldi     r16, MAX_BRIGHTNESS
+    sts     display_on_t, r16
+    ldi     r16, 0
+    sts     display_off_t, r16
+    ret
+
+
 ; ClearDisplay
 ; Description:          This procedure clears the display.
 ; Operation:            This procedure will set all the currDigPatterns to the 

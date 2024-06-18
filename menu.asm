@@ -2,7 +2,6 @@
 
 setting:			.byte 1
 gravity_set:        .byte 1
-f_invis_set:	    .byte 1
 bound_set:          .byte 1
 random_v_set:       .byte 1
 time_set:			.byte 1
@@ -53,8 +52,6 @@ InitSettings:
     rcall   DisplayMessage
     ldi     r16, GRAV_INIT
     sts     gravity_set, r16
-    ldi     r16, F_INVIS_INIT
-    sts     f_invis_set, r16
     ldi     r16, BOUND_INIT
     sts     bound_set, r16
     ldi     r16, RANDOM_V_INIT
@@ -115,9 +112,8 @@ ChangeSettingLookupMatch:
     ret
 
 ChangeSettingTable:
-    .db     GRAVITY,        F_INVIS
+    .db     GRAVITY,        BOUND
     .equ    CHANGE_SETTING_ENTRY_SIZE = 2 * (PC - ChangeSettingTable)
-    .db     F_INVIS,        BOUND
     .db     BOUND,			SIZE
     .db     SIZE,			RANDOM_V
     .db     RANDOM_V,       TIME_LIM
@@ -155,7 +151,6 @@ DecSettingLookupMatch:
 DecSettingTable:
     .db     GRAVITY,        low(DecGravity),        high(DecGravity),       0x00
     .equ    DEC_SETTING_ENTRY_SIZE = 2 * (PC - DecSettingTable)
-    .db     F_INVIS,          low(DecFInvis),  high(DecFInvis), 0x00
     .db     BOUND,          low(DecBound),          high(DecBound),         0x00
     .db     SIZE,      low(DecSize),       high(DecSize),      0x00
     .db     RANDOM_V,       low(DecRandomV),        high(DecRandomV),       0x00
@@ -174,17 +169,6 @@ DecGravity:
 	cpse    r16, r17
     dec     r16
     sts     gravity_set, r16
-    clr     r17
-    rcall   DisplayHex
-    ret
-
-DecFInvis:
-    rcall   ClearDisplay
-    lds     r16, f_invis_set
-	ldi     r17, F_INVIS_LB
-	cpse    r16, r17
-    dec     r16
-    sts     f_invis_set, r16
     clr     r17
     rcall   DisplayHex
     ret
@@ -262,7 +246,6 @@ IncSettingLookupMatch:
 IncSettingTable:
     .db     GRAVITY,        low(IncGravity),        high(IncGravity),       0x00
     .equ    INC_SETTING_ENTRY_SIZE = 2 * (PC - IncSettingTable)
-    .db     F_INVIS,        low(IncFInvis),         high(IncFInvis),        0x00
     .db     BOUND,          low(IncBound),          high(IncBound),         0x00
     .db     SIZE,      low(IncSize),       high(IncSize),      0x00
     .db     RANDOM_V,       low(IncRandomV),        high(IncRandomV),       0x00
@@ -280,17 +263,6 @@ IncGravity:
     cpse    r16, r17
     inc     r16
     sts     gravity_set, r16
-    clr     r17
-    rcall   DisplayHex
-    ret
-
-IncFInvis:
-    rcall   ClearDisplay
-    lds     r16, f_invis_set
-	ldi     r17, F_INVIS_UB
-    cpse    r16, r17
-    inc     r16
-    sts     f_invis_set, r16
     clr     r17
     rcall   DisplayHex
     ret

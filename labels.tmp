@@ -55,21 +55,21 @@
   <InitSwitch><FILE>U:\gavinhua\ee10b-hw5\switch.asm</FILE><LINE>72</LINE></InitSwitch>
   <InitTimers><FILE>U:\gavinhua\ee10b-hw5\timer.asm</FILE><LINE>71</LINE></InitTimers>
   <InitRandom><FILE>U:\gavinhua\ee10b-hw5\random.asm</FILE><LINE>8</LINE></InitRandom>
-  <InitDisplay><FILE>U:\gavinhua\ee10b-hw5\display.asm</FILE><LINE>89</LINE></InitDisplay>
+  <InitDisplay><FILE>U:\gavinhua\ee10b-hw5\display.asm</FILE><LINE>88</LINE></InitDisplay>
   <InitSound><FILE>U:\gavinhua\ee10b-hw5\sound.asm</FILE><LINE>42</LINE></InitSound>
   <InitSPI><FILE>U:\gavinhua\ee10b-hw5\spi.asm</FILE><LINE>43</LINE></InitSPI>
   <InitIMU><FILE>U:\gavinhua\ee10b-hw5\imu.asm</FILE><LINE>43</LINE></InitIMU>
-  <InitGame><FILE>U:\gavinhua\ee10b-hw5\game.asm</FILE><LINE>15</LINE></InitGame>
+  <InitGame><FILE>U:\gavinhua\ee10b-hw5\game.asm</FILE><LINE>14</LINE></InitGame>
   <InitGameTimers><FILE>U:\gavinhua\ee10b-hw5\gametimer.asm</FILE><LINE>1</LINE></InitGameTimers>
-  <InitSettings><FILE>U:\gavinhua\ee10b-hw5\menu.asm</FILE><LINE>50</LINE></InitSettings>
+  <InitSettings><FILE>U:\gavinhua\ee10b-hw5\menu.asm</FILE><LINE>49</LINE></InitSettings>
   <InitMusic><FILE>U:\gavinhua\ee10b-hw5\music.asm</FILE><LINE>12</LINE></InitMusic>
   <Main><FILE>U:\gavinhua\ee10b-hw5\main.asm</FILE><LINE>108</LINE></Main>
-  <in_game><FILE>U:\gavinhua\ee10b-hw5\game.asm</FILE><LINE>8</LINE></in_game>
+  <in_game><FILE>U:\gavinhua\ee10b-hw5\game.asm</FILE><LINE>7</LINE></in_game>
   <CallGameLoop><FILE>U:\gavinhua\ee10b-hw5\main.asm</FILE><LINE>118</LINE></CallGameLoop>
   <CallMenuLoop><FILE>U:\gavinhua\ee10b-hw5\main.asm</FILE><LINE>114</LINE></CallMenuLoop>
-  <MenuLoop><FILE>U:\gavinhua\ee10b-hw5\menu.asm</FILE><LINE>14</LINE></MenuLoop>
+  <MenuLoop><FILE>U:\gavinhua\ee10b-hw5\menu.asm</FILE><LINE>13</LINE></MenuLoop>
   <MainEnd><FILE>U:\gavinhua\ee10b-hw5\main.asm</FILE><LINE>122</LINE></MainEnd>
-  <GameLoop><FILE>U:\gavinhua\ee10b-hw5\game.asm</FILE><LINE>70</LINE></GameLoop>
+  <GameLoop><FILE>U:\gavinhua\ee10b-hw5\game.asm</FILE><LINE>65</LINE></GameLoop>
   <delay_timer><FILE>U:\gavinhua\ee10b-hw5\timer.asm</FILE><LINE>299</LINE></delay_timer>
   <InitTimerLoop><FILE>U:\gavinhua\ee10b-hw5\timer.asm</FILE><LINE>78</LINE></InitTimerLoop>
   <EndInitTimers><FILE>U:\gavinhua\ee10b-hw5\timer.asm</FILE><LINE>86</LINE></EndInitTimers>
@@ -92,49 +92,51 @@
   <DoneTmrHandler><FILE>U:\gavinhua\ee10b-hw5\timer.asm</FILE><LINE>287</LINE></DoneTmrHandler>
   <Timer0Init><FILE>U:\gavinhua\ee10b-hw5\chiptimer.asm</FILE><LINE>79</LINE></Timer0Init>
   <Timer1Init><FILE>U:\gavinhua\ee10b-hw5\chiptimer.asm</FILE><LINE>121</LINE></Timer1Init>
-  <DisplayMux><FILE>U:\gavinhua\ee10b-hw5\display.asm</FILE><LINE>181</LINE></DisplayMux>
+  <DisplayMux><FILE>U:\gavinhua\ee10b-hw5\display.asm</FILE><LINE>195</LINE></DisplayMux>
   <DebounceButtons><FILE>U:\gavinhua\ee10b-hw5\switch.asm</FILE><LINE>356</LINE></DebounceButtons>
   <MessageTable><FILE>U:\gavinhua\ee10b-hw5\display.asm</FILE><LINE>23</LINE></MessageTable>
-  <curr_c_patterns><FILE>U:\gavinhua\ee10b-hw5\display.asm</FILE><LINE>45</LINE></curr_c_patterns>
-  <curr_dig><FILE>U:\gavinhua\ee10b-hw5\display.asm</FILE><LINE>46</LINE></curr_dig>
-  <curr_dig_pattern><FILE>U:\gavinhua\ee10b-hw5\display.asm</FILE><LINE>47</LINE></curr_dig_pattern>
-  <curr_msg><FILE>U:\gavinhua\ee10b-hw5\display.asm</FILE><LINE>48</LINE></curr_msg>
-  <blink_dim_cnt><FILE>U:\gavinhua\ee10b-hw5\display.asm</FILE><LINE>49</LINE></blink_dim_cnt>
-  <display_on_t><FILE>U:\gavinhua\ee10b-hw5\display.asm</FILE><LINE>50</LINE></display_on_t>
-  <display_off_t><FILE>U:\gavinhua\ee10b-hw5\display.asm</FILE><LINE>51</LINE></display_off_t>
-  <ClearDisplay><FILE>U:\gavinhua\ee10b-hw5\display.asm</FILE><LINE>129</LINE></ClearDisplay>
-  <ClearDisplayLoop><FILE>U:\gavinhua\ee10b-hw5\display.asm</FILE><LINE>134</LINE></ClearDisplayLoop>
-  <ClearDisplayEnd><FILE>U:\gavinhua\ee10b-hw5\display.asm</FILE><LINE>140</LINE></ClearDisplayEnd>
-  <IncDimCnt><FILE>U:\gavinhua\ee10b-hw5\display.asm</FILE><LINE>223</LINE></IncDimCnt>
-  <DisplayDigit><FILE>U:\gavinhua\ee10b-hw5\display.asm</FILE><LINE>193</LINE></DisplayDigit>
+  <curr_c_patterns><FILE>U:\gavinhua\ee10b-hw5\display.asm</FILE><LINE>44</LINE></curr_c_patterns>
+  <curr_dig><FILE>U:\gavinhua\ee10b-hw5\display.asm</FILE><LINE>45</LINE></curr_dig>
+  <curr_dig_pattern><FILE>U:\gavinhua\ee10b-hw5\display.asm</FILE><LINE>46</LINE></curr_dig_pattern>
+  <curr_msg><FILE>U:\gavinhua\ee10b-hw5\display.asm</FILE><LINE>47</LINE></curr_msg>
+  <blink_dim_cnt><FILE>U:\gavinhua\ee10b-hw5\display.asm</FILE><LINE>48</LINE></blink_dim_cnt>
+  <display_on_t><FILE>U:\gavinhua\ee10b-hw5\display.asm</FILE><LINE>49</LINE></display_on_t>
+  <display_off_t><FILE>U:\gavinhua\ee10b-hw5\display.asm</FILE><LINE>50</LINE></display_off_t>
+  <ClearDisplay><FILE>U:\gavinhua\ee10b-hw5\display.asm</FILE><LINE>143</LINE></ClearDisplay>
+  <BlinkDisplay><FILE>U:\gavinhua\ee10b-hw5\display.asm</FILE><LINE>102</LINE></BlinkDisplay>
+  <SolidDisplay><FILE>U:\gavinhua\ee10b-hw5\display.asm</FILE><LINE>109</LINE></SolidDisplay>
+  <ClearDisplayLoop><FILE>U:\gavinhua\ee10b-hw5\display.asm</FILE><LINE>148</LINE></ClearDisplayLoop>
+  <ClearDisplayEnd><FILE>U:\gavinhua\ee10b-hw5\display.asm</FILE><LINE>154</LINE></ClearDisplayEnd>
+  <IncDimCnt><FILE>U:\gavinhua\ee10b-hw5\display.asm</FILE><LINE>237</LINE></IncDimCnt>
+  <DisplayDigit><FILE>U:\gavinhua\ee10b-hw5\display.asm</FILE><LINE>207</LINE></DisplayDigit>
   <PortAPatterns><FILE>U:\gavinhua\ee10b-hw5\segtable.asm</FILE><LINE>171</LINE></PortAPatterns>
   <PortDPatterns><FILE>U:\gavinhua\ee10b-hw5\segtable.asm</FILE><LINE>192</LINE></PortDPatterns>
-  <IncCurrDig><FILE>U:\gavinhua\ee10b-hw5\display.asm</FILE><LINE>209</LINE></IncCurrDig>
-  <StoreCurrDig><FILE>U:\gavinhua\ee10b-hw5\display.asm</FILE><LINE>219</LINE></StoreCurrDig>
-  <WrapBuffer><FILE>U:\gavinhua\ee10b-hw5\display.asm</FILE><LINE>215</LINE></WrapBuffer>
-  <StoreDimCnt><FILE>U:\gavinhua\ee10b-hw5\display.asm</FILE><LINE>235</LINE></StoreDimCnt>
-  <WrapDimCnt><FILE>U:\gavinhua\ee10b-hw5\display.asm</FILE><LINE>231</LINE></WrapDimCnt>
-  <DisplayMuxEnd><FILE>U:\gavinhua\ee10b-hw5\display.asm</FILE><LINE>239</LINE></DisplayMuxEnd>
-  <DisplayHex><FILE>U:\gavinhua\ee10b-hw5\display.asm</FILE><LINE>276</LINE></DisplayHex>
-  <LoadHexDigit><FILE>U:\gavinhua\ee10b-hw5\display.asm</FILE><LINE>300</LINE></LoadHexDigit>
+  <IncCurrDig><FILE>U:\gavinhua\ee10b-hw5\display.asm</FILE><LINE>223</LINE></IncCurrDig>
+  <StoreCurrDig><FILE>U:\gavinhua\ee10b-hw5\display.asm</FILE><LINE>233</LINE></StoreCurrDig>
+  <WrapBuffer><FILE>U:\gavinhua\ee10b-hw5\display.asm</FILE><LINE>229</LINE></WrapBuffer>
+  <StoreDimCnt><FILE>U:\gavinhua\ee10b-hw5\display.asm</FILE><LINE>249</LINE></StoreDimCnt>
+  <WrapDimCnt><FILE>U:\gavinhua\ee10b-hw5\display.asm</FILE><LINE>245</LINE></WrapDimCnt>
+  <DisplayMuxEnd><FILE>U:\gavinhua\ee10b-hw5\display.asm</FILE><LINE>253</LINE></DisplayMuxEnd>
+  <DisplayHex><FILE>U:\gavinhua\ee10b-hw5\display.asm</FILE><LINE>290</LINE></DisplayHex>
+  <LoadHexDigit><FILE>U:\gavinhua\ee10b-hw5\display.asm</FILE><LINE>314</LINE></LoadHexDigit>
   <DigitSegTable><FILE>U:\gavinhua\ee10b-hw5\segtable.asm</FILE><LINE>143</LINE></DigitSegTable>
-  <DisplayMessage><FILE>U:\gavinhua\ee10b-hw5\display.asm</FILE><LINE>310</LINE></DisplayMessage>
-  <DisplayMessageLookupLoop><FILE>U:\gavinhua\ee10b-hw5\display.asm</FILE><LINE>315</LINE></DisplayMessageLookupLoop>
-  <DisplayMessageLookupMatch><FILE>U:\gavinhua\ee10b-hw5\display.asm</FILE><LINE>327</LINE></DisplayMessageLookupMatch>
-  <DisplayMessageLookupNoMatch><FILE>U:\gavinhua\ee10b-hw5\display.asm</FILE><LINE>321</LINE></DisplayMessageLookupNoMatch>
-  <DisplayMessageLoadMsgBufferLoop><FILE>U:\gavinhua\ee10b-hw5\display.asm</FILE><LINE>334</LINE></DisplayMessageLoadMsgBufferLoop>
-  <DisplayMessageLoadDisplayBufferInit><FILE>U:\gavinhua\ee10b-hw5\display.asm</FILE><LINE>341</LINE></DisplayMessageLoadDisplayBufferInit>
-  <DisplayMessageLoadDisplayBufferLoop><FILE>U:\gavinhua\ee10b-hw5\display.asm</FILE><LINE>348</LINE></DisplayMessageLoadDisplayBufferLoop>
+  <DisplayMessage><FILE>U:\gavinhua\ee10b-hw5\display.asm</FILE><LINE>324</LINE></DisplayMessage>
+  <DisplayMessageLookupLoop><FILE>U:\gavinhua\ee10b-hw5\display.asm</FILE><LINE>329</LINE></DisplayMessageLookupLoop>
+  <DisplayMessageLookupMatch><FILE>U:\gavinhua\ee10b-hw5\display.asm</FILE><LINE>341</LINE></DisplayMessageLookupMatch>
+  <DisplayMessageLookupNoMatch><FILE>U:\gavinhua\ee10b-hw5\display.asm</FILE><LINE>335</LINE></DisplayMessageLookupNoMatch>
+  <DisplayMessageLoadMsgBufferLoop><FILE>U:\gavinhua\ee10b-hw5\display.asm</FILE><LINE>348</LINE></DisplayMessageLoadMsgBufferLoop>
+  <DisplayMessageLoadDisplayBufferInit><FILE>U:\gavinhua\ee10b-hw5\display.asm</FILE><LINE>355</LINE></DisplayMessageLoadDisplayBufferInit>
+  <DisplayMessageLoadDisplayBufferLoop><FILE>U:\gavinhua\ee10b-hw5\display.asm</FILE><LINE>362</LINE></DisplayMessageLoadDisplayBufferLoop>
   <ASCIISegTable><FILE>U:\gavinhua\ee10b-hw5\segtable.asm</FILE><LINE>47</LINE></ASCIISegTable>
-  <DisplayMessageEnd><FILE>U:\gavinhua\ee10b-hw5\display.asm</FILE><LINE>357</LINE></DisplayMessageEnd>
-  <DisplayGameLED><FILE>U:\gavinhua\ee10b-hw5\display.asm</FILE><LINE>396</LINE></DisplayGameLED>
-  <DisplayGameLEDEnd><FILE>U:\gavinhua\ee10b-hw5\display.asm</FILE><LINE>446</LINE></DisplayGameLEDEnd>
-  <CreateLEDMaskInit><FILE>U:\gavinhua\ee10b-hw5\display.asm</FILE><LINE>412</LINE></CreateLEDMaskInit>
-  <CreateLEDMaskLoop><FILE>U:\gavinhua\ee10b-hw5\display.asm</FILE><LINE>415</LINE></CreateLEDMaskLoop>
-  <CreatePatternIndex><FILE>U:\gavinhua\ee10b-hw5\display.asm</FILE><LINE>422</LINE></CreatePatternIndex>
-  <CheckSetStatus><FILE>U:\gavinhua\ee10b-hw5\display.asm</FILE><LINE>428</LINE></CheckSetStatus>
-  <DisplayGameLEDClear><FILE>U:\gavinhua\ee10b-hw5\display.asm</FILE><LINE>440</LINE></DisplayGameLEDClear>
-  <DisplayGameLEDSet><FILE>U:\gavinhua\ee10b-hw5\display.asm</FILE><LINE>435</LINE></DisplayGameLEDSet>
+  <DisplayMessageEnd><FILE>U:\gavinhua\ee10b-hw5\display.asm</FILE><LINE>371</LINE></DisplayMessageEnd>
+  <DisplayGameLED><FILE>U:\gavinhua\ee10b-hw5\display.asm</FILE><LINE>410</LINE></DisplayGameLED>
+  <DisplayGameLEDEnd><FILE>U:\gavinhua\ee10b-hw5\display.asm</FILE><LINE>460</LINE></DisplayGameLEDEnd>
+  <CreateLEDMaskInit><FILE>U:\gavinhua\ee10b-hw5\display.asm</FILE><LINE>426</LINE></CreateLEDMaskInit>
+  <CreateLEDMaskLoop><FILE>U:\gavinhua\ee10b-hw5\display.asm</FILE><LINE>429</LINE></CreateLEDMaskLoop>
+  <CreatePatternIndex><FILE>U:\gavinhua\ee10b-hw5\display.asm</FILE><LINE>436</LINE></CreatePatternIndex>
+  <CheckSetStatus><FILE>U:\gavinhua\ee10b-hw5\display.asm</FILE><LINE>442</LINE></CheckSetStatus>
+  <DisplayGameLEDClear><FILE>U:\gavinhua\ee10b-hw5\display.asm</FILE><LINE>454</LINE></DisplayGameLEDClear>
+  <DisplayGameLEDSet><FILE>U:\gavinhua\ee10b-hw5\display.asm</FILE><LINE>449</LINE></DisplayGameLEDSet>
   <Div16><FILE>U:\gavinhua\ee10b-hw5\div.asm</FILE><LINE>54</LINE></Div16>
   <Div16loop><FILE>U:\gavinhua\ee10b-hw5\div.asm</FILE><LINE>59</LINE></Div16loop>
   <Div16SkipSub><FILE>U:\gavinhua\ee10b-hw5\div.asm</FILE><LINE>69</LINE></Div16SkipSub>
@@ -151,10 +153,9 @@
   <ball_pos_frac><FILE>U:\gavinhua\ee10b-hw5\game.asm</FILE><LINE>4</LINE></ball_pos_frac>
   <velocity><FILE>U:\gavinhua\ee10b-hw5\game.asm</FILE><LINE>5</LINE></velocity>
   <game_time><FILE>U:\gavinhua\ee10b-hw5\game.asm</FILE><LINE>6</LINE></game_time>
-  <is_invisible><FILE>U:\gavinhua\ee10b-hw5\game.asm</FILE><LINE>7</LINE></is_invisible>
-  <mode><FILE>U:\gavinhua\ee10b-hw5\menu.asm</FILE><LINE>10</LINE></mode>
-  <StartGame><FILE>U:\gavinhua\ee10b-hw5\game.asm</FILE><LINE>41</LINE></StartGame>
-  <time_set><FILE>U:\gavinhua\ee10b-hw5\menu.asm</FILE><LINE>8</LINE></time_set>
+  <mode><FILE>U:\gavinhua\ee10b-hw5\menu.asm</FILE><LINE>9</LINE></mode>
+  <StartGame><FILE>U:\gavinhua\ee10b-hw5\game.asm</FILE><LINE>39</LINE></StartGame>
+  <time_set><FILE>U:\gavinhua\ee10b-hw5\menu.asm</FILE><LINE>7</LINE></time_set>
   <repeat><FILE>U:\gavinhua\ee10b-hw5\music.asm</FILE><LINE>3</LINE></repeat>
   <GameMusic><FILE>U:\gavinhua\ee10b-hw5\music.asm</FILE><LINE>112</LINE></GameMusic>
   <PlayNote><FILE>U:\gavinhua\ee10b-hw5\sound.asm</FILE><LINE>84</LINE></PlayNote>
@@ -163,40 +164,39 @@
   <playing_sequence><FILE>U:\gavinhua\ee10b-hw5\music.asm</FILE><LINE>7</LINE></playing_sequence>
   <curr_note><FILE>U:\gavinhua\ee10b-hw5\music.asm</FILE><LINE>5</LINE></curr_note>
   <StartPress><FILE>U:\gavinhua\ee10b-hw5\switch.asm</FILE><LINE>222</LINE></StartPress>
-  <LoseGame><FILE>U:\gavinhua\ee10b-hw5\game.asm</FILE><LINE>103</LINE></LoseGame>
-  <GameCheckSoundTimer><FILE>U:\gavinhua\ee10b-hw5\game.asm</FILE><LINE>74</LINE></GameCheckSoundTimer>
-  <GameCheckStatusTimer><FILE>U:\gavinhua\ee10b-hw5\game.asm</FILE><LINE>80</LINE></GameCheckStatusTimer>
+  <LoseGame><FILE>U:\gavinhua\ee10b-hw5\game.asm</FILE><LINE>98</LINE></LoseGame>
+  <GameCheckSoundTimer><FILE>U:\gavinhua\ee10b-hw5\game.asm</FILE><LINE>69</LINE></GameCheckSoundTimer>
+  <GameCheckStatusTimer><FILE>U:\gavinhua\ee10b-hw5\game.asm</FILE><LINE>75</LINE></GameCheckStatusTimer>
   <SoundTimerHandler><FILE>U:\gavinhua\ee10b-hw5\music.asm</FILE><LINE>25</LINE></SoundTimerHandler>
-  <GameCheckGameTimer><FILE>U:\gavinhua\ee10b-hw5\game.asm</FILE><LINE>86</LINE></GameCheckGameTimer>
+  <GameCheckGameTimer><FILE>U:\gavinhua\ee10b-hw5\game.asm</FILE><LINE>81</LINE></GameCheckGameTimer>
   <StatusTimerHandler><FILE>U:\gavinhua\ee10b-hw5\gametimer.asm</FILE><LINE>32</LINE></StatusTimerHandler>
-  <GameCheckRandomEventTimer><FILE>U:\gavinhua\ee10b-hw5\game.asm</FILE><LINE>92</LINE></GameCheckRandomEventTimer>
+  <GameCheckRandomEventTimer><FILE>U:\gavinhua\ee10b-hw5\game.asm</FILE><LINE>87</LINE></GameCheckRandomEventTimer>
   <GameTimerHandler><FILE>U:\gavinhua\ee10b-hw5\gametimer.asm</FILE><LINE>10</LINE></GameTimerHandler>
-  <GameLoopEnd><FILE>U:\gavinhua\ee10b-hw5\game.asm</FILE><LINE>98</LINE></GameLoopEnd>
+  <GameLoopEnd><FILE>U:\gavinhua\ee10b-hw5\game.asm</FILE><LINE>93</LINE></GameLoopEnd>
   <RandomEventTimerHandler><FILE>U:\gavinhua\ee10b-hw5\gametimer.asm</FILE><LINE>94</LINE></RandomEventTimerHandler>
   <LoseMusic><FILE>U:\gavinhua\ee10b-hw5\music.asm</FILE><LINE>105</LINE></LoseMusic>
-  <LoseGamePlaySequenceLoop><FILE>U:\gavinhua\ee10b-hw5\game.asm</FILE><LINE>116</LINE></LoseGamePlaySequenceLoop>
-  <LoseGameEnd><FILE>U:\gavinhua\ee10b-hw5\game.asm</FILE><LINE>126</LINE></LoseGameEnd>
-  <WinGame><FILE>U:\gavinhua\ee10b-hw5\game.asm</FILE><LINE>139</LINE></WinGame>
+  <LoseGamePlaySequenceLoop><FILE>U:\gavinhua\ee10b-hw5\game.asm</FILE><LINE>109</LINE></LoseGamePlaySequenceLoop>
+  <LoseGameEnd><FILE>U:\gavinhua\ee10b-hw5\game.asm</FILE><LINE>119</LINE></LoseGameEnd>
+  <WinGame><FILE>U:\gavinhua\ee10b-hw5\game.asm</FILE><LINE>129</LINE></WinGame>
   <WinMusic><FILE>U:\gavinhua\ee10b-hw5\music.asm</FILE><LINE>96</LINE></WinMusic>
-  <WinGameWaitSequenceLoop><FILE>U:\gavinhua\ee10b-hw5\game.asm</FILE><LINE>149</LINE></WinGameWaitSequenceLoop>
-  <WinGameEnd><FILE>U:\gavinhua\ee10b-hw5\game.asm</FILE><LINE>160</LINE></WinGameEnd>
-  <ComputeUpperBound><FILE>U:\gavinhua\ee10b-hw5\game.asm</FILE><LINE>170</LINE></ComputeUpperBound>
-  <bound_set><FILE>U:\gavinhua\ee10b-hw5\menu.asm</FILE><LINE>6</LINE></bound_set>
-  <ComputeLowerBound><FILE>U:\gavinhua\ee10b-hw5\game.asm</FILE><LINE>177</LINE></ComputeLowerBound>
+  <WinGameWaitSequenceLoop><FILE>U:\gavinhua\ee10b-hw5\game.asm</FILE><LINE>139</LINE></WinGameWaitSequenceLoop>
+  <WinGameEnd><FILE>U:\gavinhua\ee10b-hw5\game.asm</FILE><LINE>150</LINE></WinGameEnd>
+  <ComputeUpperBound><FILE>U:\gavinhua\ee10b-hw5\game.asm</FILE><LINE>160</LINE></ComputeUpperBound>
+  <bound_set><FILE>U:\gavinhua\ee10b-hw5\menu.asm</FILE><LINE>5</LINE></bound_set>
+  <ComputeLowerBound><FILE>U:\gavinhua\ee10b-hw5\game.asm</FILE><LINE>167</LINE></ComputeLowerBound>
   <DisplayGameState><FILE>U:\gavinhua\ee10b-hw5\gamedisplay.asm</FILE><LINE>3</LINE></DisplayGameState>
-  <DisplayBound><FILE>U:\gavinhua\ee10b-hw5\gamedisplay.asm</FILE><LINE>25</LINE></DisplayBound>
-  <DisplayTime><FILE>U:\gavinhua\ee10b-hw5\gamedisplay.asm</FILE><LINE>18</LINE></DisplayTime>
-  <DisplayGameStateEnd><FILE>U:\gavinhua\ee10b-hw5\gamedisplay.asm</FILE><LINE>13</LINE></DisplayGameStateEnd>
-  <DisplayBall><FILE>U:\gavinhua\ee10b-hw5\gamedisplay.asm</FILE><LINE>35</LINE></DisplayBall>
-  <size_set><FILE>U:\gavinhua\ee10b-hw5\menu.asm</FILE><LINE>9</LINE></size_set>
-  <DisplayBallLoopInit><FILE>U:\gavinhua\ee10b-hw5\gamedisplay.asm</FILE><LINE>51</LINE></DisplayBallLoopInit>
-  <DisplayBallCapUpperBound><FILE>U:\gavinhua\ee10b-hw5\gamedisplay.asm</FILE><LINE>46</LINE></DisplayBallCapUpperBound>
-  <DisplayBallLoop><FILE>U:\gavinhua\ee10b-hw5\gamedisplay.asm</FILE><LINE>55</LINE></DisplayBallLoop>
-  <DisplayBallEnd><FILE>U:\gavinhua\ee10b-hw5\gamedisplay.asm</FILE><LINE>64</LINE></DisplayBallEnd>
-  <StartGameTimer><FILE>U:\gavinhua\ee10b-hw5\gametimer.asm</FILE><LINE>147</LINE></StartGameTimer>
-  <StartStatusTimer><FILE>U:\gavinhua\ee10b-hw5\gametimer.asm</FILE><LINE>156</LINE></StartStatusTimer>
-  <StartRandomEventTimer><FILE>U:\gavinhua\ee10b-hw5\gametimer.asm</FILE><LINE>164</LINE></StartRandomEventTimer>
-  <StartSoundTimer><FILE>U:\gavinhua\ee10b-hw5\gametimer.asm</FILE><LINE>172</LINE></StartSoundTimer>
+  <DisplayBound><FILE>U:\gavinhua\ee10b-hw5\gamedisplay.asm</FILE><LINE>19</LINE></DisplayBound>
+  <DisplayTime><FILE>U:\gavinhua\ee10b-hw5\gamedisplay.asm</FILE><LINE>12</LINE></DisplayTime>
+  <DisplayBall><FILE>U:\gavinhua\ee10b-hw5\gamedisplay.asm</FILE><LINE>29</LINE></DisplayBall>
+  <size_set><FILE>U:\gavinhua\ee10b-hw5\menu.asm</FILE><LINE>8</LINE></size_set>
+  <DisplayBallLoopInit><FILE>U:\gavinhua\ee10b-hw5\gamedisplay.asm</FILE><LINE>45</LINE></DisplayBallLoopInit>
+  <DisplayBallCapUpperBound><FILE>U:\gavinhua\ee10b-hw5\gamedisplay.asm</FILE><LINE>40</LINE></DisplayBallCapUpperBound>
+  <DisplayBallLoop><FILE>U:\gavinhua\ee10b-hw5\gamedisplay.asm</FILE><LINE>49</LINE></DisplayBallLoop>
+  <DisplayBallEnd><FILE>U:\gavinhua\ee10b-hw5\gamedisplay.asm</FILE><LINE>58</LINE></DisplayBallEnd>
+  <StartGameTimer><FILE>U:\gavinhua\ee10b-hw5\gametimer.asm</FILE><LINE>126</LINE></StartGameTimer>
+  <StartStatusTimer><FILE>U:\gavinhua\ee10b-hw5\gametimer.asm</FILE><LINE>135</LINE></StartStatusTimer>
+  <StartRandomEventTimer><FILE>U:\gavinhua\ee10b-hw5\gametimer.asm</FILE><LINE>143</LINE></StartRandomEventTimer>
+  <StartSoundTimer><FILE>U:\gavinhua\ee10b-hw5\gametimer.asm</FILE><LINE>151</LINE></StartSoundTimer>
   <UpdateGameTimeModeTimed><FILE>U:\gavinhua\ee10b-hw5\gametimer.asm</FILE><LINE>21</LINE></UpdateGameTimeModeTimed>
   <UpdateGameTimeModeInfinite><FILE>U:\gavinhua\ee10b-hw5\gametimer.asm</FILE><LINE>17</LINE></UpdateGameTimeModeInfinite>
   <UpdateGameTimeEnd><FILE>U:\gavinhua\ee10b-hw5\gametimer.asm</FILE><LINE>25</LINE></UpdateGameTimeEnd>
@@ -208,16 +208,11 @@
   <StatusTimerHandlerEnd><FILE>U:\gavinhua\ee10b-hw5\gametimer.asm</FILE><LINE>88</LINE></StatusTimerHandlerEnd>
   <CallWinGame><FILE>U:\gavinhua\ee10b-hw5\gametimer.asm</FILE><LINE>84</LINE></CallWinGame>
   <Random><FILE>U:\gavinhua\ee10b-hw5\random.asm</FILE><LINE>14</LINE></Random>
-  <UpdateInvisible><FILE>U:\gavinhua\ee10b-hw5\gametimer.asm</FILE><LINE>97</LINE></UpdateInvisible>
   <lfsr><FILE>U:\gavinhua\ee10b-hw5\random.asm</FILE><LINE>2</LINE></lfsr>
-  <f_invis_set><FILE>U:\gavinhua\ee10b-hw5\menu.asm</FILE><LINE>5</LINE></f_invis_set>
-  <SetInvisible><FILE>U:\gavinhua\ee10b-hw5\gametimer.asm</FILE><LINE>105</LINE></SetInvisible>
-  <UpdateRandomV><FILE>U:\gavinhua\ee10b-hw5\gametimer.asm</FILE><LINE>115</LINE></UpdateRandomV>
-  <ClearInvisible><FILE>U:\gavinhua\ee10b-hw5\gametimer.asm</FILE><LINE>110</LINE></ClearInvisible>
-  <random_v_set><FILE>U:\gavinhua\ee10b-hw5\menu.asm</FILE><LINE>7</LINE></random_v_set>
-  <SpawnRandomEventEnd><FILE>U:\gavinhua\ee10b-hw5\gametimer.asm</FILE><LINE>140</LINE></SpawnRandomEventEnd>
-  <AddRandomV><FILE>U:\gavinhua\ee10b-hw5\gametimer.asm</FILE><LINE>131</LINE></AddRandomV>
-  <NegRandomV><FILE>U:\gavinhua\ee10b-hw5\gametimer.asm</FILE><LINE>128</LINE></NegRandomV>
+  <random_v_set><FILE>U:\gavinhua\ee10b-hw5\menu.asm</FILE><LINE>6</LINE></random_v_set>
+  <RandomEventTimerHandlerEnd><FILE>U:\gavinhua\ee10b-hw5\gametimer.asm</FILE><LINE>119</LINE></RandomEventTimerHandlerEnd>
+  <AddRandomV><FILE>U:\gavinhua\ee10b-hw5\gametimer.asm</FILE><LINE>110</LINE></AddRandomV>
+  <NegRandomV><FILE>U:\gavinhua\ee10b-hw5\gametimer.asm</FILE><LINE>107</LINE></NegRandomV>
   <IMUWrite><FILE>U:\gavinhua\ee10b-hw5\imu.asm</FILE><LINE>224</LINE></IMUWrite>
   <GetAccelX><FILE>U:\gavinhua\ee10b-hw5\imu.asm</FILE><LINE>82</LINE></GetAccelX>
   <IMURead><FILE>U:\gavinhua\ee10b-hw5\imu.asm</FILE><LINE>184</LINE></IMURead>
@@ -228,47 +223,45 @@
   <SPIIOInit><FILE>U:\gavinhua\ee10b-hw5\io.asm</FILE><LINE>152</LINE></SPIIOInit>
   <SwitchIOInit><FILE>U:\gavinhua\ee10b-hw5\io.asm</FILE><LINE>161</LINE></SwitchIOInit>
   <setting><FILE>U:\gavinhua\ee10b-hw5\menu.asm</FILE><LINE>3</LINE></setting>
-  <MenuCheckModePress><FILE>U:\gavinhua\ee10b-hw5\menu.asm</FILE><LINE>19</LINE></MenuCheckModePress>
+  <MenuCheckModePress><FILE>U:\gavinhua\ee10b-hw5\menu.asm</FILE><LINE>18</LINE></MenuCheckModePress>
   <ModePress><FILE>U:\gavinhua\ee10b-hw5\switch.asm</FILE><LINE>184</LINE></ModePress>
-  <MenuCheckRotPress><FILE>U:\gavinhua\ee10b-hw5\menu.asm</FILE><LINE>24</LINE></MenuCheckRotPress>
-  <ChangeMode><FILE>U:\gavinhua\ee10b-hw5\menu.asm</FILE><LINE>72</LINE></ChangeMode>
+  <MenuCheckRotPress><FILE>U:\gavinhua\ee10b-hw5\menu.asm</FILE><LINE>23</LINE></MenuCheckRotPress>
+  <ChangeMode><FILE>U:\gavinhua\ee10b-hw5\menu.asm</FILE><LINE>69</LINE></ChangeMode>
   <RotPress><FILE>U:\gavinhua\ee10b-hw5\switch.asm</FILE><LINE>146</LINE></RotPress>
-  <MenuCheckRotCCW><FILE>U:\gavinhua\ee10b-hw5\menu.asm</FILE><LINE>29</LINE></MenuCheckRotCCW>
-  <ChangeSetting><FILE>U:\gavinhua\ee10b-hw5\menu.asm</FILE><LINE>93</LINE></ChangeSetting>
+  <MenuCheckRotCCW><FILE>U:\gavinhua\ee10b-hw5\menu.asm</FILE><LINE>28</LINE></MenuCheckRotCCW>
+  <ChangeSetting><FILE>U:\gavinhua\ee10b-hw5\menu.asm</FILE><LINE>90</LINE></ChangeSetting>
   <RotCCW><FILE>U:\gavinhua\ee10b-hw5\switch.asm</FILE><LINE>261</LINE></RotCCW>
-  <MenuCheckRotCW><FILE>U:\gavinhua\ee10b-hw5\menu.asm</FILE><LINE>34</LINE></MenuCheckRotCW>
-  <DecSetting><FILE>U:\gavinhua\ee10b-hw5\menu.asm</FILE><LINE>130</LINE></DecSetting>
+  <MenuCheckRotCW><FILE>U:\gavinhua\ee10b-hw5\menu.asm</FILE><LINE>33</LINE></MenuCheckRotCW>
+  <DecSetting><FILE>U:\gavinhua\ee10b-hw5\menu.asm</FILE><LINE>126</LINE></DecSetting>
   <RotCW><FILE>U:\gavinhua\ee10b-hw5\switch.asm</FILE><LINE>299</LINE></RotCW>
-  <MenuCheckSoundTimer><FILE>U:\gavinhua\ee10b-hw5\menu.asm</FILE><LINE>39</LINE></MenuCheckSoundTimer>
-  <IncSetting><FILE>U:\gavinhua\ee10b-hw5\menu.asm</FILE><LINE>238</LINE></IncSetting>
-  <MenuLoopEnd><FILE>U:\gavinhua\ee10b-hw5\menu.asm</FILE><LINE>45</LINE></MenuLoopEnd>
-  <SetModeInfinite><FILE>U:\gavinhua\ee10b-hw5\menu.asm</FILE><LINE>82</LINE></SetModeInfinite>
-  <SetModeTimed><FILE>U:\gavinhua\ee10b-hw5\menu.asm</FILE><LINE>78</LINE></SetModeTimed>
-  <ChangeModeEnd><FILE>U:\gavinhua\ee10b-hw5\menu.asm</FILE><LINE>86</LINE></ChangeModeEnd>
-  <ChangeSettingTable><FILE>U:\gavinhua\ee10b-hw5\menu.asm</FILE><LINE>117</LINE></ChangeSettingTable>
-  <ChangeSettingLookupLoop><FILE>U:\gavinhua\ee10b-hw5\menu.asm</FILE><LINE>99</LINE></ChangeSettingLookupLoop>
-  <ChangeSettingLookupMatch><FILE>U:\gavinhua\ee10b-hw5\menu.asm</FILE><LINE>111</LINE></ChangeSettingLookupMatch>
-  <ChangeSettingLookupNoMatch><FILE>U:\gavinhua\ee10b-hw5\menu.asm</FILE><LINE>105</LINE></ChangeSettingLookupNoMatch>
-  <DecSettingTable><FILE>U:\gavinhua\ee10b-hw5\menu.asm</FILE><LINE>155</LINE></DecSettingTable>
-  <DecSettingLookupLoop><FILE>U:\gavinhua\ee10b-hw5\menu.asm</FILE><LINE>136</LINE></DecSettingLookupLoop>
-  <DecSettingLookupMatch><FILE>U:\gavinhua\ee10b-hw5\menu.asm</FILE><LINE>148</LINE></DecSettingLookupMatch>
-  <DecSettingLookupNoMatch><FILE>U:\gavinhua\ee10b-hw5\menu.asm</FILE><LINE>142</LINE></DecSettingLookupNoMatch>
-  <DecGravity><FILE>U:\gavinhua\ee10b-hw5\menu.asm</FILE><LINE>170</LINE></DecGravity>
-  <DecFInvis><FILE>U:\gavinhua\ee10b-hw5\menu.asm</FILE><LINE>181</LINE></DecFInvis>
-  <DecBound><FILE>U:\gavinhua\ee10b-hw5\menu.asm</FILE><LINE>192</LINE></DecBound>
-  <DecSize><FILE>U:\gavinhua\ee10b-hw5\menu.asm</FILE><LINE>226</LINE></DecSize>
-  <DecRandomV><FILE>U:\gavinhua\ee10b-hw5\menu.asm</FILE><LINE>203</LINE></DecRandomV>
-  <DecGameTime><FILE>U:\gavinhua\ee10b-hw5\menu.asm</FILE><LINE>214</LINE></DecGameTime>
-  <IncSettingTable><FILE>U:\gavinhua\ee10b-hw5\menu.asm</FILE><LINE>262</LINE></IncSettingTable>
-  <IncSettingLookupLoop><FILE>U:\gavinhua\ee10b-hw5\menu.asm</FILE><LINE>244</LINE></IncSettingLookupLoop>
-  <IncSettingLookupMatch><FILE>U:\gavinhua\ee10b-hw5\menu.asm</FILE><LINE>256</LINE></IncSettingLookupMatch>
-  <IncSettingLookupNoMatch><FILE>U:\gavinhua\ee10b-hw5\menu.asm</FILE><LINE>250</LINE></IncSettingLookupNoMatch>
-  <IncGravity><FILE>U:\gavinhua\ee10b-hw5\menu.asm</FILE><LINE>276</LINE></IncGravity>
-  <IncFInvis><FILE>U:\gavinhua\ee10b-hw5\menu.asm</FILE><LINE>287</LINE></IncFInvis>
-  <IncBound><FILE>U:\gavinhua\ee10b-hw5\menu.asm</FILE><LINE>299</LINE></IncBound>
-  <IncSize><FILE>U:\gavinhua\ee10b-hw5\menu.asm</FILE><LINE>333</LINE></IncSize>
-  <IncRandomV><FILE>U:\gavinhua\ee10b-hw5\menu.asm</FILE><LINE>310</LINE></IncRandomV>
-  <IncGameTime><FILE>U:\gavinhua\ee10b-hw5\menu.asm</FILE><LINE>321</LINE></IncGameTime>
+  <MenuCheckSoundTimer><FILE>U:\gavinhua\ee10b-hw5\menu.asm</FILE><LINE>38</LINE></MenuCheckSoundTimer>
+  <IncSetting><FILE>U:\gavinhua\ee10b-hw5\menu.asm</FILE><LINE>222</LINE></IncSetting>
+  <MenuLoopEnd><FILE>U:\gavinhua\ee10b-hw5\menu.asm</FILE><LINE>44</LINE></MenuLoopEnd>
+  <SetModeInfinite><FILE>U:\gavinhua\ee10b-hw5\menu.asm</FILE><LINE>79</LINE></SetModeInfinite>
+  <SetModeTimed><FILE>U:\gavinhua\ee10b-hw5\menu.asm</FILE><LINE>75</LINE></SetModeTimed>
+  <ChangeModeEnd><FILE>U:\gavinhua\ee10b-hw5\menu.asm</FILE><LINE>83</LINE></ChangeModeEnd>
+  <ChangeSettingTable><FILE>U:\gavinhua\ee10b-hw5\menu.asm</FILE><LINE>114</LINE></ChangeSettingTable>
+  <ChangeSettingLookupLoop><FILE>U:\gavinhua\ee10b-hw5\menu.asm</FILE><LINE>96</LINE></ChangeSettingLookupLoop>
+  <ChangeSettingLookupMatch><FILE>U:\gavinhua\ee10b-hw5\menu.asm</FILE><LINE>108</LINE></ChangeSettingLookupMatch>
+  <ChangeSettingLookupNoMatch><FILE>U:\gavinhua\ee10b-hw5\menu.asm</FILE><LINE>102</LINE></ChangeSettingLookupNoMatch>
+  <DecSettingTable><FILE>U:\gavinhua\ee10b-hw5\menu.asm</FILE><LINE>151</LINE></DecSettingTable>
+  <DecSettingLookupLoop><FILE>U:\gavinhua\ee10b-hw5\menu.asm</FILE><LINE>132</LINE></DecSettingLookupLoop>
+  <DecSettingLookupMatch><FILE>U:\gavinhua\ee10b-hw5\menu.asm</FILE><LINE>144</LINE></DecSettingLookupMatch>
+  <DecSettingLookupNoMatch><FILE>U:\gavinhua\ee10b-hw5\menu.asm</FILE><LINE>138</LINE></DecSettingLookupNoMatch>
+  <DecGravity><FILE>U:\gavinhua\ee10b-hw5\menu.asm</FILE><LINE>165</LINE></DecGravity>
+  <DecBound><FILE>U:\gavinhua\ee10b-hw5\menu.asm</FILE><LINE>176</LINE></DecBound>
+  <DecSize><FILE>U:\gavinhua\ee10b-hw5\menu.asm</FILE><LINE>210</LINE></DecSize>
+  <DecRandomV><FILE>U:\gavinhua\ee10b-hw5\menu.asm</FILE><LINE>187</LINE></DecRandomV>
+  <DecGameTime><FILE>U:\gavinhua\ee10b-hw5\menu.asm</FILE><LINE>198</LINE></DecGameTime>
+  <IncSettingTable><FILE>U:\gavinhua\ee10b-hw5\menu.asm</FILE><LINE>246</LINE></IncSettingTable>
+  <IncSettingLookupLoop><FILE>U:\gavinhua\ee10b-hw5\menu.asm</FILE><LINE>228</LINE></IncSettingLookupLoop>
+  <IncSettingLookupMatch><FILE>U:\gavinhua\ee10b-hw5\menu.asm</FILE><LINE>240</LINE></IncSettingLookupMatch>
+  <IncSettingLookupNoMatch><FILE>U:\gavinhua\ee10b-hw5\menu.asm</FILE><LINE>234</LINE></IncSettingLookupNoMatch>
+  <IncGravity><FILE>U:\gavinhua\ee10b-hw5\menu.asm</FILE><LINE>259</LINE></IncGravity>
+  <IncBound><FILE>U:\gavinhua\ee10b-hw5\menu.asm</FILE><LINE>271</LINE></IncBound>
+  <IncSize><FILE>U:\gavinhua\ee10b-hw5\menu.asm</FILE><LINE>305</LINE></IncSize>
+  <IncRandomV><FILE>U:\gavinhua\ee10b-hw5\menu.asm</FILE><LINE>282</LINE></IncRandomV>
+  <IncGameTime><FILE>U:\gavinhua\ee10b-hw5\menu.asm</FILE><LINE>293</LINE></IncGameTime>
   <SoundTimerHandlerEnd><FILE>U:\gavinhua\ee10b-hw5\music.asm</FILE><LINE>68</LINE></SoundTimerHandlerEnd>
   <CheckTickCnt><FILE>U:\gavinhua\ee10b-hw5\music.asm</FILE><LINE>31</LINE></CheckTickCnt>
   <NewNote><FILE>U:\gavinhua\ee10b-hw5\music.asm</FILE><LINE>40</LINE></NewNote>
