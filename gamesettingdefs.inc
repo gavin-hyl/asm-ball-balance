@@ -14,18 +14,13 @@
 .EQU GRAV_LB        = 1
 .equ GRAV_INIT      = 1
 
-.EQU F_INVIS        = 1
-.EQU F_INVIS_UB     = 7
-.EQU F_INVIS_LB     = 0
-.equ F_INVIS_INIT   = 0
-
 .EQU BOUND          = 2
 .EQU BOUND_UB       = 34
 .EQU BOUND_LB       = 10
 .equ BOUND_INIT     = BOUND_UB
 
 .EQU RANDOM_V       = 3
-.EQU RANDOM_V_UB    = 4
+.EQU RANDOM_V_UB    = 8
 .EQU RANDOM_V_LB    = 0
 .equ RANDOM_V_INIT  = 0
 

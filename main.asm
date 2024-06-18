@@ -99,10 +99,6 @@ Start:                                 ; start the CPU after a reset
     rcall   InitGameTimers
     rcall   InitSettings
     rcall   InitMusic
-    ; clr     r1
-    ; ldi r16, TRUE
-    ; sts repeat, r16
-    ; PlaySequence GameMusic
     rcall   Main
     rjmp    Start                   ; shouldn't return, but if it does, restart
 
@@ -110,15 +106,6 @@ Start:                                 ; start the CPU after a reset
 ;-------------------------------------------------------------------------------
 
 Main:
-    ; ldi     r16, SOUND_TIMER_IDX
-    ; rcall   DelayNotDone
-    ; brne    Main
-    ; inc     r1
-    ; mov r16, r1
-    ; clr r17
-    ; rcall DisplayHex
-    ; rcall   SoundTimerHandler
-
     lds     r16, in_game
     cpi     r16, TRUE
     breq    CallGameLoop

@@ -93,32 +93,12 @@ StatusTimerHandlerEnd:
 
 RandomEventTimerHandler:
     rcall   Random
-
-UpdateInvisible:
-    lds     r16, lfsr
-    andi    r16, 0x07
-	lds     r17, f_invis_set
-    cp      r16, r17
-    brlo    SetInvisible
-    ; brge ClearInvisible
-
-SetInvisible:
-    ldi     r16, TRUE
-    sts     is_invisible, r16
-    rjmp    UpdateRandomV
-
-ClearInvisible:
-    ldi     r16, FALSE
-    sts     is_invisible, r16
-    ; rjmp UpdateRandomV
-
-UpdateRandomV:
-    rcall   Random
     lds     r16, lfsr
     clr     r17
     lds     r20, random_v_set
+    tst     r20
+    breq    RandomEventTimerHandlerEnd
     rcall   Div16by8
-    lds     r16, velocity
     lds     r17, lfsr+1
     tst     r17
     breq AddRandomV
@@ -128,11 +108,15 @@ NegRandomV:
     neg     r2
 
 AddRandomV:
-    add     r16, r2
+    mov     r17, r2
+    ldi     r16, 2
+    muls    r17, r16
+    lds     r16, velocity
+    add     r16, r0
     sts     velocity, r16
-    ; rjmp SpawnRandomEventEnd
+    ; rjmp RandomEventTimerHandlerEnd
 
-SpawnRandomEventEnd:
+RandomEventTimerHandlerEnd:
     rcall   StartRandomEventTimer
     ret
 

@@ -15,6 +15,7 @@ in_game:        .byte 1
 InitGame:
     ldi     r16, FALSE
     sts     in_game, r16
+    sts     is_invisible, r16
 
     ldi     r16, START_POS
     sts     ball_pos, r16
@@ -24,8 +25,10 @@ InitGame:
 
     clr     r16
     sts     game_time, r16
-    sts     ball_pos_frac, r16
     sts     velocity, r16
+
+    ldi     r16, START_POS
+    sts     ball_pos_frac, r16
 
     ldi     r16, DISP_ON_T_INIT
     sts     display_on_t, r16
@@ -90,7 +93,7 @@ GameCheckRandomEventTimer:
     ldi     r16, RANDOM_EVENT_TIMER_IDX
     rcall   DelayNotDone
 	brne    GameLoopEnd
-    ; rcall   RandomEventTimerHandler
+    rcall   RandomEventTimerHandler
     
 GameLoopEnd:
     ret
@@ -98,6 +101,7 @@ GameLoopEnd:
 ;-------------------------------------
 
 LoseGame:
+    rcall   ClearDisplay
     ldi     r16, FALSE
     sts     in_game, r16
     sts     repeat, r16
@@ -120,7 +124,6 @@ LoseGamePlaySequenceLoop:
     ; brne LoseGameEnd
 
 LoseGameEnd:
-    rcall   ClearDisplay
     ldi     r16, MAX_BRIGHTNESS
     sts     display_on_t, r16
     clr     r16
@@ -134,6 +137,7 @@ LoseGameEnd:
 ;-------------------------------------
 
 WinGame:
+    rcall   ClearDisplay
     ldi     r16, FALSE
     sts     in_game, r16
     sts     repeat, r16

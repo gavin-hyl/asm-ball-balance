@@ -49,7 +49,7 @@
  <LABELS>
   <Start><FILE>U:\gavinhua\ee10b-hw5\main.asm</FILE><LINE>83</LINE></Start>
   <Timer0CompareMatchHandler><FILE>U:\gavinhua\ee10b-hw5\chiptimer.asm</FILE><LINE>158</LINE></Timer0CompareMatchHandler>
-  <stack_top><FILE>U:\gavinhua\ee10b-hw5\main.asm</FILE><LINE>143</LINE></stack_top>
+  <stack_top><FILE>U:\gavinhua\ee10b-hw5\main.asm</FILE><LINE>130</LINE></stack_top>
   <InitIO><FILE>U:\gavinhua\ee10b-hw5\io.asm</FILE><LINE>45</LINE></InitIO>
   <InitChipTimers><FILE>U:\gavinhua\ee10b-hw5\chiptimer.asm</FILE><LINE>44</LINE></InitChipTimers>
   <InitSwitch><FILE>U:\gavinhua\ee10b-hw5\switch.asm</FILE><LINE>72</LINE></InitSwitch>
@@ -63,13 +63,13 @@
   <InitGameTimers><FILE>U:\gavinhua\ee10b-hw5\gametimer.asm</FILE><LINE>1</LINE></InitGameTimers>
   <InitSettings><FILE>U:\gavinhua\ee10b-hw5\menu.asm</FILE><LINE>50</LINE></InitSettings>
   <InitMusic><FILE>U:\gavinhua\ee10b-hw5\music.asm</FILE><LINE>12</LINE></InitMusic>
-  <Main><FILE>U:\gavinhua\ee10b-hw5\main.asm</FILE><LINE>112</LINE></Main>
+  <Main><FILE>U:\gavinhua\ee10b-hw5\main.asm</FILE><LINE>108</LINE></Main>
   <in_game><FILE>U:\gavinhua\ee10b-hw5\game.asm</FILE><LINE>8</LINE></in_game>
-  <CallGameLoop><FILE>U:\gavinhua\ee10b-hw5\main.asm</FILE><LINE>131</LINE></CallGameLoop>
-  <CallMenuLoop><FILE>U:\gavinhua\ee10b-hw5\main.asm</FILE><LINE>127</LINE></CallMenuLoop>
+  <CallGameLoop><FILE>U:\gavinhua\ee10b-hw5\main.asm</FILE><LINE>118</LINE></CallGameLoop>
+  <CallMenuLoop><FILE>U:\gavinhua\ee10b-hw5\main.asm</FILE><LINE>114</LINE></CallMenuLoop>
   <MenuLoop><FILE>U:\gavinhua\ee10b-hw5\menu.asm</FILE><LINE>14</LINE></MenuLoop>
-  <MainEnd><FILE>U:\gavinhua\ee10b-hw5\main.asm</FILE><LINE>135</LINE></MainEnd>
-  <GameLoop><FILE>U:\gavinhua\ee10b-hw5\game.asm</FILE><LINE>67</LINE></GameLoop>
+  <MainEnd><FILE>U:\gavinhua\ee10b-hw5\main.asm</FILE><LINE>122</LINE></MainEnd>
+  <GameLoop><FILE>U:\gavinhua\ee10b-hw5\game.asm</FILE><LINE>70</LINE></GameLoop>
   <delay_timer><FILE>U:\gavinhua\ee10b-hw5\timer.asm</FILE><LINE>299</LINE></delay_timer>
   <InitTimerLoop><FILE>U:\gavinhua\ee10b-hw5\timer.asm</FILE><LINE>78</LINE></InitTimerLoop>
   <EndInitTimers><FILE>U:\gavinhua\ee10b-hw5\timer.asm</FILE><LINE>86</LINE></EndInitTimers>
@@ -153,7 +153,7 @@
   <game_time><FILE>U:\gavinhua\ee10b-hw5\game.asm</FILE><LINE>6</LINE></game_time>
   <is_invisible><FILE>U:\gavinhua\ee10b-hw5\game.asm</FILE><LINE>7</LINE></is_invisible>
   <mode><FILE>U:\gavinhua\ee10b-hw5\menu.asm</FILE><LINE>10</LINE></mode>
-  <StartGame><FILE>U:\gavinhua\ee10b-hw5\game.asm</FILE><LINE>38</LINE></StartGame>
+  <StartGame><FILE>U:\gavinhua\ee10b-hw5\game.asm</FILE><LINE>41</LINE></StartGame>
   <time_set><FILE>U:\gavinhua\ee10b-hw5\menu.asm</FILE><LINE>8</LINE></time_set>
   <repeat><FILE>U:\gavinhua\ee10b-hw5\music.asm</FILE><LINE>3</LINE></repeat>
   <GameMusic><FILE>U:\gavinhua\ee10b-hw5\music.asm</FILE><LINE>112</LINE></GameMusic>
@@ -163,39 +163,40 @@
   <playing_sequence><FILE>U:\gavinhua\ee10b-hw5\music.asm</FILE><LINE>7</LINE></playing_sequence>
   <curr_note><FILE>U:\gavinhua\ee10b-hw5\music.asm</FILE><LINE>5</LINE></curr_note>
   <StartPress><FILE>U:\gavinhua\ee10b-hw5\switch.asm</FILE><LINE>222</LINE></StartPress>
-  <LoseGame><FILE>U:\gavinhua\ee10b-hw5\game.asm</FILE><LINE>100</LINE></LoseGame>
-  <GameCheckSoundTimer><FILE>U:\gavinhua\ee10b-hw5\game.asm</FILE><LINE>71</LINE></GameCheckSoundTimer>
-  <GameCheckStatusTimer><FILE>U:\gavinhua\ee10b-hw5\game.asm</FILE><LINE>77</LINE></GameCheckStatusTimer>
+  <LoseGame><FILE>U:\gavinhua\ee10b-hw5\game.asm</FILE><LINE>103</LINE></LoseGame>
+  <GameCheckSoundTimer><FILE>U:\gavinhua\ee10b-hw5\game.asm</FILE><LINE>74</LINE></GameCheckSoundTimer>
+  <GameCheckStatusTimer><FILE>U:\gavinhua\ee10b-hw5\game.asm</FILE><LINE>80</LINE></GameCheckStatusTimer>
   <SoundTimerHandler><FILE>U:\gavinhua\ee10b-hw5\music.asm</FILE><LINE>25</LINE></SoundTimerHandler>
-  <GameCheckGameTimer><FILE>U:\gavinhua\ee10b-hw5\game.asm</FILE><LINE>83</LINE></GameCheckGameTimer>
+  <GameCheckGameTimer><FILE>U:\gavinhua\ee10b-hw5\game.asm</FILE><LINE>86</LINE></GameCheckGameTimer>
   <StatusTimerHandler><FILE>U:\gavinhua\ee10b-hw5\gametimer.asm</FILE><LINE>32</LINE></StatusTimerHandler>
-  <GameCheckRandomEventTimer><FILE>U:\gavinhua\ee10b-hw5\game.asm</FILE><LINE>89</LINE></GameCheckRandomEventTimer>
+  <GameCheckRandomEventTimer><FILE>U:\gavinhua\ee10b-hw5\game.asm</FILE><LINE>92</LINE></GameCheckRandomEventTimer>
   <GameTimerHandler><FILE>U:\gavinhua\ee10b-hw5\gametimer.asm</FILE><LINE>10</LINE></GameTimerHandler>
-  <GameLoopEnd><FILE>U:\gavinhua\ee10b-hw5\game.asm</FILE><LINE>95</LINE></GameLoopEnd>
+  <GameLoopEnd><FILE>U:\gavinhua\ee10b-hw5\game.asm</FILE><LINE>98</LINE></GameLoopEnd>
+  <RandomEventTimerHandler><FILE>U:\gavinhua\ee10b-hw5\gametimer.asm</FILE><LINE>94</LINE></RandomEventTimerHandler>
   <LoseMusic><FILE>U:\gavinhua\ee10b-hw5\music.asm</FILE><LINE>105</LINE></LoseMusic>
-  <LoseGamePlaySequenceLoop><FILE>U:\gavinhua\ee10b-hw5\game.asm</FILE><LINE>112</LINE></LoseGamePlaySequenceLoop>
-  <LoseGameEnd><FILE>U:\gavinhua\ee10b-hw5\game.asm</FILE><LINE>122</LINE></LoseGameEnd>
-  <WinGame><FILE>U:\gavinhua\ee10b-hw5\game.asm</FILE><LINE>136</LINE></WinGame>
+  <LoseGamePlaySequenceLoop><FILE>U:\gavinhua\ee10b-hw5\game.asm</FILE><LINE>116</LINE></LoseGamePlaySequenceLoop>
+  <LoseGameEnd><FILE>U:\gavinhua\ee10b-hw5\game.asm</FILE><LINE>126</LINE></LoseGameEnd>
+  <WinGame><FILE>U:\gavinhua\ee10b-hw5\game.asm</FILE><LINE>139</LINE></WinGame>
   <WinMusic><FILE>U:\gavinhua\ee10b-hw5\music.asm</FILE><LINE>96</LINE></WinMusic>
-  <WinGameWaitSequenceLoop><FILE>U:\gavinhua\ee10b-hw5\game.asm</FILE><LINE>145</LINE></WinGameWaitSequenceLoop>
-  <WinGameEnd><FILE>U:\gavinhua\ee10b-hw5\game.asm</FILE><LINE>156</LINE></WinGameEnd>
-  <ComputeUpperBound><FILE>U:\gavinhua\ee10b-hw5\game.asm</FILE><LINE>166</LINE></ComputeUpperBound>
+  <WinGameWaitSequenceLoop><FILE>U:\gavinhua\ee10b-hw5\game.asm</FILE><LINE>149</LINE></WinGameWaitSequenceLoop>
+  <WinGameEnd><FILE>U:\gavinhua\ee10b-hw5\game.asm</FILE><LINE>160</LINE></WinGameEnd>
+  <ComputeUpperBound><FILE>U:\gavinhua\ee10b-hw5\game.asm</FILE><LINE>170</LINE></ComputeUpperBound>
   <bound_set><FILE>U:\gavinhua\ee10b-hw5\menu.asm</FILE><LINE>6</LINE></bound_set>
-  <ComputeLowerBound><FILE>U:\gavinhua\ee10b-hw5\game.asm</FILE><LINE>173</LINE></ComputeLowerBound>
+  <ComputeLowerBound><FILE>U:\gavinhua\ee10b-hw5\game.asm</FILE><LINE>177</LINE></ComputeLowerBound>
   <DisplayGameState><FILE>U:\gavinhua\ee10b-hw5\gamedisplay.asm</FILE><LINE>3</LINE></DisplayGameState>
   <DisplayBound><FILE>U:\gavinhua\ee10b-hw5\gamedisplay.asm</FILE><LINE>25</LINE></DisplayBound>
   <DisplayTime><FILE>U:\gavinhua\ee10b-hw5\gamedisplay.asm</FILE><LINE>18</LINE></DisplayTime>
-  <DisplayBall><FILE>U:\gavinhua\ee10b-hw5\gamedisplay.asm</FILE><LINE>35</LINE></DisplayBall>
   <DisplayGameStateEnd><FILE>U:\gavinhua\ee10b-hw5\gamedisplay.asm</FILE><LINE>13</LINE></DisplayGameStateEnd>
+  <DisplayBall><FILE>U:\gavinhua\ee10b-hw5\gamedisplay.asm</FILE><LINE>35</LINE></DisplayBall>
   <size_set><FILE>U:\gavinhua\ee10b-hw5\menu.asm</FILE><LINE>9</LINE></size_set>
   <DisplayBallLoopInit><FILE>U:\gavinhua\ee10b-hw5\gamedisplay.asm</FILE><LINE>51</LINE></DisplayBallLoopInit>
   <DisplayBallCapUpperBound><FILE>U:\gavinhua\ee10b-hw5\gamedisplay.asm</FILE><LINE>46</LINE></DisplayBallCapUpperBound>
   <DisplayBallLoop><FILE>U:\gavinhua\ee10b-hw5\gamedisplay.asm</FILE><LINE>55</LINE></DisplayBallLoop>
   <DisplayBallEnd><FILE>U:\gavinhua\ee10b-hw5\gamedisplay.asm</FILE><LINE>64</LINE></DisplayBallEnd>
-  <StartGameTimer><FILE>U:\gavinhua\ee10b-hw5\gametimer.asm</FILE><LINE>142</LINE></StartGameTimer>
-  <StartStatusTimer><FILE>U:\gavinhua\ee10b-hw5\gametimer.asm</FILE><LINE>151</LINE></StartStatusTimer>
-  <StartRandomEventTimer><FILE>U:\gavinhua\ee10b-hw5\gametimer.asm</FILE><LINE>159</LINE></StartRandomEventTimer>
-  <StartSoundTimer><FILE>U:\gavinhua\ee10b-hw5\gametimer.asm</FILE><LINE>167</LINE></StartSoundTimer>
+  <StartGameTimer><FILE>U:\gavinhua\ee10b-hw5\gametimer.asm</FILE><LINE>147</LINE></StartGameTimer>
+  <StartStatusTimer><FILE>U:\gavinhua\ee10b-hw5\gametimer.asm</FILE><LINE>156</LINE></StartStatusTimer>
+  <StartRandomEventTimer><FILE>U:\gavinhua\ee10b-hw5\gametimer.asm</FILE><LINE>164</LINE></StartRandomEventTimer>
+  <StartSoundTimer><FILE>U:\gavinhua\ee10b-hw5\gametimer.asm</FILE><LINE>172</LINE></StartSoundTimer>
   <UpdateGameTimeModeTimed><FILE>U:\gavinhua\ee10b-hw5\gametimer.asm</FILE><LINE>21</LINE></UpdateGameTimeModeTimed>
   <UpdateGameTimeModeInfinite><FILE>U:\gavinhua\ee10b-hw5\gametimer.asm</FILE><LINE>17</LINE></UpdateGameTimeModeInfinite>
   <UpdateGameTimeEnd><FILE>U:\gavinhua\ee10b-hw5\gametimer.asm</FILE><LINE>25</LINE></UpdateGameTimeEnd>
@@ -206,7 +207,6 @@
   <CallLoseGame><FILE>U:\gavinhua\ee10b-hw5\gametimer.asm</FILE><LINE>80</LINE></CallLoseGame>
   <StatusTimerHandlerEnd><FILE>U:\gavinhua\ee10b-hw5\gametimer.asm</FILE><LINE>88</LINE></StatusTimerHandlerEnd>
   <CallWinGame><FILE>U:\gavinhua\ee10b-hw5\gametimer.asm</FILE><LINE>84</LINE></CallWinGame>
-  <RandomEventTimerHandler><FILE>U:\gavinhua\ee10b-hw5\gametimer.asm</FILE><LINE>94</LINE></RandomEventTimerHandler>
   <Random><FILE>U:\gavinhua\ee10b-hw5\random.asm</FILE><LINE>14</LINE></Random>
   <UpdateInvisible><FILE>U:\gavinhua\ee10b-hw5\gametimer.asm</FILE><LINE>97</LINE></UpdateInvisible>
   <lfsr><FILE>U:\gavinhua\ee10b-hw5\random.asm</FILE><LINE>2</LINE></lfsr>
@@ -215,9 +215,9 @@
   <UpdateRandomV><FILE>U:\gavinhua\ee10b-hw5\gametimer.asm</FILE><LINE>115</LINE></UpdateRandomV>
   <ClearInvisible><FILE>U:\gavinhua\ee10b-hw5\gametimer.asm</FILE><LINE>110</LINE></ClearInvisible>
   <random_v_set><FILE>U:\gavinhua\ee10b-hw5\menu.asm</FILE><LINE>7</LINE></random_v_set>
-  <AddRandomV><FILE>U:\gavinhua\ee10b-hw5\gametimer.asm</FILE><LINE>130</LINE></AddRandomV>
-  <NegRandomV><FILE>U:\gavinhua\ee10b-hw5\gametimer.asm</FILE><LINE>127</LINE></NegRandomV>
-  <SpawnRandomEventEnd><FILE>U:\gavinhua\ee10b-hw5\gametimer.asm</FILE><LINE>135</LINE></SpawnRandomEventEnd>
+  <SpawnRandomEventEnd><FILE>U:\gavinhua\ee10b-hw5\gametimer.asm</FILE><LINE>140</LINE></SpawnRandomEventEnd>
+  <AddRandomV><FILE>U:\gavinhua\ee10b-hw5\gametimer.asm</FILE><LINE>131</LINE></AddRandomV>
+  <NegRandomV><FILE>U:\gavinhua\ee10b-hw5\gametimer.asm</FILE><LINE>128</LINE></NegRandomV>
   <IMUWrite><FILE>U:\gavinhua\ee10b-hw5\imu.asm</FILE><LINE>224</LINE></IMUWrite>
   <GetAccelX><FILE>U:\gavinhua\ee10b-hw5\imu.asm</FILE><LINE>82</LINE></GetAccelX>
   <IMURead><FILE>U:\gavinhua\ee10b-hw5\imu.asm</FILE><LINE>184</LINE></IMURead>
