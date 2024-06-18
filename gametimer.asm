@@ -30,6 +30,7 @@ UpdateGameTimeEnd:
 ;-------------------------------------
 
 StatusTimerHandler:
+    rcall   DisplayGameState
 
     rcall   GetAccelY
     neg     r17
@@ -86,7 +87,6 @@ CallWinGame:
 
 StatusTimerHandlerEnd:
     rcall   StartStatusTimer
-    rcall   DisplayGameState
     ret
 
 ;-------------------------------------

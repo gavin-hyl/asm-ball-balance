@@ -7,8 +7,8 @@ DisplayGameState:
     ;lds     r16, is_invisible
 	;cpi     r16, TRUE
 	;breq    DisplayGameStateEnd
-    
     rcall   DisplayBall
+    
 
 DisplayGameStateEnd:
     ret

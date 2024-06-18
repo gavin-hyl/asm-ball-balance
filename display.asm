@@ -85,6 +85,7 @@ display_off_t:          .byte       1
 ; Author:               Gavin Hua
 ; Last Modified:        5/18/2024
 .cseg
+
 InitDisplay:
     clr     r0
     sts     curr_dig, r0

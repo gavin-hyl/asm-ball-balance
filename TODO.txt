@@ -1,2 +1,4 @@
-- play sequence test
-- accel conversion table.
+- play sequence not working
+- end game transition
+- random velocity
+- invisibility

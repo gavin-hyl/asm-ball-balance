@@ -106,6 +106,7 @@ LoseGame:
     ldi     r16, BLINK_TIME
     sts     display_on_t, r16
     sts     display_off_t, r16
+    ; rjmp    LoseGameEnd
 
 LoseGamePlaySequenceLoop:
     ldi     r16, SOUND_TIMER_IDX
@@ -123,8 +124,7 @@ LoseGameEnd:
     sts     display_on_t, r16
     clr     r16
     sts     display_off_t, r16
-    ldi     r16, FALSE
-    sts     in_game, r16
+    rcall   InitGame
     ret
 
 ;-------------------------------------
@@ -136,6 +136,7 @@ WinGame:
     PlaySequence WinMusic
     ldi     r16, WIN
     rcall   DisplayMessage
+    ; rjmp    WinGameEnd
 
 WinGameWaitSequenceLoop:
     ldi     r16, SOUND_TIMER_IDX
@@ -149,9 +150,11 @@ WinGameWaitSequenceLoop:
 
 WinGameEnd:
     rcall   ClearDisplay
+    rcall   InitGame
     ret
 
 
+;--------------------------------------
 ComputeUpperBound:
 	ldi     r16, MIDDLE_LED+1
     lds     r17, bound_set
