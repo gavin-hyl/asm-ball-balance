@@ -104,11 +104,31 @@ Start:                                 ; start the CPU after a reset
 
 ;-------------------------------------------------------------------------------
 
+Start:                                 ; start the CPU after a reset
+    ldi     r16, low(stack_top)        ; initialize the stack pointer
+    out     SPL, r16
+    ldi     r16, high(stack_top)
+    out     SPH, r16
+
+    rcall   InitIO
+    rcall   InitChipTimers
+    rcall   InitSwitch
+    rcall   InitTimers
+    rcall   InitRandom
+    rcall   InitDisplay
+    rcall   InitSound
+    rcall   InitSPI
+    rcall   InitIMU
+    rcall   InitGame
+    rcall   InitGameTimers
+    rcall   InitSettings
+    rcall   Main
+    rjmp    Start                   ; shouldn't return, but if it does, restart
+
 Main:
-    rcall GetAccelY
-    mov r16, r17
-    clr r17
-    rcall DisplayHex
+    ldi r16, TRUE
+    out repeat, r16
+    PlaySequence LoseMusic
     rjmp Main
 
 ;-------------------------------------------------------------------------------

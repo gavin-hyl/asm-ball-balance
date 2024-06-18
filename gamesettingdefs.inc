@@ -7,10 +7,10 @@
 .equ LOSE                       = 0x1f
 .equ BLINK_TIME                 = 127
 
-.equ BALL_POS_FRAC_MAX          = 10      ; decimal system
+.equ BALL_POS_FRAC_MAX          = 20      ; decimal system
 
 .EQU GRAVITY        = 0
-.EQU GRAV_UB        = 4
+.EQU GRAV_UB        = 8
 .EQU GRAV_LB        = 1
 .equ GRAV_INIT      = 1
 

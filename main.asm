@@ -41,6 +41,7 @@
 
 ; vector jump table
 .org    $0000
+
     jmp     Start                   ;reset vector
     jmp     PC                      ;external interrupt 0
     jmp     PC                      ;external interrupt 1
@@ -97,6 +98,11 @@ Start:                                 ; start the CPU after a reset
     rcall   InitGame
     rcall   InitGameTimers
     rcall   InitSettings
+    rcall   InitMusic
+    ; clr     r1
+    ; ldi r16, TRUE
+    ; sts repeat, r16
+    ; PlaySequence GameMusic
     rcall   Main
     rjmp    Start                   ; shouldn't return, but if it does, restart
 
@@ -104,6 +110,15 @@ Start:                                 ; start the CPU after a reset
 ;-------------------------------------------------------------------------------
 
 Main:
+    ; ldi     r16, SOUND_TIMER_IDX
+    ; rcall   DelayNotDone
+    ; brne    Main
+    ; inc     r1
+    ; mov r16, r1
+    ; clr r17
+    ; rcall DisplayHex
+    ; rcall   SoundTimerHandler
+
     lds     r16, in_game
     cpi     r16, TRUE
     breq    CallGameLoop

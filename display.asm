@@ -23,7 +23,7 @@
 MessageTable:
     .db TIMED,          0x00
     .equ PADDING_SIZE = 2 * (PC - MessageTable)
-    .db "tirn"
+    .db "t   "
     .equ MESSAGE_ENTRY_SIZE = 2 * (PC - MessageTable)
     .equ MSG_LENGTH = MESSAGE_ENTRY_SIZE - PADDING_SIZE
     .db INFINITE,       0x00,   " inF"
@@ -33,7 +33,7 @@ MessageTable:
     .db RANDOM_V,       0x00,   "rngu"
     .db TIME_LIM,       0x00,   "t t="
     .db SIZE,           0x00,   "bALL"
-    .db LOSE,           0x00,   "LOSE"
+    .db LOSE,           0x00,   " =( "
     .db WIN,            0x00,   " =) "
     .equ MESSAGE_ENTRIES = (PC - MessageTable) / (MESSAGE_ENTRY_SIZE / 2)
     .db 0x00,           0x00,   " Err"

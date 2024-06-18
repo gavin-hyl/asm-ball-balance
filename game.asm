@@ -35,38 +35,6 @@ InitGame:
     ret
 
 ;-------------------------------------
-GameLoop:
-    rcall  StartPress
-    breq   LoseGame
-
-    ldi     r16, STATUS_TIMER_IDX
-    rcall   DelayNotDone
-	brne    GameCheckGameTimer
-    rcall   StatusTimerHandler
-
-GameCheckGameTimer:
-    ldi     r16, GAME_TIMER_IDX
-    rcall   DelayNotDone
-	brne    GameCheckRandomEventTimer
-    rcall   GameTimerHandler
-
-GameCheckRandomEventTimer:
-    ldi     r16, RANDOM_EVENT_TIMER_IDX
-    rcall   DelayNotDone
-	brne    GameCheckSoundTimer
-    ; rcall   RandomEventTimerHandler
-
-GameCheckSoundTimer:
-    ldi     r16, SOUND_TIMER_IDX
-    rcall   DelayNotDone
-	brne    GameLoopEnd
-    rcall   SoundTimerHandler
-    
-GameLoopEnd:
-    rcall  ClearButtons
-    ret
-
-;-------------------------------------
 StartGame:
     rcall   ClearDisplay
     ldi     r16, TRUE
@@ -90,8 +58,41 @@ StartGame:
     cpse    r16, r18            ; if mode is not infinite
     sts     game_time, r17      ; set game time to timed mode time
 
+    ldi     r16, TRUE
     sts     repeat, r16
     PlaySequence GameMusic   ; play game music on repeat
+    ret
+
+;-------------------------------------
+GameLoop:
+    rcall  StartPress
+    breq   LoseGame
+
+GameCheckSoundTimer:
+    ldi     r16, SOUND_TIMER_IDX
+    rcall   DelayNotDone
+	brne    GameCheckStatusTimer
+    rcall   SoundTimerHandler
+
+GameCheckStatusTimer:
+    ldi     r16, STATUS_TIMER_IDX
+    rcall   DelayNotDone
+	brne    GameCheckGameTimer
+    rcall   StatusTimerHandler
+
+GameCheckGameTimer:
+    ldi     r16, GAME_TIMER_IDX
+    rcall   DelayNotDone
+	brne    GameCheckRandomEventTimer
+    rcall   GameTimerHandler
+
+GameCheckRandomEventTimer:
+    ldi     r16, RANDOM_EVENT_TIMER_IDX
+    rcall   DelayNotDone
+	brne    GameLoopEnd
+    ; rcall   RandomEventTimerHandler
+    
+GameLoopEnd:
     ret
 
 ;-------------------------------------
@@ -124,6 +125,9 @@ LoseGameEnd:
     sts     display_on_t, r16
     clr     r16
     sts     display_off_t, r16
+    ldi     r16, LOSE
+    rcall   DisplayMessage
+    rcall   InitSound
     rcall   InitGame
     ret
 
@@ -142,6 +146,7 @@ WinGameWaitSequenceLoop:
     ldi     r16, SOUND_TIMER_IDX
     rcall   DelayNotDone
     brne    WinGameWaitSequenceLoop
+
     rcall   SoundTimerHandler
     lds     r16, playing_sequence
     cpi     r16, TRUE
@@ -150,6 +155,9 @@ WinGameWaitSequenceLoop:
 
 WinGameEnd:
     rcall   ClearDisplay
+    ldi     r16, WIN
+    rcall   DisplayMessage
+    rcall   InitSound
     rcall   InitGame
     ret
 
