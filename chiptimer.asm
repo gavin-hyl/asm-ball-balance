@@ -25,7 +25,6 @@
 ;				 compare match interrupt occurs, added software timer handler
 ;				 call in that function.
 ;	2024/06/19 - Rename file to chiptimer.asm and upate comments
-;
 ;-------------------------------------------------------------------------------
 
 
