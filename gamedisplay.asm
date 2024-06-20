@@ -1,5 +1,35 @@
 ;-------------------------------------
+;-------------------------------------
 
+
+; DisplayGameState
+;
+; Description:          This procedure calls several other procedures to display
+;                       the game state on the 7-segment display and game LEDs.
+; Operation:            This procedure calls ClearDisplay to clear the 7-segment
+;                       display, DisplayBound to display the upper and lower
+;                       bounds, DisplayTime to display the game time, and
+;                       DisplayBall to display the ball on the game LEDs.
+;
+; Arguments:            None.
+; Return Value:         None.
+;
+; Global Variables:     None.
+; Shared Variables:     
+; Local Variables:      None.
+;
+; Input:                None.
+; Output:               None.
+;
+; Error Handling:       None.
+;
+; Algorithms:           None.
+; Data Structures:      None.
+;
+; Registers Used:       r0, r16, X, Y, SREG
+;
+; Author:               Gavin Hua
+; Last Modified:        2024/06/19
 DisplayGameState:
     rcall   ClearDisplay
     rcall   DisplayBound

@@ -81,6 +81,7 @@
 
 ; main program
 Start:                              ; start the CPU after a reset
+    cli
     ldi     r16, low(stack_top)     ; initialize the stack pointer
     out     SPL, r16
     ldi     r16, high(stack_top)
@@ -96,7 +97,7 @@ Start:                              ; start the CPU after a reset
     rcall   InitSPI
     rcall   InitIMU
     rcall   InitGame
-    rcall   InitGameTimers
+    ; rcall   InitGameTimers
     rcall   InitSettings
     rcall   InitMusic
     sei                             ; enable interrupts after initialization
@@ -134,6 +135,7 @@ stack_top:     .byte   1                  ; top of stack
 
 ;-------------------------------------------------------------------------------
 ; include asm files for the rest of the program
+.include "avr200.asm"
 .include "timer.asm"
 .include "chiptimer.asm"
 .include "display.asm"

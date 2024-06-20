@@ -36,8 +36,6 @@
 ;
 ; Registers changed:    Y.
 ;
-; Stack Depth:          0 bytes.
-;
 ; Author:               Gavin Hua
 ; Last Modified:        5/16/2024
 
@@ -75,8 +73,6 @@
 ; Data Structures:      None.
 ;
 ; Registers changed:    Z.
-;
-; Stack Depth:          0 bytes.
 ;
 ; Author:               Gavin Hua
 ; Last Modified:        5/16/2024

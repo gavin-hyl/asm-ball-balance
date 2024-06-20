@@ -128,7 +128,9 @@ Start:                                 ; start the CPU after a reset
 Main:
     ldi r16, TRUE
     out repeat, r16
-    PlaySequence LoseMusic
+    clr r16
+    wordTabOffsetZ LoseMusic, r16
+    rcall PlaySequence
     rjmp Main
 
 ;-------------------------------------------------------------------------------

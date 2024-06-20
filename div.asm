@@ -1,17 +1,26 @@
 ;-------------------------------------------------------------------------------
-; File:         div.asm
-; Description:  This file contains a function for doing division of 16-bit
-;               unsigned values.
-; Public Functions: Div16    - divide 16-bit unsigned values
+; div.asm
 ;
-; Author:       Glen George
-; Revision History:     4/16/18  Glen George      initial revision
+; Description:
+;   This file contains a function for doing division of 16-bit unsigned values.
+; 
+; Public Functions:
+;   Div16 - divide 16-bit unsigned values
+;   Div16by8 - divide 16-bit by 8-bit unsigned values
+;
+; Author:
+;   Glen George
+;
+; Revision History:
+;   2018/04/16 - Initial revision
+;   2024/06/19 - Update comments
 ;-------------------------------------------------------------------------------
+
+
 
 .cseg
 
-
-; div16
+; Div16
 ;
 ;
 ; Description:  This function divides the 16-bit unsigned value passed in
@@ -52,30 +61,30 @@
 ; Revision History:   4/15/18   Glen George      initial revision
 
 Div16:
-    ldi     r22, 16         ;number of bits to divide into
-    clr     r3              ;clear temporary register (remainder)
+    ldi     r22, 16         ; number of bits to divide into
+    clr     r3              ; clear temporary register (remainder)
     clr     r2
 
-Div16loop:                  ;loop doing the division
-    rol     r16             ;rotate bit into temp (and quotient
+Div16loop:                  ; loop doing the division
+    rol     r16             ; rotate bit into temp (and quotient
     rol     r17             ;   into r17|r16)
     rol     r2
     rol     r3
-    cp      r2, r20         ;check if can subtract divisor
+    cp      r2, r20         ; check if can subtract divisor
     cpc     r3, r21
-    brcs    Div16SkipSub    ;cannot subtract, don't do it
-    sub     r2, r20         ;otherwise subtract the divisor
+    brcs    Div16SkipSub    ; cannot subtract, don't do it
+    sub     r2, r20         ; otherwise subtract the divisor
     sbc     r3, r21
-Div16SkipSub:               ;C = 0 if subtracted, C = 1 if not
-    dec     r22             ;decrement loop counter
-    brne    Div16loop           ;if not done, keep looping
-    rol     r16             ;otherwise shift last quotient bit in
+Div16SkipSub:               ; C = 0 if subtracted, C = 1 if not
+    dec     r22             ; decrement loop counter
+    brne    Div16loop       ; if not done, keep looping
+    rol     r16             ; otherwise shift last quotient bit in
     rol     r17
-    com     r16             ;and invert quotient (carry flag is
+    com     r16             ; and invert quotient (carry flag is
     com     r17             ;   inverse of quotient bit)
-    ;rjmp   enddiv16        ;and done (remainder is in r3|r2)
+    ;rjmp   enddiv16        ; and done (remainder is in r3|r2)
 
-EndDiv16:                   ;all done, just return
+EndDiv16:                   ; all done, just return
     ret
 
 
@@ -121,27 +130,27 @@ EndDiv16:                   ;all done, just return
 ; Revision History:   4/15/18   Glen George      initial revision
 
 Div16by8:
-    ldi     r22, 16                 ;number of bits to divide into
-    clr     r2                      ;clear temporary register (remainder)
+    ldi     r22, 16                 ; number of bits to divide into
+    clr     r2                      ; clear temporary register (remainder)
 
-Div16by8Loop:                       ;loop doing the division
-    rol     r16                     ;rotate bit into temp (and quotient
+Div16by8Loop:                       ; loop doing the division
+    rol     r16                     ; rotate bit into temp (and quotient
     rol     r17                     ;   into R17|R16)
     rol     r2
-    cp      r2, r20                 ;check if can subtract divisor
-    brcs    Div16by8SkipSub         ;cannot subtract, don't do it
-    sub     r2, r20                 ;otherwise subtract the divisor
+    cp      r2, r20                 ; check if can subtract divisor
+    brcs    Div16by8SkipSub         ; cannot subtract, don't do it
+    sub     r2, r20                 ; otherwise subtract the divisor
 
-Div16by8SkipSub:                    ;C = 0 if subtracted, C = 1 if not
-    dec     r22                     ;decrement loop counter
-    brne    Div16by8Loop            ;if not done, keep looping
-    rol     r16                     ;otherwise shift last quotient bit in
+Div16by8SkipSub:                    ; C = 0 if subtracted, C = 1 if not
+    dec     r22                     ; decrement loop counter
+    brne    Div16by8Loop            ; if not done, keep looping
+    rol     r16                     ; otherwise shift last quotient bit in
     rol     r17
-    com     r16                     ;and invert quotient (carry flag is
+    com     r16                     ; and invert quotient (carry flag is
     com     r17                     ;   inverse of quotient bit)
-    ;rjmp   EndDiv16by8             ;and done (remainder is in r2)
+    ;rjmp   EndDiv16by8             ; and done (remainder is in r2)
 
-EndDiv16by8:                        ;all done, just return
+EndDiv16by8:                        ; all done, just return
     ret
 
 

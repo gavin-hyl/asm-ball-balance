@@ -12,7 +12,7 @@
 
 .cseg
 
-; IoInit
+; IOInit
 ;
 ; Description:          This procedure initializes the IO ports for the display,
 ;                       sound, and SPI.

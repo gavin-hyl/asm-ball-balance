@@ -18,6 +18,7 @@ InitMusic:
     sts     note_tick_cnt, r16
     sts     curr_sequence, r16
     sts     curr_sequence+1, r16
+    rcall   StartSoundTimer
     ret
 
 
@@ -71,6 +72,14 @@ SoundTimerHandlerEnd:
 
 
 ;-------------------------------------
+StartSoundTimer:
+    ldi     XL, low(SOUND_TIMER_PERIOD)
+    ldi     XH, high(SOUND_TIMER_PERIOD)
+    ldi     r16, SOUND_TIMER_IDX
+    rcall   StartDelay
+    ret
+
+;-------------------------------------
 
 GetNote:
     lds     r16, curr_note
@@ -90,34 +99,56 @@ GetNote:
     ret
 
 
+;-------------------------------------
+
+PlaySequence:
+    lpm     r16, Z+
+    lsl     r16
+    clr     r17
+    rol     r17
+    rcall   PlayNote
+    lpm     r16, Z
+    sbiw    Z, 1
+    in      r0, SREG
+    cli
+    sts     curr_sequence, ZL
+    sts     curr_sequence+1, ZH
+    sts     note_tick_cnt, r16
+    ldi     r16, TRUE
+    sts     playing_sequence, r16
+    ldi     r16, 0
+    sts     curr_note, r16
+    out     SREG, r0
+    ret
+
+
 ;--------------------------------------
 
 ; divide by 2 to make everything fit in one byte
 WinMusic:
-	.db	261 / 2,	10
-	.db	330 / 2,	10
-	.db	391 / 2,	10
-	.db	330 / 2,	10
-	.db	261 / 2,	10
-    .db    0, 10
-    .db	0x00,	0
+	.db	    261 / 2,    10      ; C
+	.db	    330 / 2,    10      ; E
+	.db	    391 / 2,    10      ; G
+	.db	    330 / 2,    10      ; E
+	.db	    261 / 2,    10      ; C
+    .db     0x00,       10      ; pause
+    .db	    0x00,	    0       ; end
 
 LoseMusic:
-    .db     330 / 2, 10    ; E
-    .db     261 / 2, 10    ; C
-    .db     245 / 2, 10    ; B
-    .db     0, 10
-    .db     0x00,    0     ; end
+    .db     330 / 2,    10      ; E
+    .db     261 / 2,    10      ; C
+    .db     245 / 2,    10      ; B
+    .db     0x00,       10      ; pause
+    .db     0x00,       0       ; end
 
 GameMusic:
-    .db     261 / 2, 5     ; C
-    .db     277 / 2, 5     ; C#
-    .db     293 / 2, 5     ; D
-    .db     311 / 2, 5     ; D#
-    .db     330 / 2, 5     ; E
-    .db     311 / 2, 5     ; D#
-    .db     293 / 2, 5     ; D
-    .db     277 / 2, 5     ; C#
-    .db     0,      10
-    .db     0x00, 0         ; end
-
+    .db     261 / 2,    5       ; C
+    .db     277 / 2,    5       ; C#
+    .db     293 / 2,    5       ; D
+    .db     311 / 2,    5       ; D#
+    .db     330 / 2,    5       ; E
+    .db     311 / 2,    5       ; D#
+    .db     293 / 2,    5       ; D
+    .db     277 / 2,    5       ; C#
+    .db     0,          10      ; pause
+    .db     0x00,       0       ; end
