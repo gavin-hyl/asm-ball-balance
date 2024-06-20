@@ -659,7 +659,7 @@ RandomEventTimerHandlerEnd:
 ;
 ; Description:          This procedure starts the game time timer.
 ; Operation:            This procedure calls StartDelay with the game time timer
-;                       period.
+;                       period and index.
 ;
 ; Arguments:            None.
 ; Return Value:         None.
@@ -696,7 +696,7 @@ StartGameTimer:
 ;
 ; Description:          This procedure starts the status update timer.
 ; Operation:            This procedure calls StartDelay with the status update
-;                       timer period.
+;                       timer period and index.
 ;
 ; Arguments:            None.
 ; Return Value:         None.
@@ -728,12 +728,12 @@ StartStatusTimer:
 
 
 
-;-------------------------------------
+;-------------------------------------------------------------------------------
 ; StartRandomEventTimer
 ;
 ; Description:          This procedure starts the random event timer.
 ; Operation:            This procedure calls StartDelay with the random event
-;                       timer period.
+;                       timer period and index.
 ;
 ; Arguments:            None.
 ; Return Value:         None.
@@ -765,8 +765,43 @@ StartRandomEventTimer:
 
 
 
+;-------------------------------------------------------------------------------
+; StartSoundTimer
+;
+; Description:          This procedure starts the sound timer.
+; Operation:            This procedure calls StartDelay with the sound timer
+;                       period and index.
+;
+; Arguments:            None.
+; Return Value:         None.
+;
+; Global Variables:     None.
+; Shared Variables:     delay_timer - word corresponding to the sound timer is 
+;                                     set to RANDOM_EVENT_TIMER_PERIOD.
+; Local Variables:      None.
+;
+; Input:                None.
+; Output:               None.
+;
+; Error Handling:       None.
+;
+; Algorithms:           None.
+; Data Structures:      None.
+;
+; Registers Used:       r0, r16, X, Y, SREG
+;
+; Author:               Gavin Hua
+; Last Modified:        2024/06/19
 
-;--------------------------------------
+StartSoundTimer:
+    ldi     XL, low(SOUND_TIMER_PERIOD)     ; prepare to start the sound timer
+    ldi     XH, high(SOUND_TIMER_PERIOD)    ; by setting X to its period
+    ldi     r16, SOUND_TIMER_IDX            ; and the timer index its index
+    rcall   StartDelay                      ; start the timer
+    ret                                     ; all done, return
+
+
+;-------------------------------------------------------------------------------
 ; ComputeUpperBound
 ;
 ; Description:          This procedure computes the upper bound of the safe zone

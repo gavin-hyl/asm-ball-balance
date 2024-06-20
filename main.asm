@@ -36,7 +36,6 @@
 .include "generaldefs.inc"
 .include "imudefs.inc"
 .include "iodefs.inc"
-.include "musicdefs.inc"
 .include "randomdefs.inc"
 .include "sounddefs.inc"
 .include "switchdefs.inc"
