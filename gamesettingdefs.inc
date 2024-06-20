@@ -31,7 +31,7 @@
 .EQU GRAVITY                    = 0             ; gravity setting index
 .EQU GRAV_UB                    = 8             ; maximum gravity
 .EQU GRAV_LB                    = 1             ; minimum gravity
-.equ GRAV_INIT                  = GRAV_INIT     ; initial gravity setting        
+.equ GRAV_INIT                  = GRAV_LB       ; initial gravity setting        
 
 .EQU BOUND                      = 2             ; bound setting index
 .EQU BOUND_UB                   = 34            ; maximum bound

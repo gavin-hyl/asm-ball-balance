@@ -148,7 +148,6 @@ stack_top:     .byte   1                  ; top of stack
 .include "div.asm"
 .include "game.asm"
 .include "gamedisplay.asm"
-.include "gametimer.asm"
 .include "imu.asm"
 .include "io.asm"
 .include "menu.asm"
