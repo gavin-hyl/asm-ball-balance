@@ -21,7 +21,7 @@
 ; Revision History: 
 ;	2024/05/18 - Initial Revision
 ;	2024/06/01 - Added InitTimer1
-;	2024/06/15 - Change interrupt handler name to reflect that it is called when
+;	2024/06/14 - Change interrupt handler name to reflect that it is called when
 ;				 compare match interrupt occurs, added software timer handler
 ;				 call in that function.
 ;	2024/06/19 - Rename file to chiptimer.asm and upate comments

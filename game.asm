@@ -24,7 +24,7 @@
 ; 	Gavin Hua
 ;
 ; Revision History: 
-;	2024/06/15 - Initial revision
+;	2024/06/14 - Initial revision
 ;	2024/06/19 - Update comments
 ;-------------------------------------------------------------------------------
 
@@ -131,7 +131,7 @@ InitBallPos:
     sts     ball_pos, r16       ; set ball_pos to START_POS
     sts     ball_pos_frac, r17  ; set ball_pos_frac to 0
     sts     velocity, r17       ; set velocity to 0
-    out     r0                  ; critical code end
+    out     SREG, r0            ; critical code end
     ret                         ; all done, return
 
 
@@ -232,6 +232,7 @@ StartGamePlaySequence:
 ;                       ball_pos_frac - set to 0
 ;                       game_time - set to time_set if mode is TIMED else 0
 ;                       delay_timer - read/write
+;                       start_pressed - read only
 ;
 ; Local Variables:      tmp (r16) - used to hold timer indices
 ; 
@@ -243,7 +244,7 @@ StartGamePlaySequence:
 ; Algorithms:           None.
 ; Data Structures:      None.
 ;
-; Registers Used:       r0, r16, Y, SREG
+; Registers Used:       r0, r16, Y, SREG (possibly more)
 ;
 ; Author:               Gavin Hua
 ; Last Modified:        2024/06/19
@@ -397,8 +398,8 @@ WinGame:
     ldi     r16, FALSE
     sts     in_game, r16            ; set UI to menu
     sts     repeat, r16             ; play WinMusic once
-    clr     r0                      ; prepare to offset the Z pointer
-    wordTabOffsetZ WinMusic, r0     ; point Z to the start of WinMusic
+    clr     r16                      ; prepare to offset the Z pointer
+    wordTabOffsetZ WinMusic, r16     ; point Z to the start of WinMusic
     rcall   PlaySequence            ; play WinMusic
     ldi     r16, WIN
     rcall   DisplayMessage          ; display the win message

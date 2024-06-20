@@ -78,16 +78,7 @@ InitSwitch:
     sts     rot_cnt,   r16
     ldi     r16, ENC_INIT_STATE
     sts     rot_state, r16
-    out     SREG, r0
-    rcall   ClearButtons
-    ret
-
-
-
-ClearButtons:
     ldi     r16, FALSE
-    in		r0, SREG
-    cli
     sts     start_pressed, r16
     sts     mode_pressed, r16
     sts     rot_pressed, r16

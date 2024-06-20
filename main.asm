@@ -7,7 +7,9 @@
 ; Input:            None.
 ; Output:           Music on the speaker, display on the game and 7-segment LEDs,
 ;
-; User Interface:   None.
+; User Interface:   The user can control the menu with the switches, and play
+;                   the game by tilting the game board. Please refer to the
+;                   functional specification for more details.
 ; Error Handling:   None.
 ;
 ; Algorithms:       None.
@@ -16,8 +18,13 @@
 ; Known Bugs:       None.
 ; Limitations:      None.
 ;
-; Revision History: 2024/06/01 - Initial Revision
+; Revision History:
+;   2024/06/01 - initial revision
+;   2024/06/18 - changed main loop structure to call game loop and menu loop
+;   2024/06/19 - added comments
 ;-------------------------------------------------------------------------------
+
+
 
 ; device setup and include files
 .device ATMEGA64
@@ -26,7 +33,6 @@
 .include "chiptimerdefs.inc"
 .include "displaydefs.inc"
 .include "gamesettingdefs.inc"
-.include "gametimerdefs.inc"
 .include "generaldefs.inc"
 .include "imudefs.inc"
 .include "iodefs.inc"
@@ -35,8 +41,10 @@
 .include "sounddefs.inc"
 .include "switchdefs.inc"
 .include "timer.inc"
-
 ;-------------------------------------------------------------------------------
+
+
+
 .cseg
 
 ; vector jump table
@@ -79,6 +87,8 @@
     jmp     PC                      ;store program memory ready
 
 
+
+;-------------------------------------------------------------------------------
 ; main program
 Start:                              ; start the CPU after a reset
     cli
@@ -87,42 +97,40 @@ Start:                              ; start the CPU after a reset
     ldi     r16, high(stack_top)
     out     SPH, r16
 
-    rcall   InitIO
-    rcall   InitChipTimers
-    rcall   InitSwitch
-    rcall   InitTimers
-    rcall   InitRandom
-    rcall   InitDisplay
-    rcall   InitSound
-    rcall   InitSPI
-    rcall   InitIMU
-    rcall   InitGame
-    ; rcall   InitGameTimers
-    rcall   InitSettings
-    rcall   InitMusic
+    rcall   InitIO                  ; initialize the I/O ports
+    rcall   InitChipTimers          ; initialize the IC timers
+    rcall   InitSwitch              ; initialize the switch variables
+    rcall   InitTimers              ; initialize software timers
+    rcall   InitRandom              ; initialize the random number generator
+    rcall   InitDisplay             ; initialize the display variables
+    rcall   InitSound               ; initialize the sound variables
+    rcall   InitSPI                 ; initialize the SPI control register
+    rcall   InitIMU                 ; initialize the IMU control registers
+    rcall   InitGame                ; initialize the game variables
+    rcall   InitSettings            ; initialize the game settings variables
+    rcall   InitMusic               ; initialize the music variables
     sei                             ; enable interrupts after initialization
-    rcall   Main
-    rjmp    Start                   ; if Main returns unexpectedly, restart
-
-
-;-------------------------------------------------------------------------------
+    rjmp    Main                    ; enter the main loop
+    rjmp    Start                   ; if Main exits unexpectedly, restart
 
 Main:
-    lds     r16, in_game
-    cpi     r16, TRUE
-    breq    CallGameLoop
-    ; brne   CallMenuLoop
+    lds     r16, in_game            ; check if in game or menu
+    cpi     r16, TRUE               ; if in game
+    breq    CallGameLoop            ; call the game loop
+    ; brne   CallMenuLoop           ; otherwise call the menu loop
 
 CallMenuLoop:
-    rcall   MenuLoop
-    rjmp    MainEnd
+    rcall   MenuLoop                ; call the menu loop
+    rjmp    MainEnd                 ; and return to the main loop
 
 CallGameLoop:
-    rcall   GameLoop
-    ; rjmp    MainEnd
+    rcall   GameLoop                ; call the game loop
+    ; rjmp    MainEnd               ; and return to the main loop
 
 MainEnd:
-    rjmp    Main
+    rjmp    Main                    ; loop forever
+
+
 
 ;-------------------------------------------------------------------------------
 ; stack space
@@ -135,7 +143,6 @@ stack_top:     .byte   1                  ; top of stack
 
 ;-------------------------------------------------------------------------------
 ; include asm files for the rest of the program
-.include "avr200.asm"
 .include "timer.asm"
 .include "chiptimer.asm"
 .include "display.asm"
@@ -152,3 +159,4 @@ stack_top:     .byte   1                  ; top of stack
 .include "sound.asm"
 .include "spi.asm"
 .include "switch.asm"
+.include "shift16.asm"

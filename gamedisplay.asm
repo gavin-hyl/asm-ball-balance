@@ -146,7 +146,7 @@ DisplayBound:
 
 
 ;-------------------------------------------------------------------------------
-; DisplayBound
+; DisplayBall
 ;
 ; Description:          This procedure displays the ball on the game LEDs.
 ; Operation:            The ball position is loaded from the ball_pos variable

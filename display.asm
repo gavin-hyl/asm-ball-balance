@@ -25,7 +25,7 @@
 ;                   2024/06/12 - Update DisplayGameLED to not handle mode and
 ;                                start buttons, and created specialized routines
 ;                                for them.
-;                   2024/06/15 - Adde DisplayMessage function and MessageTable
+;                   2024/06/14 - Adde DisplayMessage function and MessageTable
 ;                   2024/06/19 - Update comments
 ;-------------------------------------------------------------------------------
 
@@ -33,7 +33,7 @@
 
 .dseg
 
-curr_src_patterns:  .byte   DISP_BUFF_LEN   ; current multiplexing patterns for
+curr_src_patterns:  .byte   DISP_BUF_LEN    ; current multiplexing patterns for
                                             ; for the LED source port. The first
                                             ; 10 bytes are for the game LEDs,
                                             ; and the last 4 bytes are for the
@@ -68,7 +68,7 @@ display_off_t:      .byte   1   ; the time in interrupt ticks that the LEDs
 
 MessageTable:
     ;db     index           padding     message
-    .db     TIMED,          0x00        "t   "
+    .db     TIMED,          0x00,       "t   "
     ; byte size of an entry
     .equ    MESSAGE_ENTRY_SIZE = 2 * (PC - MessageTable)
     .db     INFINITE,       0x00,       " inF"
@@ -211,7 +211,7 @@ InitDisplay:
 ; Last Modified:        2024/06/19
 
 ClearDisplay:
-    ldi     r16, DISP_BUFF_LEN
+    ldi     r16, DISP_BUF_LEN
     byteTabOffsetY  curr_src_patterns, r16  ; Y points to the end of the buffer
     ldi     r17, LED_OFF
 
@@ -289,7 +289,7 @@ DisplayDigit:
 
 IncCurrDig:
     inc     r17                 ; +1 to the buffer position
-    cpi     r17, DISP_BUFF_LEN  ; check whether position >= buffer length
+    cpi     r17, DISP_BUF_LEN  ; check whether position >= buffer length
     brne    StoreBufPos         ; if so, then store the position back
     ; breq  WrapBufPos          ; if not, then wrap the position to 0
 
@@ -342,7 +342,7 @@ DisplayMuxEnd:
 ; Return Value:         None.
 ; 
 ; Global Variables:     None.
-; Shared Variables:     curr_src_patterns - read only
+; Shared Variables:     curr_src_patterns - 7seg region (last 4 bytes) written
 ; Local Variables:      tmp (r19) - SEG_BUF_OFFSET, low nibble of r16, buffer
 ;                                   pattern
 ;                       loop counter (r20)

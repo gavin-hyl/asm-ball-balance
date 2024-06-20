@@ -12,7 +12,7 @@ Problems:
 6. main should include functional specs
 7. valid range of function inputs
 
-8. Source and sink
+8. Source and sink for display
 
 questions:
 1. constant arithmetic??
