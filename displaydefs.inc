@@ -15,9 +15,6 @@
 
 
 
-.equ    LOW_HEX_DIG         = 0x0F  ; mask for low nibble
-.equ    HIGH_HEX_DIG        = 0xF0  ; mask for high nibble
-
 .equ    DISP_BUF_LEN        = 14    ; length of display buffer
 .equ    SEG_BUF_OFFSET      = 10    ; position of 7seg buffer in the main buffer
 .equ    SEG_BUF_LEN         = 4     ; length of the 7-segment buffer
@@ -27,6 +24,8 @@
 .equ    DISP_ON_T_INIT      = 1     ; initial display on time (max 255)
 .equ    DISP_OFF_T_INIT     = 0     ; initial display off time (max 255)
 
+.equ    MIDDLE_LED          = 35
+.equ    START_POS           = MIDDLE_LED
 .equ    MODE_BTN_IDX        = 71    ; index for mode button
 .equ    START_BTN_IDX       = 72    ; index for start button
 

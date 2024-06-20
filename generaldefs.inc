@@ -8,9 +8,12 @@
 ;-------------------------------------------------------------------------------
 
 
-.EQU	TRUE		= 0b00000001    ; boolean true
-.EQU	FALSE   	= 0b00000000    ; boolean false
-.EQU    MOD_8       = 0b00000111    ; and with this constant to perform modulo 8
+.equ	TRUE		= 0b00000001    ; boolean true
+.equ	FALSE   	= 0b00000000    ; boolean false
+.equ    MOD_8       = 0b00000111    ; and with this constant to perform modulo 8
+
+.equ    LOW_HEX_DIG         = 0x0F  ; mask for low nibble
+.equ    HIGH_HEX_DIG        = 0xF0  ; mask for high nibble
 
 
 ; Macro: byteTabOffsetY

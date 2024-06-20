@@ -3,7 +3,7 @@
 ;
 ; Description:
 ;	This file contains the functions to initialize, win, and lose the game, as
-;   well as several utility functions.
+;   well as several utility functions and timer handlers for the game.
 ;
 ; Public Functions:
 ;	InitGame - Initializes the game variables.
@@ -13,6 +13,12 @@
 ;   WinGame - Handles winning a game
 ;   ComputeUpperBound - Returns the upper bound of the safe zone
 ;   ComputeLowerBound - Returns the lower bound of the safe zone
+;   StartGameTimer - Starts the game time timer
+;   StartStatusTimer - Starts the status update timer
+;   StartRandomEventTimer - Starts the random event timer
+;   GameTimerHandler - Handles the game time timer expiration
+;   StatusTimerHandler - Handles the status update timer expiration
+;   RandomEventTimerHandler - Handles the random event timer expiration
 ;
 ; Author:
 ; 	Gavin Hua
@@ -24,13 +30,14 @@
 
 .dseg
 
-ball_pos:       .byte 1     ; integer part of the ball position, from 0-69
-ball_pos_frac:  .byte 1     ; fractional part of the position, from -10 to 10
+ball_pos:       .byte 1     ; integer part of the ball position (0~69 in LEDs)
+ball_pos_frac:  .byte 1     ; fractional part of the position (-10~10 in LEDs)
 velocity:       .byte 1     ; velocity in number of LEDs per second (integer)
                             ; we achieve granularity by using a fractional part
                             ; and expecting position updates at 10 Hz.
-game_time:      .byte 1     ; if mode is TIMED: remaining game time
-                            ; if mode is INFINITE: time elapsed
+game_time:      .byte 1     ; if mode is TIMED: remaining game time in seconds
+                            ; if mode is INFINITE: time elapsed in seconds
+                            ; the maximum time is 255 seconds.
 in_game:        .byte 1     ; if TRUE, call game loop, otherwise call menu loop
 
 

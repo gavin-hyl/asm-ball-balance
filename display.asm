@@ -505,7 +505,7 @@ DisplayMessageEnd:
 ; Algorithms:           None.
 ; Data Structures:      None.
 ;
-; Registers Used:       r16, r17, r18, r19, r20, Y
+; Registers Used:       r16, r17, r18, r19, r20, Y, SREG
 ;
 ; Author:               Gavin Hua
 ; Last Modified:        2024/06/19
