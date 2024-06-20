@@ -21,9 +21,9 @@
 ;     1/31/10  Glen George              added frequency meter updates
 ;     2/3/10   Glen George              updated comments
 ;     8/22/10  Glen George              moved frequency meter checks into
-;					   frequency code
+;					   					frequency code
 ;     7/23/12  Glen George              generalized the functions for use in
-;					   any program
+;					   					any program
 ;     7/28/12  Glen George              updated comments
 ;     9/30/13  Glen George              added inclusion of timer.inc
 

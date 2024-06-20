@@ -13,7 +13,7 @@
 ; Revision History:
 ;     5/18/24  auto-generated           initial revision
 ;     5/18/24  Glen George              added DigitSegTable
-;     5/18/24  Gavin Hua                added PortAPatterns and PortDPatterns
+;     5/18/24  Gavin Hua                added DispSinkPort0Patterns and DispSinkPort1Patterns
 
 
 

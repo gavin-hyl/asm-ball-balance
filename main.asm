@@ -10,7 +10,7 @@
 ; User Interface:   The user can control the menu with the switches, and play
 ;                   the game by tilting the game board. Please refer to the
 ;                   functional specification for more details.
-; Error Handling:   None.
+; Error Handling:   Refer to functional specification.
 ;
 ; Algorithms:       None.
 ; Data Structures:  None.

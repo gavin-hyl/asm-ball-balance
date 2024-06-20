@@ -14,6 +14,5 @@
 
 
 
-
 ;delay timer constants
 .EQU	TIMER_CNT = 5			;number of delay timers

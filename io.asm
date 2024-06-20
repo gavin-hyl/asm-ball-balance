@@ -91,9 +91,9 @@ InitIO:
 
 DisplayIOInit:
     ldi	    r16, OUTDATA            ; load all outputs into r16
-    out     DISP_SRC_PORT0_DDR, r16 ; set source port as output
-    out	    DISP_SRC_PORT1_DDR, r16 ; set source port as output
-    out     DISP_SINK_PORT_DDR, r16 ; set sink port as output
+    out     DISP_SINK_PORT0_DDR, r16 ; set source port as output
+    out	    DISP_SINK_PORT1_DDR, r16 ; set source port as output
+    out     DISP_SRC_PORT_DDR, r16 ; set sink port as output
     ret
 
 

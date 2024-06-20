@@ -6,8 +6,8 @@
 ;
 ; Tables:
 ;   MessageTable - a lookup table relating message ids to ASCII messages
-;   PortAPatters - a lookup table relating buffer position to port A output
-;   PortDPatters - a lookup table relating buffer position to port D output
+;   DispSinkPort0Patterns - a lookup table relating buffer position to sink0 output
+;   DispSinkPort1Patterns - a lookup table relating buffer position to sink1 output
 ;
 ; Public Functions:
 ;   DisplayInit - initializes the display
@@ -86,10 +86,10 @@ MessageTable:
 
 
 ;-------------------------------------------------------------------------------
-; PortAPatterns
+; DispSinkPort0Patterns
 ;
-; Description:      This is the segment pattern table for the Port A, for the 
-;                   7-segment display and the game LEDs.
+; Description:      This is the segment pattern table for the Port A (sink 0),
+;                   for the 7-segment display and the game LEDs.
 ;
 ; Notes:            READ ONLY tables should always be in the code segment so
 ;                   that in a standalone system it will be located in the
@@ -98,7 +98,7 @@ MessageTable:
 ; Author:           Gavin Hua
 ; Last Modified:    2024/05/18
 
-PortAPatterns:
+DispSinkPort0Patterns:
 	.db	0b00000001, 0b00000010
 	.db	0b00000100, 0b00001000
 	.db	0b00010000, 0b00100000
@@ -110,10 +110,10 @@ PortAPatterns:
 
 
 ;-------------------------------------------------------------------------------
-; PortDPatterns
+; DispSinkPort1Patterns
 ;
-; Description:      This is the segment pattern table for the Port D, for the 
-;                   7-segment display and the game LEDs.
+; Description:      This is the segment pattern table for the Port D (sink 1)
+;                   for the 7-segment display and the game LEDs.
 ;
 ; Notes:            READ ONLY tables should always be in the code segment so
 ;                   that in a standalone system it will be located in the
@@ -122,7 +122,7 @@ PortAPatterns:
 ; Author:           Gavin Hua
 ; Last Modified:    2024/05/18
 
-PortDPatterns:
+DispSinkPort1Patterns:
 	.db	0b00000000, 0b00000000
 	.db	0b00000000, 0b00000000
 	.db	0b00000000, 0b00000000
@@ -262,8 +262,8 @@ ClearDisplayEnd:
 DisplayMux:
 
     ldi     r16, LED_OFF        ; turn off all LEDs
-    out     PORTA, r16          ; by turning off both sink ports
-    out     PORTD, r16
+    out     DISP_SINK_PORT0, r16          ; by turning off both sink ports
+    out     DISP_SINK_PORT1, r16
 
     lds     r16, blink_dim_cnt
     lds     r17, display_on_t
@@ -276,15 +276,15 @@ DisplayDigit:
 
     byteTabOffsetY  curr_src_patterns, r17  ; Y points to source pattern to load
     ld      r18, Y
-    out     PORTC, r18          ; load the pattern into the source port
+    out     DISP_SRC_PORT, r18          ; load the pattern into the source port
 
-    wordTabOffsetZ  PortAPatterns, r17  ; Z points to sink 0 patternt to load
+    wordTabOffsetZ  DispSinkPort0Patterns, r17  ; Z points to sink 0 patternt to load
     lpm     r18, Z
-    out     PORTA, r18          ; load the pattern into the sink port 0
+    out     DISP_SINK_PORT0, r18          ; load the pattern into the sink port 0
 
-    wordTabOffsetZ  PortDPatterns, r17  ; Z points to sink 1 patternt to load
+    wordTabOffsetZ  DispSinkPort1Patterns, r17  ; Z points to sink 1 patternt to load
     lpm     r18, Z
-    out     PORTD, r18          ; load the pattern into the sink port 1
+    out     DISP_SINK_PORT1, r18          ; load the pattern into the sink port 1
     ; rjmp  IncCurrDig
 
 IncCurrDig:

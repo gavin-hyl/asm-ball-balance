@@ -14,18 +14,17 @@
 
 
 
-
 ; I/O port data direction register definitions
 .equ	OUTDATA		        = 0b11111111    ; all pins are output
 .equ    INDATA		        = 0b00000000    ; all pins are input
 
 ; display definitions
-.equ    DISP_SINK_PORT_DDR  = DDRC  
-.equ    DISP_SRC_PORT0_DDR  = DDRA
-.equ    DISP_SRC_PORT1_DDR  = DDRD
-.equ    DISP_SINK_PORT      = PORTC
-.equ    DISP_SRC_PORT0      = PORTA
-.equ    DISP_SRC_PORT1      = PORTD
+.equ    DISP_SRC_PORT_DDR   = DDRC  
+.equ    DISP_SINK_PORT0_DDR = DDRA
+.equ    DISP_SINK_PORT1_DDR = DDRD
+.equ    DISP_SRC_PORT       = PORTC
+.equ    DISP_SINK_PORT0     = PORTA
+.equ    DISP_SINK_PORT1     = PORTD
 
 ; Speaker definitions
 .equ    SPEAKER_PORT        = PORTB         ; port where the speaker is on
