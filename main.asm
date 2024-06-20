@@ -80,8 +80,8 @@
 
 
 ; main program
-Start:                                 ; start the CPU after a reset
-    ldi     r16, low(stack_top)        ; initialize the stack pointer
+Start:                              ; start the CPU after a reset
+    ldi     r16, low(stack_top)     ; initialize the stack pointer
     out     SPL, r16
     ldi     r16, high(stack_top)
     out     SPH, r16
@@ -99,8 +99,9 @@ Start:                                 ; start the CPU after a reset
     rcall   InitGameTimers
     rcall   InitSettings
     rcall   InitMusic
+    sei                             ; enable interrupts after initialization
     rcall   Main
-    rjmp    Start                   ; shouldn't return, but if it does, restart
+    rjmp    Start                   ; if Main returns unexpectedly, restart
 
 
 ;-------------------------------------------------------------------------------

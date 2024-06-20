@@ -25,3 +25,5 @@
 .equ    GAME_LED_IDX_MAX    = 70    ; maximum game LED index
 .equ    LED_IDX_MAX         = 72    ; maximum game LED index
 .equ    LED_IDX_MIN         = 0     ; minimum game LED index x >= 0
+
+.equ    LED_MASK_IDX_0      = 0b10000000

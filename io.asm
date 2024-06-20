@@ -43,7 +43,6 @@
 ; Last Modified:        2024/06/01
 
 InitIO:
-    sei
     rcall   DisplayIOInit
     rcall   SoundIOInit
     rcall   SPIIOInit
@@ -115,9 +114,7 @@ DisplayIOInit:
 ; Last Modified:        5/16/2024
 
 SoundIOInit:
-    in      r16, SPEAKER_PORT_DDR
-    ori     r16, (1 << SPEAKER_PIN)
-    out     SPEAKER_PORT_DDR, r16
+    sbi     SPEAKER_PORT, SPEAKER_PIN
     ret
 
 

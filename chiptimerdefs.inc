@@ -13,5 +13,5 @@
 .equ    TIMER_CLK_1       = 0b00000001	;timer runs at CLK
 .equ    TIMER_CLK_8       = 0b00000010	;timer runs at CLK/8
 .equ    TIMER_CLK_64      = 0b00000011	;timer runs at CLK/64
-.equ    TIMER_CLK_255     = 0b00000100	;timer runs at CLK/256
+.equ    TIMER_CLK_256     = 0b00000100	;timer runs at CLK/256
 .equ    TIMER_CLK_1024    = 0b00000101	;timer runs at CLK/1024

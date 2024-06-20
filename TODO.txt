@@ -1,4 +1,16 @@
-- play sequence not working
-- end game transition
-- random velocity
-- invisibility
+Problems:
+1. file headers need more detail
+    - revision history
+    - list functions
+    - local functions as well
+2. function headers
+    - is called vs. expected to be called
+    - list actual variables
+3. inline comments!
+4. no code duplication
+5. remove stack depth
+6. main should include functional specs
+7. valid range of function inputs
+
+questions:
+1. constant arithmetic??

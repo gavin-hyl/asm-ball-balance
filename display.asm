@@ -37,11 +37,53 @@ MessageTable:
     .equ MESSAGE_ENTRIES = (PC - MessageTable) / (MESSAGE_ENTRY_SIZE / 2)
     .db 0x00,           0x00,   " Err"
 
+
+; PortAPatterns
+;
+; Description:      This is the segment pattern table for the Port A, for the 
+;                   7-segment display and the game LEDs.
+;
+; Notes:            READ ONLY tables should always be in the code segment so
+;                   that in a standalone system it will be located in the
+;                   ROM with the code.
+;
+; Author:           Gavin Hua
+; Last Modified:    5/18/2024
+PortAPatterns:
+	.db	0b00000001, 0b00000010
+	.db	0b00000100, 0b00001000
+	.db	0b00010000, 0b00100000
+	.db	0b01000000, 0b00000000
+	.db	0b00000000, 0b00000000
+	.db	0b00000000, 0b00000000
+	.db	0b00000000, 0b00000000
+
+
+; PortDPatterns
+;
+; Description:      This is the segment pattern table for the Port D, for the 
+;                   7-segment display and the game LEDs.
+;
+; Notes:            READ ONLY tables should always be in the code segment so
+;                   that in a standalone system it will be located in the
+;                   ROM with the code.
+;
+; Author:           Gavin Hua
+; Last Modified:    5/18/2024
+PortDPatterns:
+	.db	0b00000000, 0b00000000
+	.db	0b00000000, 0b00000000
+	.db	0b00000000, 0b00000000
+	.db	0b00000000, 0b00000010
+	.db	0b00000001, 0b00000100
+	.db	0b00001000, 0b00010000
+	.db	0b00100000, 0b01000000
+
 ;-------------------------------------------------------------------------------
 
 .dseg
 
-curr_c_patterns:        .byte       DISP_BUFF_LEN
+curr_src_patterns:      .byte       DISP_BUFF_LEN
 curr_dig:               .byte       1
 curr_dig_pattern:       .byte       1
 curr_msg:               .byte       MSG_LENGTH
@@ -63,7 +105,7 @@ display_off_t:          .byte       1
 ; Return Value:         None.
 ; 
 ; Global Variables:     None.
-; Shared Variables:     curr_c_patterns   - a table of port C patterns
+; Shared Variables:     curr_src_patterns   - a table of port C patterns
 ;                       curr_dig             - current digit to display
 ;                       curr_dig_pattern      - current digit pattern to display
 ;                       blink_dim_cnt         - for blinking/dimming the display
@@ -123,7 +165,7 @@ SolidDisplay:
 ; Return Value:         None.
 ; 
 ; Global Variables:     None.
-; Shared Variables:     curr_c_patterns     - a table of current digit patterns
+; Shared Variables:     curr_src_patterns     - a table of current digit patterns
 ; Local Variables:      loop counter (r16)
 ;                       LED_OFF holder (r17)
 ; 
@@ -142,7 +184,7 @@ SolidDisplay:
 
 ClearDisplay:
     ldi     r16, DISP_BUFF_LEN
-    byteTabOffsetY  curr_c_patterns, r16
+    byteTabOffsetY  curr_src_patterns, r16
     ldi     r17, LED_OFF
 
 ClearDisplayLoop:
@@ -169,7 +211,7 @@ ClearDisplayEnd:
 ; Return Value:         None.
 ; 
 ; Global Variables:     None.
-; Shared Variables:     curr_c_patterns   - a table of port C patterns
+; Shared Variables:     curr_src_patterns   - a table of port C patterns
 ;                       curr_dig             - current digit to display
 ;                       curr_dig_pattern      - current digit pattern to display
 ;                       blink_dim_cnt         - for blinking/dimming the display
@@ -207,7 +249,7 @@ DisplayMux:
 DisplayDigit:
     lds     r17, curr_dig
 
-    byteTabOffsetY  curr_c_patterns, r17
+    byteTabOffsetY  curr_src_patterns, r17
     ld      r18, Y
     out     PORTC, r18
 
@@ -265,7 +307,7 @@ DisplayMuxEnd:
 ; Return Value:         None.
 ; 
 ; Global Variables:     None.
-; Shared Variables:     curr_c_patterns   - a table of port C patterns
+; Shared Variables:     curr_src_patterns   - a table of port C patterns
 ; Local Variables:      n (r17|r16)
 ;                       temp digit holder (r18)
 ;                       loop counter (r19)
@@ -288,34 +330,21 @@ DisplayMuxEnd:
 ; Last Modified:        5/18/2024
 
 DisplayHex:
+    ldi     r18, DISP_BUFF_LEN-SEG_BUF_OFFSET
     ldi     r19, SEG_BUF_OFFSET
-    mov     r18, r16
-    andi    r18, LOW_HEX_DIG        ; low digit of r16
-    rcall   LoadHexDigit
+    byteTabOffsetY  curr_src_patterns, r19
 
-    inc     r19
-    mov     r18, r16
-    swap    r18
-    andi    r18, LOW_HEX_DIG
-    rcall   LoadHexDigit
+DisplayHexLoop:
+    mov     r19, r16
+    andi    r19, LOW_HEX_DIG
+    wordTabOffsetZ  DigitSegTable, r19
+    lpm     r19, Z
+    st      Y+, r19
+    dec     r18
+    rcall   Shift16Right
+    breq    DisplayHexEnd
 
-    inc     r19
-    mov     r18, r17
-    andi    r18, LOW_HEX_DIG
-    rcall   LoadHexDigit
-
-    inc     r19
-    mov     r18, r17
-    swap    r18
-    andi    r18, LOW_HEX_DIG       ; high digit of r17
-    rcall   LoadHexDigit
-    ret
-
-LoadHexDigit:
-    wordTabOffsetZ  DigitSegTable, r18
-    lpm     r20, Z
-    byteTabOffsetY  curr_c_patterns, r19
-    st      Y, r20
+DisplayHexEnd:
     ret
 
 
@@ -356,7 +385,7 @@ DisplayMessageLoadDisplayBufferInit:
     ldi     XL, low(curr_msg)
     ldi     XH, high(curr_msg)
     ldi     r16, SEG_BUF_OFFSET
-    byteTabOffsetY curr_c_patterns, r16
+    byteTabOffsetY curr_src_patterns, r16
     ldi     r17, MSG_LENGTH
 
 DisplayMessageLoadDisplayBufferLoop:
@@ -377,7 +406,7 @@ DisplayMessageEnd:
 ; 
 ; Description:          This procedure controls the status of an individual LED in
 ;                       the game board LEDs.
-; Operation:            This procedure will set one bit in curr_c_patterns to
+; Operation:            This procedure will set one bit in curr_src_patterns to
 ;                       either 1 or 0. If the provided LED number is out of range,
 ;                       the procedure will return without doing anything.
 ; 
@@ -390,7 +419,7 @@ DisplayMessageEnd:
 ; Return Value:         None.
 ; 
 ; Global Variables:     None.
-; Shared Variables:     curr_c_patterns   - a table of port C patterns
+; Shared Variables:     curr_src_patterns   - a table of port C patterns
 ; Local Variables:      None.
 ; 
 ; Input:                None.
@@ -424,7 +453,7 @@ DisplayGameLED:
     andi    r18, MOD_8
 
 CreateLEDMaskInit:
-    ldi     r19, 0b10000000
+    ldi     r19, LED_MASK_IDX_0
 
 CreateLEDMaskLoop:
     cpi     r18, 0
@@ -440,7 +469,7 @@ CreatePatternIndex: ; r16 / 8
     ; rjmp CheckSetStatus
 
 CheckSetStatus:
-    byteTabOffsetY  curr_c_patterns, r16
+    byteTabOffsetY  curr_src_patterns, r16
     ld      r20, Y      ; prepare to set or clear the bit
     cpi    r17, FALSE
     breq   DisplayGameLEDClear

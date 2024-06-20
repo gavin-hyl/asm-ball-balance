@@ -82,11 +82,10 @@ InitSound:
 ; Last Modified:        2024/06/01
 
 PlayNote:
-    cpi     r17, high(FREQ_OFF)
+    mov     r20, r16
+    or      r20, r17
     brne    ComputeCompareValue    ; f > 0 Hz, compute compare value
-    cpi     r16, low(FREQ_OFF)
-    brne    ComputeCompareValue    ; f > 0 Hz, compute compare value
-    ; breq Mute                 ; f = 0 Hz, turn off speaker
+    ; breq Mute                     ; f = 0 Hz, turn off speaker
 
 Mute:
     cbi     SPEAKER_PORT_DDR, SPEAKER_PIN            ; disable speaker
