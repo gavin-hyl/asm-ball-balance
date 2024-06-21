@@ -79,7 +79,6 @@ mode:		    .byte   1   ; current mode index
 ;                       rot_pressed - read only
 ;                       start_pressed - read only
 ;                       mode_pressed - read only
-;
 ; Local Variables:      tmp (r16) - used to hold timer indices
 ; 
 ; Input:                None.

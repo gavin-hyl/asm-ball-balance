@@ -303,8 +303,7 @@ GameLoopEnd:
 ;                       ball_pos - set to START_POS
 ;                       ball_pos_frac - set to 0
 ;                       velocity - set to 0
-;
-; Local Variables:      
+; Local Variables:      None.
 ; 
 ; Input:                None.
 ; Output:               None.
@@ -377,8 +376,7 @@ LoseGameEnd:
 ;                       ball_pos - set to START_POS
 ;                       ball_pos_frac - set to 0
 ;                       velocity - set to 0
-;
-; Local Variables:      
+; Local Variables:      None.
 ; 
 ; Input:                None.
 ; Output:               None.
@@ -441,7 +439,7 @@ WinGameEnd:
 ;                       mode - read only
 ;                       delay_timer - word corresponding to the game time timer
 ;                                     is set to GAME_TIMER_PERIOD
-; Local Variables:      
+; Local Variables:      game_time (r16) - used to manipulate the game time
 ; 
 ; Input:                None.
 ; Output:               None.
