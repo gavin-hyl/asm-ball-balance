@@ -24,8 +24,8 @@
 .equ    DISP_ON_T_INIT      = 1     ; initial display on time (max 255)
 .equ    DISP_OFF_T_INIT     = 0     ; initial display off time (max 255)
 
-.equ    MIDDLE_LED          = 35
-.equ    START_POS           = MIDDLE_LED
+.equ    MIDDLE_LED          = 35    ; middle LED index
+.equ    START_POS           = MIDDLE_LED    ; starting position for the ball
 .equ    MODE_BTN_IDX        = 71    ; index for mode button
 .equ    START_BTN_IDX       = 72    ; index for start button
 

@@ -12,9 +12,9 @@
 ;   Gavin Hua
 ;
 ; Revision History:
-;   5/16/2024 - Initial revision
-;   6/01/2024 - Add general macros
-;   6/19/2024 - Update comments
+;   2024/05/16 - Initial revision
+;   2024/06/01 - Add general macros
+;   2024/06/19 - Update comments
 ;-------------------------------------------------------------------------------
 
 

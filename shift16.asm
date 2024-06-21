@@ -39,7 +39,7 @@
 ; Algorithms:           None.
 ; Data Structures:      None.
 ;
-; Registers Used:       r16, r17
+; Registers Used:       r16, r17, r18
 ;
 ; Author:               Gavin Hua
 ; Last Modified:        2024/06/17

@@ -1,9 +1,10 @@
 \documentclass[12pt]{article}
-\usepackage{amsmath, amsfonts, amssymb, amstext, amscd, amsthm, float, fullpage, graphicx, mathpazo, makeidx, hyperref, siunitx, subfloat, url}
+\usepackage{amsmath, amsfonts, amssymb, amstext, amscd, amsthm, float, fullpage, graphicx, mathpazo, makeidx, hyperref, siunitx, subfloat, tabularx, url}
 \usepackage[shortlabels]{enumitem}
 
 % chktex-file 1
 % chktex-file 3
+% chktex-file 44
 
 \newcounter{problemcounter}
 \newcommand*{\showcounter}{\stepcounter{problemcounter}\theproblemcounter}
@@ -15,7 +16,91 @@
 \begin{document}
 \maketitle
 
-\problem
+\subsubsection*{Description}
+The system is a ball balancer game with adjustable settings. The goal of the 
+game is to balance a ``ball,'' represented by lighting up a group of a 
+horizontal array of LEDs, in a region of the LEDs. That range may be set by the
+user. There are $70$ LEDs to display the position of the ball; one START button
+to start the game; one MODE button to change the game mode; one 4-digit 
+7-segment display to display the current time and the current setting's value,
+one rotary encoder/pushbutton to adjust settings, which include the the range of
+the region where the ball should be balanced, the starting position of the ball,
+the size of the ball, gravity strength, and the magnitude of random fluctuations
+in the ball's velocity. The system also includes a speaker for playing music and
+an IMU for detecting the board's attitude. The game displays a smile face and plays an upbeat tune
+when the user wins the game, plays sad tune and displays a sad face on a buzzer
+when the user losses, plays tense tune and displays game time, and the user can reset the game at any time by pressing
+the START button. The game can be in two modes: indefinite balancing and
+countdown mode. In indefinite balancing mode, the user tries to balance the ball
+for as long as possible. In countdown mode, the user tries to balance the ball
+for a set amount of time, which is adjustable by the user.
 
+\subsubsection*{Global Variables}
+There is one global variable, which is InGame, which determines whether the user
+is in the game or menu UI.
+
+However, the game's settings can be accessed by both the menu and the game code.
+They are as follows.
+
+\begin{center}
+    \begin{tabularx}{\textwidth}{|l|l|X|}
+        \hline Variable Name & Type & Meaning \\
+        \hline random velocity & integer & The magnitude of random fluctuations in the ball's velocity in LEDs/second, default 0, min 0, max 8. \\
+        \hline bound & integer & The half width of the region where the ball should be balanced in LEDs, default 34, min 10, max 34. \\
+        \hline time set & integer & The game time in the timed game mode in seconds, default 10, min 1, max 255. \\
+        \hline ball size & integer & The ball's radius on the display in LEDs, default 1, min 1, max 3. \\
+        \hline gravity strength & integer & The strength of gravity in LEDs/second/second, default 1, min 1, max 8. \\
+        \hline game mode & boolean & The current game mode, true for indefinite balancing, false for countdown mode.\\ \hline
+    \end{tabularx}
+\end{center}
+
+\subsubsection*{Inputs}
+Inputs are through the rotary encoder, push-buttons, and the IMU readings based on the user's tilt.
+\begin{center}
+\begin{tabularx}{\textwidth}{|l|l|X|}
+    \hline Name & Type & Description \\
+    \hline Setting select & push-button (1 bit) & Selects the setting to be adjusted. In menu UI, cycles through the settings in the order gravity-bound-size-random v-time limit-gravity. In game UI, does nothing.\\
+    \hline Value Select & rotary encoder (2 bits) & Adjusts the game setting depending on the current selected game setting, in menu UI. In game UI, does nothing.\\
+    \hline Board Tilt (y-axis) & IMU readings (16 bit) & In menu UI, does nothing. In game UI, adjusts the ball's acceleration based on the tilt of the board. Note that the tilt is measured on an axis parallel to the game LEDs.\\
+    \hline Start/End Game & push-button (1 bit) & Starts (in settings) or loses (in game) the game. \\
+    \hline Change Mode & push-button (1 bit) & Changes between indefinite balancing and countdown mode. This input is disabled in the game mode, and enabled in the settings mode, as described in the User Interface section. \\
+    \hline
+\end{tabularx}
+\end{center}
+
+\subsubsection*{Outputs}
+The outputs are through the $70$ LEDs, the 4-digit 7-segment display, and the buzzer. The LED array displays the current ball position with a group of lit-up LEDs. The 4-digit 7-segment display displays the remaining time (for countdown mode), time elapsed (for indefinite mode), the current setting, or the current setting's value. The buzzer plays a happy tune when the user wins the game and a sad tune when the user loses the game, and a tense tune when the user is in the game.
+
+\subsubsection*{User Interface}
+The game system can be in two modes: the settings mode and the game mode. In the settings mode, the IMU is disabled, and the 7-seg initially displays the current setting, ``g'' (right-padded) for gravity. By pressing the Mode button once, the 7-seg displays the other game mode (we initialized to timed, so it is indefinite), ``inf'' (left padded) for indefinite balancing. Pressing the Mode button more times would cause the game mode to switch between the two, which determines which game mode the system will enter if Start is pressed. The user can adjust the settings using the rotary encoder and push-buttons. The user can cycle through the settings (gravity-bound-size-random v-time limit, in order) using the settings select button (rotary encoder push). Every time the button is pressed, the setting's abbreviation (``g='', ``EdgE'', ``bALL'', ``rng='', ``t='', in order, right-padded with spaces) is displayed on the 7-seg.
+The value for the settings is displayed when the user turns the rotary encoder CW or CCW, which increments/decrements the setting respectively. 
+
+The value can then be changed using the rotary encoder. The gravity value ranges from 1 to 8, and determines the ball's acceleration for a given tilt. It will be displayed on the 7-segment when changed. The bound value ranges from 10 to 34, and determines the half width of the region where the ball should be balanced. The LEDs corresponding to the bounds will be lit when changing this value. The size value ranges from 1 to 3, and determines the ball's radius on the display. A example ball will be lit, centered at index 34 of the game LEDs, when this setting changes. The random velocity value ranges from 0 to 8, and determines the magnitude of random fluctuations in the ball's velocity. It will be displayed on the 7-segment when changed. The time limit value ranges from 1 to 255, which determines how long the user will have to balance the ball before they win the game in the timed mode. It will be displayed on the 7-segment when changed. Every change to a setting will clear the previous display.
+
+Auto-repeat is enabled for all buttons, and its period is 0.25 s.
+
+Attempts to exceed maximum or minimum values will be capped at the limit values. At any time in the settings mode, pressing the Setting Select button would display the next setting's abbreviation, and allow the user to edit the next setting's value. Pressing the Mode button will display the opposite game mode on the 7-seg; pressing Settings Select will return the user to the next setting in the cycle and display its abbreviation on the 7-segment display.
+
+At any time, the user may press Start to start the game. If a game has already started, the game enters the lose sequence described below. All inputs except for the tilt and the Start button are disabled in this mode. The game will display the ball at the starting position, and the user must control the tilt of the board to balance the ball in the array of LEDs. If the user tilts the board to the right, the ball's position will move towards the right, with a speed that is positively correlated with the tilt angle; the same description applies to left tilts. With gravity = 1, the maximum acceleration magnitude is 4, but it is multiplied by the gravity setting (e.g., with gravity = 5, IMU reading = 3, the resulting acceleration would be 15 LEDs / second / second). If the ball reaches either the left or right boundary as specified in the settings, then the user loses the game. In indefinite mode, the 7-seg will display the time that has elapsed in seconds, which will wrap at 255 (00FF). The user cannot win in this game mode. In countdown mode, the 7-seg will display the time that is remaining in seconds before the user wins the game. If the time elapsed, then the user wins the game. Its initial value is set by game time. At the same time, background music will be playing from the speaker. Every second, the ball will receive a random velocity update in the range of $[-\text{random velocity}, \text{random velocity}]$.
+
+Both the win sequence and the lose sequence consist of clearing the display first. The win sequence then consists of playing the win music and displaying a smiley face on the 7-seg. The lose sequence then consists of playing the lose music, displaying a sad face on the 7-seg, and flashing the 7-segment display. The game will then return to menu UI, where the user can adjust the settings and start a new game. The previous settings are preserved.
+
+\subsubsection*{Error Handling}
+If there is a power failure the game resets to its initial state, with default settings, in settings mode. If the user tries to adjust the settings beyond the maximum or minimum values, the settings will clip to the maximum or minimum values. If the user tries to interact with any disabled inputs, the action will be ignored. 
+
+\subsubsection*{Algorithms}
+Restoring division, 8-bit signed division, fast 16-bit right-shifting by 4 bits, LFSR for random number generation, and a polled main loop.
+
+\subsubsection*{Data Structures}
+There will be a length $14$ buffer for the 7-segment and game LED display. There will be tables to store the game settings transition, setting increment/decrement handling functions, port patterns for displays, and game music.
+
+\subsubsection*{Limitations}
+None.
+
+\subsubsection*{Known Bugs}
+None.
+
+\subsubsection*{Special Notes}
+None.
 
 \end{document}

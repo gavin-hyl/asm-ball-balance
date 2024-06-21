@@ -46,10 +46,10 @@
 ; Algorithms:           None.
 ; Data Structures:      None.
 ;
-; Registers Used:       r16, r17
+; Registers Used:       r16, r17, SREG
 ;
 ; Author:               Gavin Hua
-; Last Modified:        6/01/2024
+; Last Modified:        2024/06/01
 
 InitIMU:
     ldi     r17, IMU_CONFIG_RESET   ; the same reset value for all three
@@ -189,7 +189,6 @@ GetAccelZ:
 ; Data Structures:      None.
 ;
 ; Registers Used:       r16, SREG
-; Stack Depth:          0
 ;
 ; Author:               Gavin Hua
 ; Last Modified:        2024/06/19
@@ -230,7 +229,7 @@ IMURead:
 ; Algorithms:           None.
 ; Data Structures:      None.
 ;
-; Registers Used:       r16, SREG
+; Registers Used:       r16, r17, SREG
 ;
 ; Author:               Gavin Hua
 ; Last Modified:        2024/06/19

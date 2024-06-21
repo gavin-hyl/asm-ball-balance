@@ -59,8 +59,8 @@
 ; Last Modified:        2024/06/19
 
 InitChipTimers:
-	rcall 	InitTimer0	; initialize timer 0 (r16 changed)
-	rcall 	InitTimer1 	; initialize timer 1 (r16 changed)
+	rcall 	InitTimer0	; initialize timer 0
+	rcall 	InitTimer1 	; initialize timer 1
 	ret
 
 
@@ -92,8 +92,6 @@ InitChipTimers:
 ; Data Structures:      None.
 ;
 ; Registers changed:    r16.
-;
-; Stack Depth:          0 bytes.
 ;
 ; Author:               Gavin Hua
 ; Last Modified:        2024/06/19

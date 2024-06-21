@@ -481,7 +481,7 @@ DecGravity:
 ; Algorithms:           None.
 ; Data Structures:      None.
 ;
-; Registers changed:    r16, r17, r18, r19, r20, Y, SREG
+; Registers changed:    r16, r17, r18, r19, r20, Y, Z, SREG
 ;
 ; Author:               Gavin Hua
 ; Last Modified:        2024/06/17

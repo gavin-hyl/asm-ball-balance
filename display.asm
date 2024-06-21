@@ -6,8 +6,8 @@
 ;
 ; Tables:
 ;   MessageTable - a lookup table relating message ids to ASCII messages
-;   DispSinkPort0Patterns - a lookup table relating buffer position to sink0 output
-;   DispSinkPort1Patterns - a lookup table relating buffer position to sink1 output
+;   DispSinkPort0Patterns - a lookup table relating buf position to sink0 output
+;   DispSinkPort1Patterns - a lookup table relating buf position to sink1 output
 ;
 ; Public Functions:
 ;   DisplayInit - initializes the display
@@ -20,13 +20,13 @@
 ; Author:
 ;   Gavin Hua
 ;
-; Revision History: 5/18/2024 - Initial revision
-;                   5/18/2024 - Debug and test
-;                   2024/06/12 - Update DisplayGameLED to not handle mode and
-;                                start buttons, and created specialized routines
-;                                for them.
-;                   2024/06/14 - Adde DisplayMessage function and MessageTable
-;                   2024/06/19 - Update comments
+; Revision History:
+;   2024/05/18 - Initial revision
+;   2024/05/18 - Debug and test
+;   2024/06/12 - Update DisplayGameLED to not handle mode and start buttons, and
+;                created specialized routines for them.
+;   2024/06/14 - Adde DisplayMessage function and MessageTable
+;   2024/06/19 - Update comments
 ;-------------------------------------------------------------------------------
 
 
@@ -164,7 +164,7 @@ DispSinkPort1Patterns:
 ; Algorithms:           None.
 ; Data Structures:      None.
 ;
-; Registers Used:       r16, r17, Y
+; Registers Used:       r16, r17, Y, SREG
 ;
 ; Author:               Gavin Hua
 ; Last Modified:        2024/06/19
@@ -196,7 +196,6 @@ InitDisplay:
 ; Global Variables:     None.
 ; Shared Variables:     curr_src_patterns - set to all LED_OFF
 ; Local Variables:      loop counter (r16) - used to iterate over the buffer
-;                       tmp (r17) - used to store LED_OFF into the buffer
 ; 
 ; Input:                None.
 ; Output:               None.
@@ -205,7 +204,7 @@ InitDisplay:
 ;   
 ; Algorithms:           None.
 ; Data Structures:      None.
-; Registers Used:       r16, r17, Y
+; Registers Used:       r16, r17, Y, SREG
 ;
 ; Author:               Gavin Hua
 ; Last Modified:        2024/06/19
@@ -243,8 +242,7 @@ ClearDisplayEnd:
 ; Shared Variables:     curr_src_patterns - read only
 ;                       disp_buf_pos - set to (disp_buf_pos+1) % DISP_BUFF_LEN
 ;                       blink_dim_cnt - set to (cnt+1) % (on_t + off_t)
-; Local Variables:      tmp (r16) - holds LED_OFF, then blink_dim_cnt
-;                       port_pattern (r18) - current port pattern
+; Local Variables:      None.
 ; 
 ; Input:                None.
 ; Output:               None.
@@ -397,8 +395,8 @@ DisplayHexEnd:
 ; 
 ; Global Variables:     None.
 ; Shared Variables:     curr_src_patterns - 7seg region (last 4 bytes) written
-; Local Variables:      msg_buf - read and write
-;                       loop counter (r17) - for msg lookup, msg loading, and
+;                       msg_buf - read and write
+; Local Variables:      loop counter (r17) - for msg lookup, msg loading, and
 ;                                            pattern loading.
 ;                       tmp (r16) - after table lookup match, r16 is used to
 ;                                   store the results of various ld/lpm's,
@@ -494,7 +492,7 @@ DisplayMessageEnd:
 ; Shared Variables:     curr_src_patterns - read and write
 ; Local Variables:      loop counter (r18) - r16%8, used to create the bit mask
 ;                       mask (r19) - set/clear a bit in the display buffer
-;                       tmp (r20) 0 - holds a byte in the display buffer
+;                       tmp (r20) - holds a byte in the display buffer
 ; 
 ; Input:                None.
 ; Output:               None.
@@ -511,13 +509,6 @@ DisplayMessageEnd:
 ; Last Modified:        2024/06/19
 
 DisplayGameLED:
-    ; push    r16
-    ; push    r17
-    ; push    r18
-    ; push    r19
-    ; push    r20
-    ; push    YL
-    ; push    YH
     dec     r16                 ; offset the range from 1-70 to 0-69
     cpi     r16, LED_IDX_MAX+1  ; only >= is available for unsigned, so +1
     brsh    DisplayGameLEDEnd   ; if idx >= max_idx + 1, then do nothing
@@ -567,11 +558,4 @@ DisplayGamePatternStore:
     ; rjmp  DisplayGameLEDEnd
 
 DisplayGameLEDEnd:
-    ; pop     YH
-    ; pop     YL
-    ; pop     r20
-    ; pop     r19
-    ; pop     r18
-    ; pop     r17
-    ; pop     r16
     ret                         ; all done, return

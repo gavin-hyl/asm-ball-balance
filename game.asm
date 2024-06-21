@@ -498,6 +498,8 @@ UpdateGameTimeEnd:
 ;                       gravity_set - read only
 ;                       bound_set - read only
 ;                       mode - read only
+;                       game_time - read only
+;                       curr_sequence - write only
 ;                       delay_timer - word corresponding to the status update
 ;                                     timer is set to STATUS_TIMER_PERIOD
 ; Local Variables:      a_y (r16) - used to store 4 bits of the y-acceleration
@@ -512,7 +514,7 @@ UpdateGameTimeEnd:
 ; Algorithms:           None.
 ; Data Structures:      None.
 ;
-; Registers Used:       r0, r15, r16, r17, X, Y, SREG
+; Registers Used:       r0, r13, r14, r15, r16, r17, r18, r19, r20, X, Y, Z,SREG
 ;
 ; Author:               Gavin Hua
 ; Last Modified:        2024/06/19
@@ -620,7 +622,7 @@ StatusTimerHandlerEnd:
 ; Algorithms:           None.
 ; Data Structures:      None.
 ;
-; Registers Used:       r0, r2, r16, X, Y, SREG
+; Registers Used:       r0, r2, r16, r17, X, Y, SREG
 ;
 ; Author:               Gavin Hua
 ; Last Modified:        2024/06/19

@@ -12,11 +12,11 @@
 ;                   functional specification for more details.
 ; Error Handling:   Refer to functional specification.
 ;
-; Algorithms:       None.
-; Data Structures:  None.
+; Algorithms:       Refer to functional specification.
+; Data Structures:  Refer to functional specification.
 ;
-; Known Bugs:       None.
-; Limitations:      None.
+; Known Bugs:       Refer to functional specification.
+; Limitations:      Refer to functional specification.
 ;
 ; Revision History:
 ;   2024/06/01 - initial revision

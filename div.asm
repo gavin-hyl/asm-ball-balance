@@ -14,6 +14,7 @@
 ; Revision History:
 ;   2018/04/16 - Initial revision
 ;   2024/06/19 - Update comments
+;   2024/06/20 - Add div8s function from Atmel application note AVR200 (Gavin)
 ;-------------------------------------------------------------------------------
 
 
@@ -155,6 +156,12 @@ EndDiv16by8:                        ; all done, just return
 
 
 
+; !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+; ! THIS FUNCTION IS FROM THE AVR200 APPLICATION NOTE !
+; !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+; ! SOURCE: https://github.com/sheepdoll/AVRVFDCLOCK/blob/master/avr200.asm
+; ! APPLICATION NOTE: http://ww1.microchip.com/downloads/en/AppNotes/doc0936.pdf
+; !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 ;***************************************************************************
 ;*
 ;* "div8s" - 8/8 Bit Signed Division
@@ -172,7 +179,7 @@ EndDiv16by8:                        ; all done, just return
 
 ;***** Subroutine Register Variables
 
-.def	d8s	=r14		;sign register
+.def	d8s 	=r14		;sign register
 .def	drem8s	=r15		;remainder
 .def	dres8s	=r16		;result
 .def	dd8s	=r16		;dividend

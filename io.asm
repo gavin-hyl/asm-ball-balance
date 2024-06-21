@@ -87,7 +87,7 @@ InitIO:
 ; Registers changed:    r16.
 ;
 ; Author:               Gavin Hua
-; Last Modified:        5/16/2024
+; Last Modified:        2024/05/16
 
 DisplayIOInit:
     ldi	    r16, OUTDATA            ; load all outputs into r16

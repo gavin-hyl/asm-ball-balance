@@ -43,7 +43,7 @@
 ; Algorithms:           None.
 ; Data Structures:      None.
 ;
-; Registers changed:    r16.
+; Registers changed:    r16, SREG
 ;
 ; Author:               Gavin Hua
 ; Last Modified:        2024/06/01

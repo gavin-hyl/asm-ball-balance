@@ -1,10 +1,12 @@
 ;-------------------------------------------------------------------------------
 ; iodefs.inc
+;
 ; Description:
 ;   This file contains the definitions related to IO setup.
 ;
 ; Author:
 ;   Gavin Hua
+;
 ; Revision History:
 ;   2024/05/16 - initial revision
 ;   2024/05/18 - debug and test
@@ -15,16 +17,16 @@
 
 
 ; I/O port data direction register definitions
-.equ	OUTDATA		        = 0b11111111    ; all pins are output
-.equ    INDATA		        = 0b00000000    ; all pins are input
+.equ	OUTDATA		        = 0b11111111    ; all pins are output (use for DDRs)
+.equ    INDATA		        = 0b00000000    ; all pins are input (use for DDRs)
 
 ; display definitions
-.equ    DISP_SRC_PORT_DDR   = DDRC  
-.equ    DISP_SINK_PORT0_DDR = DDRA
-.equ    DISP_SINK_PORT1_DDR = DDRD
-.equ    DISP_SRC_PORT       = PORTC
-.equ    DISP_SINK_PORT0     = PORTA
-.equ    DISP_SINK_PORT1     = PORTD
+.equ    DISP_SRC_PORT_DDR   = DDRC          ; DDR for the display source port
+.equ    DISP_SINK_PORT0_DDR = DDRA          ; DDR for the display sink port 0
+.equ    DISP_SINK_PORT1_DDR = DDRD          ; DDR for the display sink port 1
+.equ    DISP_SRC_PORT       = PORTC         ; port where the display source is
+.equ    DISP_SINK_PORT0     = PORTA         ; port where the display sink 0 is
+.equ    DISP_SINK_PORT1     = PORTD         ; port where the display sink 1 is
 
 ; Speaker definitions
 .equ    SPEAKER_PORT        = PORTB         ; port where the speaker is on
