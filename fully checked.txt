@@ -1,5 +1,0 @@
-io.asm
-spi.asm
-imu.asm
-display.asm
-game.asm

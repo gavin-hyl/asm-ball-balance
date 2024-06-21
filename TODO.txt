@@ -1,2 +1,0 @@
-Problems:
-7. valid range of function inputs
