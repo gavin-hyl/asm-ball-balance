@@ -1,5 +1,5 @@
 ;-------------------------------------------------------------------------------
-; randomdefs.asm
+; randomdefs.inc
 ;
 ; Description:
 ;   This file contains the seed value for the LFSR.

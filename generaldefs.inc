@@ -1,5 +1,5 @@
 ;-------------------------------------------------------------------------------
-; generaldef.inc
+; generaldefs.inc
 ;
 ; Description:
 ;   This file contains general definitions and macros.

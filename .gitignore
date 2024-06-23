@@ -4,3 +4,6 @@
 *.map
 *.obj
 *.tmp
+*.docx
+*.pdf
+*.zip
