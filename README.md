@@ -4,7 +4,7 @@ A complete embedded gaming system implemented in AVR assembly language. This pro
 
 ## Overview
 
-The Ball Balance Game is an embedded gaming system that challenges players to balance a virtual ball on a tilting platform. Using an IMU (Inertial Measurement Unit) for motion detection, players physically tilt the game board to control the ball's movement while navigating through various game modes and difficulty settings.
+The Ball Balance Game is an embedded gaming system that challenges players to balance a virtual ball on a tilting platform. Using an IMU (Inertial Measurement Unit) for motion detection, players physically tilt the game board to control the ball's movement while navigating through various game modes and difficulty settings. Please refer to the [functional specification](spec.pdf) for more details.
 
 ## Game Description
 
